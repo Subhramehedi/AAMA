@@ -311,32 +311,33 @@
 
       .nav-menu {
         display: flex;
-        flex-wrap: wrap; /* allow wrapping to new line */
-        justify-content: center; /* center the buttons */
+        flex-wrap: nowrap;
+        justify-content: flex-start;
         list-style: none;
         margin: 0;
-        padding: 5px 10px;
-        gap: 0.5rem;
-      }
-
-      .nav-menu a {
-        flex: 1 1 auto; /* allow buttons to resize */
-        min-width: 90px; /* prevent too narrow buttons */
-        max-width: 140px; /* keep them balanced */
-        text-align: center;
-        color: var(--dark-gray);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        padding: 6px 8px;
-        border-radius: 6px;
-        white-space: normal; /* allow text to wrap */
-        line-height: 1.3;
+        padding: 0 5px; /* top-bottom padding komano */
+        gap: 0.8rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
       }
 
       .nav-menu::-webkit-scrollbar {
-        display: none; /* Hide scrollbar for Webkit browsers */
+        display: none;
+      }
+
+      .nav-menu a {
+        flex: 0 0 auto;
+        color: var(--dark-gray);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem; /* font-size ektu chhoto */
+        transition: all 0.3s ease;
+        padding: 4px 10px; /* niche height komano */
+        border-radius: 4px;
+        white-space: nowrap;
+        line-height: 1.2; /* line-height komano */
+        position: relative;
       }
 
       .nav-menu a::after {
@@ -1042,12 +1043,8 @@
           display: none;
         }
 
-        /* Keep nav-menu visible for scrolling on mobile */
         .nav-menu {
-          display: flex; /* Ensure it's visible */
-          padding: 0 10px; /* Adjust padding for smaller screens */
-          gap: 0.5rem; /* Smaller gap */
-          height: auto; /* Allow height to adjust if needed, or keep fixed */
+          display: none;
         }
 
         .menu-dots {
