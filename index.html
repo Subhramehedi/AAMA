@@ -1,0 +1,3469 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Al-Ameen Mission | Santragachi Circle</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="41.jpg" sizes="32x32" />
+    <link rel="apple-touch-icon" href="17.jpg" />
+
+    <!-- Arabic Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* Reset and ensure page loads at top */
+      html {
+        scroll-behavior: auto !important;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      /* Trust-building color palette */
+      :root {
+        --primary-green: #2c5f2d;
+        --secondary-blue: #007bff;
+        --light-gray: #f8f9fa;
+        --medium-gray: #e9ecef;
+        --dark-gray: #343a40;
+        --white: #ffffff;
+        --gold: #ffd700;
+      }
+
+      /* Preloader styles */
+      .preloader {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.1s ease, visibility 0.8s ease;
+        pointer-events: auto;
+        overflow: hidden;
+      }
+
+      .preloader.fade-out {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .preloader-content {
+        text-align: center;
+        color: var(--white);
+      }
+
+      .preloader-logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        animation: pulse 1.5s ease-in-out infinite;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      .preloader-spinner {
+        width: 48px;
+        height: 48px;
+        margin: 18px auto 0;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-top: 4px solid var(--gold);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Enhanced Hero Section with Fixed Background */
+      .hero-section {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--white);
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(44, 95, 45, 0.3)
+          ),
+          url("41.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        transition: opacity 0.1s linear;
+        will-change: opacity;
+      }
+
+      /* Main content wrapper to allow scrolling over hero */
+      .content-wrapper {
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        margin-top: 100vh; /* Start after hero section */
+      }
+
+      .hero-logo {
+        height: 180px;
+        width: auto;
+        margin-bottom: 1.5rem;
+        animation: zoomIn 0.8s ease-out, float 4s ease-in-out infinite;
+        border-radius: 50%;
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .hero-wordmark {
+        font-size: calc(2.5rem + 2vw);
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5rem;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        animation: fadeInUp 1s ease-out 0.3s both;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .hero-subtitle {
+        font-size: calc(1rem + 0.6vw);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+        max-width: 800px;
+        animation: fadeInUp 1s ease-out 0.5s both;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: fadeInUp 1s ease-out 0.8s both,
+          bounce 2s ease-in-out infinite;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .scroll-indicator a {
+        color: var(--white);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.3s;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .scroll-indicator a:hover {
+        transform: scale(1.1);
+      }
+
+      /* Enhanced Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        transition: all 0.3s ease;
+        transform: translateY(0);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header.nav-up {
+        transform: translateY(-100%);
+      }
+
+      /* Brand Bar */
+      #brand-bar {
+        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        padding: 0.8rem 0;
+        position: relative;
+        animation: fadeInDown 0.6s ease-out;
+      }
+
+      #brand-bar .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .su-brand {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .su-brand:hover {
+        transform: scale(1.05);
+      }
+
+      .brand-logo {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      #gateway {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .gateway-nav--label {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.875rem;
+      }
+
+      #menu-gateway-nav {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      #menu-gateway-nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 8px 16px;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      #menu-gateway-nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* Main Header Container */
+      .header-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.8rem 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 2.5rem;
+      }
+
+      .nav-menu a {
+        color: var(--dark-gray);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 8px 0;
+      }
+
+      .nav-menu a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-green);
+        transition: width 0.3s ease;
+      }
+
+      .nav-menu a:hover {
+        color: var(--primary-green);
+        transform: translateY(-2px);
+      }
+
+      .nav-menu a:hover::after {
+        width: 100%;
+      }
+
+      .menu-dots {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .menu-dots span {
+        width: 25px;
+        height: 3px;
+        background: #ffffff; /* White color */
+        transition: 0.3s;
+        border-radius: 2px;
+      }
+
+      /* Enhanced Mobile Menu */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.264);
+        backdrop-filter: blur(20px);
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 80px;
+        overflow-y: auto;
+      }
+
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-menu-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: transparent;
+        border: none;
+        color: var(--dark-gray);
+        font-size: 2.5rem;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 10000;
+      }
+
+      .mobile-menu-close:hover {
+        transform: rotate(90deg);
+      }
+
+      .mobile-menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        padding: 20px;
+        width: 90%;
+        max-width: 500px;
+        margin-bottom: 15px;
+      }
+
+      .mobile-menu-grid.gateway-grid {
+        margin-top: 30px;
+        border-top: 2px solid var(--medium-gray);
+        padding-top: 30px;
+      }
+
+      .mobile-menu-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 15px;
+        text-align: center;
+        text-decoration: none;
+        color: var(--dark-gray);
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        background: var(--light-gray);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .mobile-menu-item:hover {
+        background: var(--primary-green);
+        color: var(--white);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(44, 95, 45, 0.3);
+      }
+
+      .mobile-menu-item .menu-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu-item:hover .menu-icon {
+        transform: scale(1.1);
+      }
+
+      .mobile-menu-item span {
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      /* Panel and content styles */
+      .panel {
+        padding: 5rem 0;
+        position: relative;
+        backdrop-filter: blur(10px);
+      }
+
+      .theme--white {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--dark-gray);
+      }
+
+      .theme--fog {
+        background: rgba(248, 249, 250, 0.95);
+        color: var(--dark-gray);
+      }
+
+      .theme--stone {
+        background: rgba(52, 58, 64, 0.95);
+        color: var(--white);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .panel header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .panel h2 {
+        font-size: 3rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        color: var(--primary-green);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .panel header p {
+        font-size: 1.3rem;
+        color: #666;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      .mission-statement {
+        font-size: 1.3rem;
+        line-height: 1.9;
+        text-align: center;
+        margin: 2rem 0;
+        color: var(--dark-gray);
+      }
+
+      /* Enhanced Islamic Quote */
+      .islamic-quote {
+        text-align: center;
+        margin: 3rem 0;
+        padding: 3rem;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(248, 249, 250, 0.9)
+        );
+        border-radius: 20px;
+        border-left: 6px solid var(--primary-green);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .islamic-quote::before {
+        content: '"';
+        position: absolute;
+        top: -20px;
+        left: 30px;
+        font-size: 120px;
+        color: var(--primary-green);
+        opacity: 0.1;
+        font-family: serif;
+      }
+
+      .islamic-quote:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(44, 95, 45, 0.2);
+      }
+
+      .quran-arabic {
+        font-family: "Amiri", serif;
+        font-size: 2.2rem;
+        color: var(--primary-green);
+        margin-bottom: 1.5rem;
+        direction: rtl;
+        line-height: 1.8;
+        font-weight: 600;
+      }
+
+      .quran-translation {
+        font-style: italic;
+        color: #555;
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+
+      /* Enhanced Cards */
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .highlight-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+      }
+
+      .highlight-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .highlight-card:hover::before {
+        opacity: 0.9;
+      }
+
+      .highlight-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(44, 95, 45, 0.25);
+      }
+
+      .highlight-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 3;
+      }
+
+      .highlight-card:hover img {
+        transform: scale(1.1);
+      }
+
+      .highlight-card-content {
+        padding: 2rem;
+        position: relative;
+        z-index: 4;
+        transition: all 0.4s ease;
+      }
+
+      .highlight-card:hover .highlight-card-content {
+        color: var(--white);
+      }
+
+      .highlight-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-green);
+        transition: color 0.4s ease;
+        font-weight: 600;
+      }
+
+      .highlight-card:hover h3 {
+        color: var(--white);
+      }
+
+      /* Enhanced Buttons */
+      .btn-ripple {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        box-shadow: 0 8px 25px rgba(44, 95, 45, 0.3);
+      }
+
+      .btn-ripple:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(44, 95, 45, 0.4);
+      }
+
+      .center-cta {
+        text-align: center;
+        margin: 4rem 0;
+      }
+
+      /* Enhanced Secretary Section */
+      .secretary-section {
+        position: relative;
+        padding: 6rem 0;
+        background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.7),
+            rgba(44, 95, 45, 0.6)
+          ),
+          url("1.jpg") center/cover no-repeat;
+        color: var(--white);
+        backdrop-filter: blur(5px);
+      }
+
+      .secretary-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        text-align: center;
+      }
+
+      .secretary-profile {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid var(--white);
+        margin: 0 auto 2rem;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease;
+      }
+
+      .secretary-profile:hover {
+        transform: scale(1.05);
+      }
+
+      .secretary-quote {
+        font-size: 1.4rem;
+        font-style: italic;
+        margin-bottom: 2rem;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        line-height: 1.8;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Enhanced Statistics */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2.5rem;
+        margin: 4rem 0;
+        text-align: center;
+      }
+
+      .stat-item {
+        padding: 3rem 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(248, 249, 250, 0.9)
+        );
+        border-radius: 20px;
+        transition: all 0.4s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(44, 95, 45, 0.1);
+      }
+
+      .stat-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(44, 95, 45, 0.2);
+        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        color: var(--white);
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--primary-green);
+        display: block;
+        margin-bottom: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .stat-item:hover .stat-number {
+        color: var(--white);
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #666;
+        transition: color 0.3s ease;
+      }
+
+      .stat-item:hover .stat-label {
+        color: var(--white);
+      }
+
+      /* Enhanced News Section */
+      .news-scroll-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin: 3rem auto;
+        padding: 1rem 0;
+      }
+
+      .news-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(44, 95, 45, 0.9);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 1rem;
+        border-radius: 50%;
+        z-index: 10;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .news-arrow:hover {
+        background: var(--primary-green);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .news-arrow.left {
+        left: 10px;
+      }
+
+      .news-arrow.right {
+        right: 10px;
+      }
+
+      .news-scroll-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0 50px;
+      }
+
+      .news-scroll-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* News Card Scaling Fix */
+      .news-card {
+        flex: 0 0 auto;
+        width: 320px; /* Fixed width for consistency */
+        margin: 0 15px;
+        scroll-snap-align: center;
+        background: var(--white);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Added cubic-bezier for smoother effect */
+        position: relative; /* Added for pseudo-element */
+      }
+
+      .news-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .news-card:hover::before {
+        opacity: 0.9;
+      }
+
+      .news-card:hover {
+        transform: translateY(-15px) scale(1.02); /* Consistent scaling */
+        box-shadow: 0 20px 60px rgba(44, 95, 45, 0.25); /* Consistent shadow */
+      }
+
+      .news-card img {
+        width: 100%;
+        height: 200px; /* Adjusted height for news images */
+        object-fit: cover;
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 3;
+      }
+
+      .news-card:hover img {
+        transform: scale(1.1);
+      }
+
+      .news-card-content {
+        padding: 1.5rem; /* Adjusted padding */
+        position: relative;
+        z-index: 4;
+        transition: all 0.4s ease;
+      }
+
+      .news-card:hover .news-card-content {
+        color: var(--white);
+      }
+
+      .news-card h3 {
+        font-size: 1.3rem; /* Adjusted font size */
+        margin-bottom: 0.8rem;
+        color: var(--primary-green);
+        transition: color 0.4s ease;
+        font-weight: 600;
+      }
+
+      .news-card:hover h3 {
+        color: var(--white);
+      }
+
+      .news-card .news-category {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 0.5rem;
+        transition: color 0.4s ease;
+      }
+
+      .news-card:hover .news-category {
+        color: var(--white);
+      }
+
+      /* Enhanced Footer */
+      footer {
+        background: linear-gradient(135deg, var(--dark-gray), #1a1a1a);
+        color: var(--white);
+        padding: 4rem 0 2rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1.5rem;
+        color: var(--primary-green);
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-section a {
+        color: #ccc;
+        text-decoration: none;
+        line-height: 2.2;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .footer-section a:hover {
+        color: var(--primary-green);
+        transform: translateX(5px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding: 2rem 0;
+        border-top: 1px solid #444;
+        margin-top: 3rem;
+        color: #999;
+      }
+
+      /* Animation keyframes */
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0) translateX(-50%);
+        }
+        40% {
+          transform: translateY(-10px) translateX(-50%);
+        }
+        60% {
+          transform: translateY(-5px) translateX(-50%);
+        }
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .hero-section {
+          background-attachment: scroll;
+        }
+
+        .hero-wordmark {
+          font-size: 2.5rem;
+        }
+
+        .hero-logo {
+          height: 140px;
+        }
+
+        #gateway {
+          display: none;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .menu-dots {
+          display: flex;
+        }
+
+        .header {
+          background: rgba(255, 255, 255, 0.95);
+        }
+
+        .panel {
+          padding: 3rem 0;
+        }
+
+        .panel h2 {
+          font-size: 2.2rem;
+        }
+
+        .grid-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+
+        .stat-item {
+          padding: 2rem 1rem;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+        }
+
+        .news-scroll-wrapper {
+          padding: 0 20px; /* Adjust padding for smaller screens */
+        }
+
+        .news-card {
+          width: 280px; /* Adjust width for smaller screens */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-wordmark {
+          font-size: 2rem;
+        }
+
+        .hero-logo {
+          height: 120px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 0 1rem;
+        }
+      }
+
+      /* Expandable content styles */
+      .expandable-content {
+        position: relative;
+      }
+
+      .expandable-text {
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        max-height: 93px; /* Default collapsed height */
+      }
+
+      .expandable-text.expanded {
+        max-height: 1000px; /* Sufficiently large for expanded content */
+      }
+
+      .read-more-link {
+        color: var(--primary-green);
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .read-more-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Bright color for read-more-link on dark backgrounds */
+      .secretary-section .read-more-link,
+      .superintendent-section .read-more-link {
+        color: var(--gold); /* Or any bright color like var(--white) */
+      }
+
+      .secretary-section .read-more-link:hover,
+      .superintendent-section .read-more-link:hover {
+        color: var(--white);
+      }
+
+      .show-less-btn {
+        position: absolute;
+        top: -10px; /* Adjusted position */
+        right: 0;
+        background: var(--primary-green);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none;
+        font-size: 0.9rem;
+        transition: background 0.3s ease;
+      }
+
+      .show-less-btn:hover {
+        background: #1a3f1c;
+      }
+
+      .show-less-btn.active {
+        display: block;
+      }
+
+      .highlight-card:hover .read-more-link {
+        color: white !important;
+      }
+
+      .highlight-card:hover .show-less-btn.active {
+        background: white !important;
+        color: var(--dark-gray) !important;
+      }
+
+      /* Photo Gallery Styles */
+      .photo-gallery-section {
+        padding: 5rem 0;
+        background: var(--medium-gray);
+      }
+
+      .scroll-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin: 3rem auto;
+        padding: 1rem 0;
+      }
+
+      .scroll-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0 20px;
+      }
+
+      .scroll-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      .scroll-item {
+        flex: 0 0 auto;
+        width: 160px;
+        height: 200px;
+        margin: 0 10px;
+        scroll-snap-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .scroll-item:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(44, 95, 45, 0.2);
+      }
+
+      .scroll-item img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--primary-green);
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .scroll-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .scroll-item span {
+        font-weight: 600;
+        color: var(--dark-gray);
+        font-size: 0.95rem;
+        text-align: center;
+        padding: 0 10px;
+        line-height: 1.3;
+      }
+
+      .scroll-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        gap: 10px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(44, 95, 45, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid var(--primary-green);
+      }
+
+      .dot.active {
+        background: var(--primary-green);
+        transform: scale(1.3);
+      }
+
+      .dot:hover {
+        background: var(--primary-green);
+        opacity: 0.8;
+      }
+
+      /* Social Icons */
+      .social-logos {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+
+      .social-logos img.social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        filter: grayscale(100%);
+      }
+
+      .social-logos img.social-icon:hover {
+        transform: translateY(-5px) scale(1.2);
+        filter: grayscale(0%);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Ripple Effect */
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        animation: ripple-effect 0.6s linear;
+        pointer-events: none;
+      }
+
+      @keyframes ripple-effect {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+
+      /* Modal/Popup Styles */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 10001; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+        backdrop-filter: blur(5px);
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 60%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: fadeInScale 0.3s ease-out;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .close-button {
+        color: #aaa;
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-button:hover,
+      .close-button:focus {
+        color: var(--primary-green);
+        text-decoration: none;
+      }
+
+      .modal-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .modal-card {
+        background: var(--light-gray);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .modal-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .modal-card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+        border: 3px solid var(--primary-green);
+      }
+
+      .modal-card h4 {
+        margin-bottom: 5px;
+        color: var(--primary-green);
+      }
+
+      .modal-card p {
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      /* Student Portal Modal */
+      .student-portal-modal-content {
+        text-align: center;
+      }
+
+      .student-portal-modal-content form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 400px;
+        margin: 20px auto;
+      }
+
+      .student-portal-modal-content input[type="text"],
+      .student-portal-modal-content input[type="date"] {
+        padding: 10px;
+        border: 1px solid var(--medium-gray);
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      .student-portal-modal-content button {
+        padding: 12px 25px;
+        background: var(--primary-green);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background 0.3s ease;
+      }
+
+      .student-portal-modal-content button:hover {
+        background: #1a3f1c;
+      }
+
+      .student-portal-results {
+        margin-top: 30px;
+        text-align: left;
+        border-top: 1px solid var(--medium-gray);
+        padding-top: 20px;
+      }
+
+      .student-portal-results h3 {
+        color: var(--primary-green);
+        margin-bottom: 15px;
+      }
+
+      .student-portal-results p {
+        margin-bottom: 8px;
+      }
+
+      .student-portal-results .chart-placeholder {
+        width: 100%;
+        height: 200px;
+        background-color: var(--light-gray);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #888;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .student-portal-results .download-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: var(--secondary-blue);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+      }
+
+      .student-portal-results .download-btn:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-content">
+        <img
+          src="https://play-lh.googleusercontent.com/gufR1twVlU6_SzC-iIAD_8bLLf-XYVAwwwwJF-cphD32IX0GeHNLi4GrN42hRYDHg-A"
+          alt="Loading"
+          class="preloader-logo"
+        />
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+      <section id="brand-bar">
+        <div class="container">
+          <a href="#top" class="su-brand">
+            <img
+              src="https://play-lh.googleusercontent.com/gufR1twVlU6_SzC-iIAD_8bLLf-XYVAwwwwJF-cphD32IX0GeHNLi4GrN42hRYDHg-A"
+              alt="Mission Logo"
+              class="brand-logo"
+            />
+            Al-Ameen Mission
+          </a>
+
+          <!-- Three Dots Menu for Mobile -->
+          <button class="menu-dots" id="menuDots" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- Desktop Gateway Navigation -->
+          <nav id="gateway" aria-label="Gateway navigation">
+            <div class="gateway-nav--label">Information for:</div>
+            <ul id="menu-gateway-nav">
+              <li>
+                <a href="#" id="students-btn" class="btn-ripple">Students</a>
+              </li>
+              <li>
+                <a href="#faculty-staff" class="btn-ripple">Faculty & Staff</a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com" target="_blank">Alumni</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+      <div class="header-container">
+        <nav class="nav-menu">
+          <a href="#mission">Home</a>
+          <a href="#programs">Our Esteemed Faculty & Staff</a>
+          <a href="#admission">Academic Programs</a>
+          <a href="#results">Admission</a>
+          <a href="#hall-of-fame">Our Impact</a>
+          <a href="#contact">Result</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-menu-close" id="menuClose">&times;</button>
+      <div class="mobile-menu-grid">
+        <a href="#mission" class="mobile-menu-item">
+          <span class="menu-icon">📖</span>
+          <span>About</span>
+        </a>
+        <a href="#results" class="mobile-menu-item">
+          <span class="menu-icon">📊</span>
+          <span>Result</span>
+        </a>
+        <a href="#programs" class="mobile-menu-item">
+          <span class="menu-icon">📚</span>
+          <span>Programs</span>
+        </a>
+        <a href="#admission" class="mobile-menu-item">
+          <span class="menu-icon">📝</span>
+          <span>Admission</span>
+        </a>
+        <a href="#hall-of-fame" class="mobile-menu-item">
+          <span class="menu-icon">🏆</span>
+          <span>Hall of Fame</span>
+        </a>
+        <a href="#contact" class="mobile-menu-item">
+          <span class="menu-icon">📞</span>
+          <span>Contact</span>
+        </a>
+      </div>
+
+      <div class="mobile-menu-grid gateway-grid">
+        <a href="#" id="mobile-students-btn" class="mobile-menu-item">
+          <span class="menu-icon">👤</span>
+          <span>Students</span>
+        </a>
+        <a href="#faculty-staff" class="mobile-menu-item">
+          <span class="menu-icon">👥</span>
+          <span>Faculty</span>
+        </a>
+        <a
+          href="https://www.youtube.com"
+          target="_blank"
+          class="mobile-menu-item"
+        >
+          <span class="menu-icon">🎓</span>
+          <span>Alumni</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Section (Fixed Background) -->
+    <section class="hero-section" id="heroSection">
+      <img
+        src="https://play-lh.googleusercontent.com/gufR1twVlU6_SzC-iIAD_8bLLf-XYVAwwwwJF-cphD32IX0GeHNLi4GrN42hRYDHg-A"
+        alt="Mission Logo"
+        class="hero-logo"
+      />
+      <h1 class="hero-wordmark">Al-Ameen Mission</h1>
+      <p class="hero-subtitle">Santragachi Circle</p>
+      <div class="scroll-indicator">
+        <a href="#mission" id="explore-btn">
+          <span>Explore</span>
+          <span>↓</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Content Wrapper (Scrolls over hero) -->
+    <div class="content-wrapper">
+      <!-- Mission Section -->
+      <section id="mission" class="panel theme--white" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>A Mission Defined by Possibility</h2>
+          </header>
+
+          <div class="mission-statement">
+            <p>
+              At Al-Ameen Mission Santragachi Circle, we deliver quality
+              education with the best support for Class XI (Sc), XII (Sc), NEET
+              & JEE aspirants. Our values-driven Islamic environment, safe
+              hostel facilities, and expert faculty work together to shape your
+              bright future.
+            </p>
+          </div>
+
+          <div class="islamic-quote" data-aos="fade-up" data-aos-delay="200">
+            <p class="quran-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</p>
+            <p class="quran-translation">
+              "And say, 'My Lord, increase me in knowledge.'" (Qur'an 20:114)
+            </p>
+          </div>
+
+          <div class="center-cta">
+            <a href="about-mission.html" class="btn-ripple"
+              >More About Al-Ameen Mission</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us Section -->
+      <section class="panel theme--fog" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>Why Choose Us?</h2>
+            <p>Excellence in education with Islamic values</p>
+          </header>
+
+          <div class="grid-container">
+            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="100">
+              <img src="2.jpg" alt="Hostel" />
+              <div class="highlight-card-content">
+                <h3>🏡 Hostel Accommodation</h3>
+                <div class="expandable-content">
+                  <div class="expandable-text" id="hostel-text">
+                    <p>
+                      Clean, secure, disciplined campus life with all modern
+                      amenities for comfortable student living. Our hostel
+                      provides a safe and nurturing environment where students
+                      can focus on their studies while developing life skills
+                      and friendships that last a lifetime.
+                    </p>
+                  </div>
+                  <span
+                    class="read-more-link"
+                    onclick="toggleExpand('hostel-text', this)"
+                    >Read more</span
+                  >
+                  <button
+                    class="show-less-btn"
+                    onclick="toggleExpand('hostel-text', this.previousElementSibling)"
+                  >
+                    Show less
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="200">
+              <img src="3.jpg" alt="Islamic Environment" />
+              <div class="highlight-card-content">
+                <h3>🕌 Islamic Environment</h3>
+                <div class="expandable-content">
+                  <div class="expandable-text" id="islamic-text">
+                    <p>
+                      Prayer halls and daily moral education to nurture
+                      spiritual growth alongside academic excellence. We provide
+                      a balanced environment where students can strengthen their
+                      faith while pursuing their educational goals, creating
+                      well-rounded individuals who contribute positively to
+                      society.
+                    </p>
+                  </div>
+                  <span
+                    class="read-more-link"
+                    onclick="toggleExpand('islamic-text', this)"
+                    >Read more</span
+                  >
+                  <button
+                    class="show-less-btn"
+                    onclick="toggleExpand('islamic-text', this.previousElementSibling)"
+                  >
+                    Show less
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="300">
+              <img src="4.jpg" alt="Digital Classrooms" />
+              <div class="highlight-card-content">
+                <h3>💻 Digital Classrooms</h3>
+                <div class="expandable-content">
+                  <div class="expandable-text" id="digital-text">
+                    <p>
+                      Modern smart-class facilities for interactive and engaging
+                      learning experiences. Our state-of-the-art technology
+                      enhances the learning process, making complex concepts
+                      easier to understand and retain through multimedia
+                      presentations and interactive sessions.
+                    </p>
+                  </div>
+                  <span
+                    class="read-more-link"
+                    onclick="toggleExpand('digital-text', this)"
+                    >Read more</span
+                  >
+                  <button
+                    class="show-less-btn"
+                    onclick="toggleExpand('digital-text', this.previousElementSibling)"
+                  >
+                    Show less
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- General Secretary Section -->
+      <section class="secretary-section" data-aos="fade-up">
+        <div class="secretary-container">
+          <img src="43.png" alt="General Secretary" class="secretary-profile" />
+
+          <div class="expandable-content">
+            <div class="expandable-text" id="secretary-text">
+              <p class="secretary-quote">
+                "Education is not merely about acquiring knowledge; it's about
+                building character, nurturing faith, and preparing young minds
+                to serve humanity. At Al-Ameen Mission, we believe in holistic
+                development where academic excellence meets moral values,
+                creating leaders who will illuminate the world with their wisdom
+                and compassion."
+              </p>
+              <p>
+                Under his visionary leadership, Al-Ameen Mission has grown into
+                a nationwide movement that nurtures thousands of students each
+                year, offering them not only academic excellence but also values
+                rooted in faith, discipline, and service to society.
+              </p>
+            </div>
+            <span
+              class="read-more-link"
+              onclick="toggleExpand('secretary-text', this)"
+              >Read more</span
+            >
+            <button
+              class="show-less-btn"
+              onclick="toggleExpand('secretary-text', this.previousElementSibling)"
+            >
+              Show less
+            </button>
+          </div>
+
+          <h3 class="secretary-name">Janab M. Nurul Islam</h3>
+          <p class="secretary-title">General Secretary, Al-Ameen Mission</p>
+        </div>
+      </section>
+
+      <!-- Latest News -->
+      <section class="panel theme--white" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>Latest News</h2>
+            <p>Stay updated with recent happenings and achievements</p>
+          </header>
+
+          <div class="news-scroll-container">
+            <button class="news-arrow left" id="newsPrev">‹</button>
+            <div class="news-scroll-wrapper" id="newsScroll">
+              <article class="news-card">
+                <img src="5.jpg" alt="News" />
+                <div class="news-card-content">
+                  <p class="news-category">Academic Achievement</p>
+                  <h3>Outstanding NEET Results 2025</h3>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="news1-text">
+                      <p>
+                        Our students achieve remarkable success in medical
+                        entrance examinations with 85% qualifying rate. This
+                        year marks another milestone in our commitment to
+                        excellence in medical education preparation.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('news1-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('news1-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card">
+                <img src="16.jpg" alt="News" />
+                <div class="news-card-content">
+                  <p class="news-category">Campus Event</p>
+                  <h3>Annual Science Fair Success</h3>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="news2-text">
+                      <p>
+                        Students showcase innovative projects at the annual
+                        science exhibition with over 50 projects. The event
+                        highlighted our students' creativity and scientific
+                        thinking abilities.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('news2-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('news2-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card">
+                <img src="6.jpg" alt="News" />
+                <div class="news-card-content">
+                  <p class="news-category">Achievement</p>
+                  <h3>JEE Main Top Performers</h3>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="news3-text">
+                      <p>
+                        Multiple students secure top ranks in engineering
+                        entrance examinations. Our comprehensive preparation
+                        methods continue to yield excellent results for aspiring
+                        engineers.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('news3-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('news3-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="news-card">
+                <img src="7.jpg" alt="News" />
+                <div class="news-card-content">
+                  <p class="news-category">Sports</p>
+                  <h3>Inter-School Cricket Championship</h3>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="news4-text">
+                      <p>
+                        Our cricket team wins the district championship with
+                        outstanding performance and teamwork. Sports activities
+                        are an integral part of our holistic education approach.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('news4-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('news4-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <button class="news-arrow right" id="newsNext">›</button>
+          </div>
+
+          <div class="center-cta">
+            <a href="more-news.html" class="btn-ripple">More News</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Calendar Section -->
+      <section class="panel theme--fog" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>Academic Calendar</h2>
+            <p>Important dates and upcoming events</p>
+          </header>
+
+          <div class="center-cta">
+            <a href="academic-calendar.html" class="btn-ripple"
+              >View Full Calendar</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Superintendent Section -->
+      <section
+        class="superintendent-section secretary-section"
+        data-aos="fade-up"
+      >
+        <div class="secretary-container">
+          <img
+            src="44.png"
+            alt="Superintendent KM Haque"
+            class="secretary-profile"
+          />
+
+          <div class="expandable-content">
+            <div class="expandable-text" id="superintendent-text">
+              <p class="secretary-quote">
+                "Our commitment at Al-Ameen Mission extends beyond textbooks and
+                examinations. We strive to cultivate an environment where every
+                student feels empowered to explore their potential, embrace
+                challenges, and emerge as responsible global citizens. With a
+                strong emphasis on moral values and academic rigor, we aim to
+                instill a lifelong passion for learning and service. We believe
+                that true education is a journey of self-discovery and
+                contribution to society, and we are dedicated to guiding our
+                students every step of the way."
+              </p>
+            </div>
+            <span
+              class="read-more-link"
+              onclick="toggleExpand('superintendent-text', this)"
+              >Read more</span
+            >
+            <button
+              class="show-less-btn"
+              onclick="toggleExpand('superintendent-text', this.previousElementSibling)"
+            >
+              Show less
+            </button>
+          </div>
+
+          <h3 class="secretary-name">Janab K.M. Haque</h3>
+          <p class="secretary-title">Superintendent, Al-Ameen Mission</p>
+        </div>
+      </section>
+
+      <!-- Statistics -->
+      <section class="panel theme--white" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>Our Impact</h2>
+            <p>Numbers that reflect our commitment to excellence</p>
+          </header>
+
+          <div class="stats-grid">
+            <div class="stat-item" data-aos="flip-left" data-aos-delay="100">
+              <span class="stat-number" data-target="1200">0</span>
+              <span class="stat-label">Students Qualified NEET/JEE</span>
+            </div>
+            <div class="stat-item" data-aos="flip-left" data-aos-delay="200">
+              <span class="stat-number" data-target="95">0</span>
+              <span class="stat-label">Board Results Success Rate</span>
+            </div>
+            <div class="stat-item" data-aos="flip-left" data-aos-delay="300">
+              <span class="stat-number" data-target="100">0</span>
+              <span class="stat-label">Expert Faculty Members</span>
+            </div>
+            <div class="stat-item" data-aos="flip-left" data-aos-delay="400">
+              <span class="stat-number" data-target="35">0</span>
+              <span class="stat-label">Years of Excellence</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hall of Fame Section -->
+      <section
+        id="hall-of-fame"
+        class="panel photo-gallery-section"
+        data-aos="fade-up"
+      >
+        <div class="container">
+          <header>
+            <h2>Hall of Fame</h2>
+            <p>Celebrating our brightest stars and their achievements</p>
+          </header>
+          <div class="scroll-container" id="hallOfFameScroll">
+            <div class="scroll-wrapper">
+              <div class="scroll-item">
+                <img src="images.jpeg" alt="Student 1" />
+                <span>Ahmed Khan</span>
+              </div>
+              <div class="scroll-item">
+                <img src="8.jpg" alt="Student 2" />
+                <span>Fatima Begum</span>
+              </div>
+              <div class="scroll-item">
+                <img src="9.jpg" alt="Student 3" />
+                <span>Mohammed Ali</span>
+              </div>
+              <div class="scroll-item">
+                <img src="10.jpg" alt="Student 4" />
+                <span>Aisha Rahman</span>
+              </div>
+              <div class="scroll-item">
+                <img src="11.jpg" alt="Student 5" />
+                <span>Omar Farooq</span>
+              </div>
+              <div class="scroll-item">
+                <img src="12.jpg" alt="Student 6" />
+                <span>Zainab Bibi</span>
+              </div>
+              <div class="scroll-item">
+                <img src="13.jpg" alt="Student 7" />
+                <span>Imran Hossain</span>
+              </div>
+              <div class="scroll-item">
+                <img src="14.jpg" alt="Student 8" />
+                <span>Sana Khatun</span>
+              </div>
+            </div>
+          </div>
+          <div class="scroll-dots" id="hallOfFameDots"></div>
+          <div class="center-cta">
+            <a href="hall-of-fame-more.html" class="btn-ripple"
+              >More Hall of Fame</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Faculty & Staff Section -->
+      <section id="faculty-staff" class="panel theme--fog" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>Our Esteemed Faculty & Staff</h2>
+            <p>Meet the dedicated individuals shaping futures</p>
+          </header>
+
+          <div class="news-scroll-container">
+            <button class="news-arrow left" id="facultyPrev">‹</button>
+            <div class="news-scroll-wrapper" id="facultyScroll">
+              <!-- Faculty Member 1 -->
+              <article class="news-card faculty-card">
+                <img src="1.jpg" alt="Prof. Ahmed" />
+                <div class="news-card-content">
+                  <h3>Prof. Ahmed Khan</h3>
+                  <p class="news-category">Head of Physics Dept.</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty1-text">
+                      <p>
+                        Prof. Khan is a veteran educator with over 20 years of
+                        experience in teaching advanced physics. His passion for
+                        science inspires students to achieve excellence.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty1-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty1-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 2 -->
+              <article class="news-card faculty-card">
+                <img src="2.jpg" alt="Dr. Fatima" />
+                <div class="news-card-content">
+                  <h3>Dr. Fatima Begum</h3>
+                  <p class="news-category">Biology Specialist</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty2-text">
+                      <p>
+                        Dr. Begum holds a Ph.D. in Biotechnology and is renowned
+                        for her engaging teaching methods in Biology, making
+                        complex topics easy to understand.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty2-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty2-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 3 -->
+              <article class="news-card faculty-card">
+                <img src="3.jpg" alt="Mr. Mohammed" />
+                <div class="news-card-content">
+                  <h3>Mr. Mohammed Ali</h3>
+                  <p class="news-category">Mathematics Expert</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty3-text">
+                      <p>
+                        Mr. Ali is known for his innovative approach to teaching
+                        Mathematics, helping students master challenging
+                        concepts for JEE and NEET.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty3-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty3-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 4 -->
+              <article class="news-card faculty-card">
+                <img src="4.jpg" alt="Ms. Aisha" />
+                <div class="news-card-content">
+                  <h3>Ms. Aisha Rahman</h3>
+                  <p class="news-category">Chemistry Instructor</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty4-text">
+                      <p>
+                        Ms. Rahman brings a dynamic energy to the Chemistry
+                        department, making learning fun and effective for all
+                        students.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty4-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty4-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 5 -->
+              <article class="news-card faculty-card">
+                <img src="5.jpg" alt="Prof. Omar" />
+                <div class="news-card-content">
+                  <h3>Prof. Omar Farooq</h3>
+                  <p class="news-category">Senior Physics Lecturer</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty5-text">
+                      <p>
+                        Prof. Farooq is celebrated for his clear explanations
+                        and deep understanding of complex physics principles,
+                        guiding students to top scores.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty5-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty5-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 6 -->
+              <article class="news-card faculty-card">
+                <img src="6.jpg" alt="Dr. Zainab" />
+                <div class="news-card-content">
+                  <h3>Dr. Zainab Bibi</h3>
+                  <p class="news-category">Biology Researcher</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty6-text">
+                      <p>
+                        Dr. Bibi's research background enriches her Biology
+                        classes, providing students with real-world insights and
+                        advanced knowledge.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty6-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty6-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 7 -->
+              <article class="news-card faculty-card">
+                <img src="7.jpg" alt="Mr. Imran" />
+                <div class="news-card-content">
+                  <h3>Mr. Imran Hossain</h3>
+                  <p class="news-category">Chemistry Lab Incharge</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty7-text">
+                      <p>
+                        Mr. Hossain ensures a safe and effective learning
+                        environment in the chemistry labs, guiding students
+                        through practical experiments.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty7-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty7-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 8 -->
+              <article class="news-card faculty-card">
+                <img src="8.jpg" alt="Ms. Sana" />
+                <div class="news-card-content">
+                  <h3>Ms. Sana Khatun</h3>
+                  <p class="news-category">English Language Trainer</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty8-text">
+                      <p>
+                        Ms. Khatun focuses on enhancing students' communication
+                        skills and preparing them for competitive exams
+                        requiring strong English proficiency.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty8-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty8-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 9 -->
+              <article class="news-card faculty-card">
+                <img src="9.jpg" alt="Mr. Rahman" />
+                <div class="news-card-content">
+                  <h3>Mr. Rahman Sheikh</h3>
+                  <p class="news-category">Computer Science Instructor</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty9-text">
+                      <p>
+                        Mr. Sheikh introduces students to the world of computer
+                        science, fostering analytical thinking and
+                        problem-solving skills.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty9-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty9-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+              <!-- Faculty Member 10 -->
+              <article class="news-card faculty-card">
+                <img src="10.jpg" alt="Ms. Nazia" />
+                <div class="news-card-content">
+                  <h3>Ms. Nazia Parveen</h3>
+                  <p class="news-category">Counselor & Mentor</p>
+                  <div class="expandable-content">
+                    <div class="expandable-text" id="faculty10-text">
+                      <p>
+                        Ms. Parveen provides invaluable guidance and support to
+                        students, helping them navigate academic and personal
+                        challenges.
+                      </p>
+                    </div>
+                    <span
+                      class="read-more-link"
+                      onclick="toggleExpand('faculty10-text', this)"
+                      >Read more</span
+                    >
+                    <button
+                      class="show-less-btn"
+                      onclick="toggleExpand('faculty10-text', this.previousElementSibling)"
+                    >
+                      Show less
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <button class="news-arrow right" id="facultyNext">›</button>
+          </div>
+
+          <div class="center-cta">
+            <a href="#" id="more-faculty-btn" class="btn-ripple"
+              >View All Faculty & Staff</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Programs -->
+      <section id="programs" class="panel theme--white" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>Academic Programs</h2>
+            <p>Comprehensive education programs for aspiring professionals</p>
+          </header>
+
+          <div class="grid-container">
+            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="100">
+              <img src="Screenshot 2025-09-11 023930.png" alt="Science" />
+              <div class="highlight-card-content">
+                <h3>Class XI & XII Science</h3>
+                <div class="expandable-content">
+                  <div class="expandable-text" id="prog1-text">
+                    <p>
+                      Comprehensive science curriculum with focus on board
+                      examinations and competitive preparation. Our experienced
+                      faculty provides personalized attention to ensure every
+                      student excels in Physics, Chemistry, Biology/Mathematics
+                      with practical lab sessions, regular assessments, and
+                      doubt clearing classes.
+                    </p>
+                  </div>
+                  <span
+                    class="read-more-link"
+                    onclick="toggleExpand('prog1-text', this)"
+                    >Read more</span
+                  >
+                  <button
+                    class="show-less-btn"
+                    onclick="toggleExpand('prog1-text', this.previousElementSibling)"
+                  >
+                    Show less
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="200">
+              <img src="15.jpg" alt="NEET" />
+              <div class="highlight-card-content">
+                <h3>NEET Preparation</h3>
+                <div class="expandable-content">
+                  <div class="expandable-text" id="prog2-text">
+                    <p>
+                      Specialized coaching for medical entrance with experienced
+                      faculty and comprehensive study materials. Our NEET
+                      program includes intensive coaching, regular mock tests,
+                      performance analysis, one-on-one mentoring, and access to
+                      extensive question banks and study resources.
+                    </p>
+                  </div>
+                  <span
+                    class="read-more-link"
+                    onclick="toggleExpand('prog2-text', this)"
+                    >Read more</span
+                  >
+                  <button
+                    class="show-less-btn"
+                    onclick="toggleExpand('prog2-text', this.previousElementSibling)"
+                  >
+                    Show less
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="300">
+              <img src="16.jpg" alt="JEE" />
+              <div class="highlight-card-content">
+                <h3>JEE Preparation</h3>
+                <div class="expandable-content">
+                  <div class="expandable-text" id="prog3-text">
+                    <p>
+                      Expert guidance for engineering aspirants with focus on
+                      JEE Main and Advanced. Our comprehensive JEE program
+                      covers complete syllabus with conceptual clarity,
+                      problem-solving techniques, time management strategies,
+                      and extensive practice through chapter-wise tests and
+                      full-length mock exams.
+                    </p>
+                  </div>
+                  <span
+                    class="read-more-link"
+                    onclick="toggleExpand('prog3-text', this)"
+                    >Read more</span
+                  >
+                  <button
+                    class="show-less-btn"
+                    onclick="toggleExpand('prog3-text', this.previousElementSibling)"
+                  >
+                    Show less
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Admission -->
+      <section id="admission" class="panel theme--fog" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>Admission</h2>
+            <p>Join our community of excellence</p>
+          </header>
+
+          <div class="mission-statement">
+            <p>
+              We look for dedicated students who exhibit curiosity and
+              commitment to learning. Our admission process ensures we select
+              students who will thrive in our values-based educational
+              environment.
+            </p>
+
+            <div class="islamic-quote" style="margin-top: 2rem">
+              <p class="quran-arabic">
+                طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ
+              </p>
+              <p class="quran-translation">
+                "Seeking knowledge is an obligation upon every Muslim." (Sunan
+                Ibn Majah 224)
+              </p>
+            </div>
+          </div>
+
+          <div class="center-cta">
+            <a href="https://aamsystem.in/applications/" class="btn-ripple"
+              >Apply Now</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Section -->
+      <section id="results" class="panel theme--white">
+        <div class="container">
+          <header>
+            <h2>Results</h2>
+            <p>Check your examination results</p>
+          </header>
+          <div class="grid-container">
+            <div class="highlight-card">
+              <div class="highlight-card-content">
+                <h3>📊 BIOCT Result</h3>
+                <p>View your Biology Competitive Test results</p>
+                <div class="center-cta">
+                  <a href="/bioct-result" class="btn-ripple">Check Result</a>
+                </div>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card-content">
+                <h3>🧪 Nanotest Result</h3>
+                <p>Check your Nanotest examination scores</p>
+                <div class="center-cta">
+                  <a href="/nanotest-result" class="btn-ripple">Check Result</a>
+                </div>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card-content">
+                <h3>📝 Pre-PT Result</h3>
+                <p>Access your Pre-Preparatory Test results</p>
+                <div class="center-cta">
+                  <a href="/pre-pt-result" class="btn-ripple">Check Result</a>
+                </div>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card-content">
+                <h3>🎯 PT Result</h3>
+                <p>View your Preparatory Test performance</p>
+                <div class="center-cta">
+                  <a href="/pt-result" class="btn-ripple">Check Result</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="panel theme--fog">
+        <div class="container">
+          <header>
+            <h2>Contact Us</h2>
+            <p>Get in touch with us for more information</p>
+          </header>
+          <div class="mission-statement">
+            <p>
+              📞
+              <a
+                href="tel:+919876543210"
+                style="color: var(--primary-green); text-decoration: none"
+                >+91 98765 43210</a
+              >
+            </p>
+            <p>
+              📧
+              <a
+                href="mailto:info@alaameenmission.org"
+                style="color: var(--primary-green); text-decoration: none"
+                >info@alaameenmission.org</a
+              >
+            </p>
+          </div>
+          <div class="social-logos">
+            <a href="https://www.facebook.com/" target="_blank">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"
+                alt="Facebook"
+                class="social-icon"
+              />
+            </a>
+            <a href="https://x.com/" target="_blank">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg"
+                alt="X"
+                class="social-icon"
+              />
+            </a>
+            <a href="https://youtube.com/" target="_blank">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg"
+                alt="YouTube"
+                class="social-icon"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Faculty Modal -->
+    <div id="facultyModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>All Faculty & Staff</h2>
+        <div class="modal-grid">
+          <!-- Faculty members will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Portal Modal -->
+    <div id="studentPortalModal" class="modal">
+      <div class="modal-content student-portal-modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Student Portal Login</h2>
+        <form id="studentLoginForm">
+          <input
+            type="text"
+            id="studentName"
+            placeholder="Student Name"
+            required
+          />
+          <input
+            type="text"
+            id="regNumber"
+            placeholder="Mission Reg Number"
+            required
+          />
+          <input type="date" id="dob" required />
+          <button type="submit">Login</button>
+        </form>
+        <div
+          id="studentResults"
+          class="student-portal-results"
+          style="display: none"
+        >
+          <h3>Welcome, <span id="loggedInStudentName"></span>!</h3>
+          <p>
+            <strong>Mission Reg Number:</strong>
+            <span id="displayRegNumber"></span>
+          </p>
+          <p><strong>Date of Birth:</strong> <span id="displayDob"></span></p>
+          <p><strong>Presence:</strong> <span id="presenceStatus"></span></p>
+          <p><strong>Absence Since:</strong> <span id="absenceSince"></span></p>
+
+          <h4>Exam Performance Overview</h4>
+          <div class="chart-placeholder">
+            [Placeholder for Exam Performance Chart]
+          </div>
+
+          <h4>Detailed Exam Results</h4>
+          <ul id="detailedExamResults">
+            <!-- Exam results will be dynamically loaded here -->
+            <li><strong>Exam 1 (Physics):</strong> 85%</li>
+            <li><strong>Exam 1 (Chemistry):</strong> 78%</li>
+            <li><strong>Exam 2 (Biology):</strong> 92%</li>
+          </ul>
+          <a href="#" class="download-btn">Download Full Report (PDF)</a>
+        </div>
+        <p id="loginError" style="color: red; display: none; margin-top: 15px">
+          Invalid credentials. Please try again.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#admission">Admission</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#hall-of-fame">Hall of Fame</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li>
+              <a href="#" id="footer-student-portal-btn">Student Portal</a>
+            </li>
+            <li><a href="/downloads">Downloads</a></li>
+            <li><a href="academic-calendar.html">Academic Calendar</a></li>
+            <li><a href="/library">Library</a></li>
+            <li>
+              <a href="https://www.youtube.com" target="_blank">Alumni</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Results</h3>
+          <ul>
+            <li><a href="/bioct-result">BIOCT Result</a></li>
+            <li><a href="/nanotest-result">Nanotest Result</a></li>
+            <li><a href="/pre-pt-result">Pre-PT Result</a></li>
+            <li><a href="/pt-result">PT Result</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="tel:+91-XXXXXXXXXX">Call Us</a></li>
+            <li><a href="mailto:info@aamsantragachi.org">Email</a></li>
+            <li><a href="/location">Location</a></li>
+            <li><a href="https://alameenmission.org">Main Website</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Al-Ameen Mission Santragachi Circle. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Force scroll to top on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("preloader").classList.add("fade-out");
+      });
+
+      if (history.scrollRestoration) {
+        history.scrollRestoration = "manual";
+      }
+
+      // Preloader with enhanced animation
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          const preloader = document.getElementById("preloader");
+          preloader.classList.add("fade-out");
+          setTimeout(function () {
+            preloader.style.display = "none";
+          }, 800);
+        }, 1000);
+      });
+
+      // Initialize AOS with enhanced settings
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 150,
+        easing: "ease-out-cubic",
+      });
+
+      // Enhanced Hero Fade Effect
+      const hero = document.getElementById("heroSection");
+      const missionSection = document.getElementById("mission"); // Changed to mission section
+      let lastScroll = 0;
+      const header = document.getElementById("mainHeader");
+
+      window.addEventListener("scroll", function () {
+        const currentScroll = window.pageYOffset;
+
+        // Header behavior
+        if (currentScroll > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+
+        if (
+          currentScroll > lastScroll &&
+          currentScroll > window.innerHeight / 2
+        ) {
+          header.classList.add("nav-up");
+        } else {
+          header.classList.remove("nav-up");
+        }
+
+        // Hero fade effect - fades to 0% when reaching mission section
+        if (hero && missionSection) {
+          const missionTop = missionSection.offsetTop;
+          const fadeStartPoint = window.innerHeight; // Start fading after first viewport
+          const fadeEndPoint = missionTop; // Complete fade at mission section
+
+          if (currentScroll >= fadeStartPoint) {
+            const fadeProgress =
+              (currentScroll - fadeStartPoint) /
+              (fadeEndPoint - fadeStartPoint);
+            const clampedProgress = Math.max(0, Math.min(1, fadeProgress));
+            const opacity = 1 - clampedProgress;
+
+            hero.style.opacity = opacity;
+
+            // Optional: Add slight transform for more dynamic effect
+            hero.style.transform = `translateY(${clampedProgress * 50}px)`;
+          } else {
+            hero.style.opacity = 1;
+            hero.style.transform = "translateY(0px)";
+          }
+        }
+
+        lastScroll = currentScroll;
+      });
+
+      // Mobile Menu Toggle with enhanced animations
+      const menuDots = document.getElementById("menuDots");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuClose = document.getElementById("menuClose");
+
+      if (menuDots && mobileMenu && menuClose) {
+        menuDots.addEventListener("click", function () {
+          mobileMenu.classList.add("active");
+          document.body.style.overflow = "hidden";
+
+          // Animate menu dots to X
+          const spans = menuDots.querySelectorAll("span");
+          spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+          spans[1].style.opacity = "0";
+          spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+        });
+
+        menuClose.addEventListener("click", function () {
+          mobileMenu.classList.remove("active");
+          document.body.style.overflow = "";
+
+          // Reset menu dots
+          const spans = menuDots.querySelectorAll("span");
+          spans[0].style.transform = "none";
+          spans[1].style.opacity = "1";
+          spans[2].style.transform = "none";
+        });
+
+        // Close mobile menu when clicking menu items
+        document.querySelectorAll(".mobile-menu-item").forEach((item) => {
+          item.addEventListener("click", function (e) {
+            const target = this.getAttribute("href");
+
+            if (target.startsWith("http") || target === "#") {
+              // Added # to skip for now
+              return;
+            }
+
+            e.preventDefault();
+            mobileMenu.classList.remove("active");
+            document.body.style.overflow = "";
+
+            // Reset menu dots
+            const spans = menuDots.querySelectorAll("span");
+            spans[0].style.transform = "none";
+            spans[1].style.opacity = "1";
+            spans[2].style.transform = "none";
+
+            setTimeout(function () {
+              const targetElement = document.querySelector(target);
+              if (targetElement) {
+                const headerHeight = header.offsetHeight;
+                const targetPosition =
+                  targetElement.offsetTop - headerHeight - 20;
+
+                window.scrollTo({
+                  top: targetPosition,
+                  behavior: "smooth",
+                });
+              }
+            }, 300);
+          });
+        });
+      }
+
+      // Enhanced smooth scroll for internal links
+      document
+        .querySelectorAll(
+          '.nav-menu a[href^="#"], .footer-section a[href^="#"]'
+        )
+        .forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            if (
+              this.id === "explore-btn" ||
+              this.id === "students-btn" ||
+              this.id === "more-faculty-btn" ||
+              this.id === "footer-student-portal-btn"
+            )
+              return; // Exclude specific buttons
+
+            e.preventDefault();
+            const href = this.getAttribute("href");
+
+            if (href === "#top") {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+              return;
+            }
+
+            const targetElement = document.querySelector(href);
+            if (!targetElement) return;
+
+            const headerHeight = header.offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight - 20; // Adjusted offset
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          });
+        });
+
+      // Enhanced toggle expand/collapse for content
+      function toggleExpand(textId, linkElement) {
+        const textElement = document.getElementById(textId);
+        const showLessBtn =
+          linkElement.parentElement.querySelector(".show-less-btn");
+
+        if (textElement.classList.contains("expanded")) {
+          textElement.classList.remove("expanded");
+          if (linkElement.classList.contains("read-more-link")) {
+            linkElement.textContent = "Read more";
+          }
+          showLessBtn.classList.remove("active");
+        } else {
+          textElement.classList.add("expanded");
+          if (linkElement.classList.contains("read-more-link")) {
+            linkElement.textContent = ""; // Clear "Read more" text
+          }
+          showLessBtn.classList.add("active");
+        }
+      }
+
+      // Enhanced ripple effect for buttons
+      document.querySelectorAll(".btn-ripple").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          const ripple = document.createElement("span");
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+
+          ripple.style.width = ripple.style.height = size + "px";
+          ripple.style.left = x + "px";
+          ripple.style.top = y + "px";
+          ripple.classList.add("ripple");
+
+          this.appendChild(ripple);
+
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        });
+      });
+
+      // Enhanced counter animation for stats
+      const observerOptions = {
+        threshold: 0.7,
+        rootMargin: "0px",
+      };
+
+      const counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = parseInt(counter.getAttribute("data-target"));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCounter = () => {
+              current += increment;
+              if (current < target) {
+                counter.textContent = Math.ceil(current);
+                requestAnimationFrame(updateCounter);
+              } else {
+                counter.textContent =
+                  target +
+                  (counter.parentElement.textContent.includes("%") ? "%" : "+");
+              }
+            };
+
+            updateCounter();
+            counterObserver.unobserve(counter);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all stat numbers
+      document
+        .querySelectorAll(".stat-number[data-target]")
+        .forEach((counter) => {
+          counterObserver.observe(counter);
+        });
+
+      // Enhanced Photo Gallery Logic
+      function setupPhotoGallery(containerId, dotsId) {
+        const scrollContainer = document.getElementById(containerId);
+        if (!scrollContainer) return;
+
+        const scrollWrapper = scrollContainer.querySelector(".scroll-wrapper");
+        const scrollItems = scrollWrapper.querySelectorAll(".scroll-item");
+        const scrollDotsContainer = document.getElementById(dotsId);
+
+        if (!scrollWrapper || !scrollItems.length || !scrollDotsContainer)
+          return;
+
+        // Calculate item width dynamically, including margin
+        const style = getComputedStyle(scrollItems[0]);
+        const itemWidth =
+          scrollItems[0].offsetWidth +
+          parseFloat(style.marginLeft) +
+          parseFloat(style.marginRight);
+
+        const itemsPerPage = Math.floor(scrollWrapper.clientWidth / itemWidth);
+        const totalPages = Math.ceil(scrollItems.length / itemsPerPage);
+
+        // Clear existing dots
+        scrollDotsContainer.innerHTML = "";
+
+        // Create dots for pages
+        for (let i = 0; i < totalPages; i++) {
+          const dot = document.createElement("div");
+          dot.classList.add("dot");
+          if (i === 0) dot.classList.add("active");
+
+          dot.addEventListener("click", () => {
+            const scrollPosition = i * itemsPerPage * itemWidth;
+            scrollWrapper.scrollTo({
+              left: scrollPosition,
+              behavior: "smooth",
+            });
+            updateDots(i);
+          });
+
+          scrollDotsContainer.appendChild(dot);
+        }
+
+        const dots = scrollDotsContainer.querySelectorAll(".dot");
+
+        function updateDots(activeIndex) {
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === activeIndex);
+          });
+        }
+
+        // Update dots on scroll
+        scrollWrapper.addEventListener("scroll", () => {
+          const currentPage = Math.round(
+            scrollWrapper.scrollLeft / (itemsPerPage * itemWidth)
+          );
+          updateDots(currentPage);
+        });
+
+        // Enhanced auto-scroll functionality
+        let autoScrollInterval;
+        let currentPage = 0;
+
+        function startAutoScroll() {
+          autoScrollInterval = setInterval(() => {
+            currentPage = (currentPage + 1) % totalPages;
+            const scrollPosition = currentPage * itemsPerPage * itemWidth;
+            scrollWrapper.scrollTo({
+              left: scrollPosition,
+              behavior: "smooth",
+            });
+            updateDots(currentPage);
+          }, 4000);
+        }
+
+        function stopAutoScroll() {
+          clearInterval(autoScrollInterval);
+        }
+
+        startAutoScroll();
+
+        // Pause on hover and touch
+        scrollContainer.addEventListener("mouseenter", stopAutoScroll);
+        scrollContainer.addEventListener("mouseleave", startAutoScroll);
+        scrollContainer.addEventListener("touchstart", stopAutoScroll);
+        scrollContainer.addEventListener("touchend", () => {
+          setTimeout(startAutoScroll, 3000);
+        });
+      }
+
+      // Enhanced News Scroll
+      function setupNewsScroll() {
+        const newsScroll = document.getElementById("newsScroll");
+        const newsPrev = document.getElementById("newsPrev");
+        const newsNext = document.getElementById("newsNext");
+
+        if (!newsScroll) return;
+
+        const cardWidth = 350; // Card width + margin (approx)
+
+        if (newsPrev && newsNext) {
+          newsPrev.addEventListener("click", () => {
+            newsScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
+          });
+
+          newsNext.addEventListener("click", () => {
+            newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+          });
+        }
+
+        // Auto-scroll for news
+        let newsScrollInterval = setInterval(() => {
+          if (
+            newsScroll.scrollLeft + newsScroll.clientWidth >=
+            newsScroll.scrollWidth
+          ) {
+            newsScroll.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+          }
+        }, 5000);
+
+        newsScroll.addEventListener("mouseenter", () =>
+          clearInterval(newsScrollInterval)
+        );
+        newsScroll.addEventListener("mouseleave", () => {
+          newsScrollInterval = setInterval(() => {
+            if (
+              newsScroll.scrollLeft + newsScroll.clientWidth >=
+              newsScroll.scrollWidth
+            ) {
+              newsScroll.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+              newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+            }
+          }, 50);
+        });
+      }
+
+      // Faculty & Staff Carousel and Modal Logic
+      const facultyData = [
+        {
+          name: "Prof. Ahmed Khan",
+          title: "Head of Physics Dept.",
+          img: "11.jpg",
+          bio: "Prof. Khan is a veteran educator with over 20 years of experience in teaching advanced physics. His passion for science inspires students to achieve excellence, focusing on conceptual clarity and problem-solving techniques for competitive exams. He has mentored numerous students who have gone on to prestigious universities.",
+        },
+        {
+          name: "Dr. Fatima Begum",
+          title: "Biology Specialist",
+          img: "12.jpg",
+          bio: "Dr. Begum holds a Ph.D. in Biotechnology and is renowned for her engaging teaching methods in Biology, making complex topics easy to understand. Her interactive sessions and practical insights help students grasp biological concepts thoroughly, preparing them for NEET and other medical entrance exams.",
+        },
+        {
+          name: "Mr. Mohammed Ali",
+          title: "Mathematics Expert",
+          img: "13.jpg",
+          bio: "Mr. Ali is known for his innovative approach to teaching Mathematics, helping students master challenging concepts for JEE and NEET. He simplifies complex mathematical problems, making them accessible and enjoyable for students, and has a track record of producing top rankers.",
+        },
+        {
+          name: "Ms. Aisha Rahman",
+          title: "Chemistry Instructor",
+          img: "14.jpg",
+          bio: "Ms. Rahman brings a dynamic energy to the Chemistry department, making learning fun and effective for all students. Her practical demonstrations and clear explanations ensure students develop a strong foundation in both organic and inorganic chemistry, crucial for competitive exams.",
+        },
+        {
+          name: "Prof. Omar Farooq",
+          title: "Senior Physics Lecturer",
+          img: "15.jpg",
+          bio: "Prof. Farooq is celebrated for his clear explanations and deep understanding of complex physics principles, guiding students to top scores. His extensive experience and ability to break down difficult topics into manageable parts make him a favorite among students aiming for engineering and medical careers.",
+        },
+        {
+          name: "Dr. Zainab Bibi",
+          title: "Biology Researcher",
+          img: "16.jpg",
+          bio: "Dr. Bibi's research background enriches her Biology classes, providing students with real-world insights and advanced knowledge. She encourages critical thinking and scientific inquiry, inspiring students to pursue careers in life sciences and medical fields.",
+        },
+        {
+          name: "Mr. Imran Hossain",
+          title: "Chemistry Lab Incharge",
+          img: "17.jpg",
+          bio: "Mr. Hossain ensures a safe and effective learning environment in the chemistry labs, guiding students through practical experiments. His meticulous approach and hands-on teaching style help students develop essential laboratory skills and a deeper understanding of chemical reactions.",
+        },
+        {
+          name: "Ms. Sana Khatun",
+          title: "English Language Trainer",
+          img: "18.jpg",
+          bio: "Ms. Khatun focuses on enhancing students' communication skills and preparing them for competitive exams requiring strong English proficiency. Her interactive lessons improve vocabulary, grammar, and comprehension, giving students an edge in all aspects of their academic journey.",
+        },
+        {
+          name: "Mr. Rahman Sheikh",
+          title: "Computer Science Instructor",
+          img: "19.jpg",
+          bio: "Mr. Sheikh introduces students to the world of computer science, fostering analytical thinking and problem-solving skills. He teaches programming fundamentals and computational logic, preparing students for future technological challenges and careers.",
+        },
+        {
+          name: "Ms. Nazia Parveen",
+          title: "Counselor & Mentor",
+          img: "20.jpg",
+          bio: "Ms. Parveen provides invaluable guidance and support to students, helping them navigate academic and personal challenges. Her empathetic approach and expert advice ensure students maintain their well-being and focus on their goals, fostering a positive learning environment.",
+        },
+        {
+          name: "Mr. Alok Sharma",
+          title: "Physics Faculty",
+          img: "21.jpg",
+          bio: "Mr. Sharma is a dedicated physics faculty member known for his clear and concise explanations. He specializes in making complex physics concepts understandable and enjoyable for students, ensuring a strong foundation for competitive exams.",
+        },
+        {
+          name: "Ms. Priya Singh",
+          title: "Chemistry Faculty",
+          img: "22.jpg",
+          bio: "Ms. Singh is an enthusiastic chemistry teacher who uses innovative methods to engage students. Her focus is on practical applications and problem-solving, helping students excel in both theoretical and experimental aspects of chemistry.",
+        },
+        {
+          name: "Dr. Sanjay Gupta",
+          title: "Biology Faculty",
+          img: "23.jpg",
+          bio: "Dr. Gupta, with his extensive research background, brings a unique perspective to biology classes. He inspires students to delve deeper into biological sciences, fostering a love for discovery and scientific inquiry.",
+        },
+        {
+          name: "Mr. Vivek Kumar",
+          title: "Mathematics Faculty",
+          img: "24.jpg",
+          bio: "Mr. Kumar is a highly experienced mathematics faculty member, adept at simplifying intricate mathematical problems. He employs various teaching strategies to cater to different learning styles, ensuring every student grasps the concepts.",
+        },
+        {
+          name: "Ms. Rina Das",
+          title: "Librarian",
+          img: "25.jpg",
+          bio: "Ms. Das manages our extensive library, ensuring students have access to a wide range of academic resources and literature. She assists students in research and promotes reading habits.",
+        },
+        {
+          name: "Mr. Subrata Ghosh",
+          title: "Administrative Staff",
+          img: "26.jpg",
+          bio: "Mr. Ghosh is a key member of our administrative team, ensuring smooth daily operations of the mission. He handles student records and assists with various logistical tasks.",
+        },
+      ];
+
+      function setupFacultyScroll() {
+        const facultyScroll = document.getElementById("facultyScroll");
+        const facultyPrev = document.getElementById("facultyPrev");
+        const facultyNext = document.getElementById("facultyNext");
+
+        if (!facultyScroll) return;
+
+        const cardWidth = 350; // Card width + margin (approx)
+
+        if (facultyPrev && facultyNext) {
+          facultyPrev.addEventListener("click", () => {
+            facultyScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
+          });
+
+          facultyNext.addEventListener("click", () => {
+            facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+          });
+        }
+
+        let facultyScrollInterval = setInterval(() => {
+          if (
+            facultyScroll.scrollLeft + facultyScroll.clientWidth >=
+            facultyScroll.scrollWidth
+          ) {
+            facultyScroll.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+          }
+        }, 5000); // Auto-scroll every 5 seconds
+
+        facultyScroll.addEventListener("mouseenter", () =>
+          clearInterval(facultyScrollInterval)
+        );
+        facultyScroll.addEventListener("mouseleave", () => {
+          facultyScrollInterval = setInterval(() => {
+            if (
+              facultyScroll.scrollLeft + facultyScroll.clientWidth >=
+              facultyScroll.scrollWidth
+            ) {
+              facultyScroll.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+              facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+            }
+          }, 5000);
+        });
+      }
+
+      // Faculty Modal Logic
+      const facultyModal = document.getElementById("facultyModal");
+      const moreFacultyBtn = document.getElementById("more-faculty-btn");
+      const facultyModalClose = facultyModal.querySelector(".close-button");
+      const modalGrid = facultyModal.querySelector(".modal-grid");
+
+      if (moreFacultyBtn && facultyModal && facultyModalClose && modalGrid) {
+        moreFacultyBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          modalGrid.innerHTML = ""; // Clear previous content
+
+          facultyData.forEach((faculty, index) => {
+            const modalCard = document.createElement("div");
+            modalCard.classList.add("modal-card");
+            modalCard.innerHTML = `
+              <img src="${faculty.img}" alt="${faculty.name}" />
+              <h4>${faculty.name}</h4>
+              <p>${faculty.title}</p>
+              <div class="expandable-content">
+                <div class="expandable-text" id="modal-faculty-${index}-text">
+                  <p>${faculty.bio}</p>
+                </div>
+                <span class="read-more-link" onclick="toggleExpand('modal-faculty-${index}-text', this)">Read more</span>
+                <button class="show-less-btn" onclick="toggleExpand('modal-faculty-${index}-text', this.previousElementSibling)">Show less</button>
+              </div>
+            `;
+            modalGrid.appendChild(modalCard);
+          });
+
+          facultyModal.style.display = "flex";
+          document.body.style.overflow = "hidden"; // Prevent scrolling background
+        });
+
+        facultyModalClose.addEventListener("click", () => {
+          facultyModal.style.display = "none";
+          document.body.style.overflow = ""; // Restore scrolling
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target == facultyModal) {
+            facultyModal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
+      // Student Portal Modal Logic
+      const studentsBtn = document.getElementById("students-btn");
+      const mobileStudentsBtn = document.getElementById("mobile-students-btn");
+      const footerStudentPortalBtn = document.getElementById(
+        "footer-student-portal-btn"
+      );
+      const studentPortalModal = document.getElementById("studentPortalModal");
+      const studentPortalClose =
+        studentPortalModal.querySelector(".close-button");
+      const studentLoginForm = document.getElementById("studentLoginForm");
+      const studentResults = document.getElementById("studentResults");
+      const loginError = document.getElementById("loginError");
+
+      const dummyStudentData = {
+        "John Doe": {
+          regNumber: "AM12345",
+          dob: "2005-01-15",
+          presence: "Present",
+          absenceSince: "N/A",
+          exams: [
+            { name: "Mid-Term Physics", score: "85%" },
+            { name: "Mid-Term Chemistry", score: "78%" },
+            { name: "Mid-Term Biology", score: "92%" },
+            { name: "Final Physics", score: "90%" },
+            { name: "Final Chemistry", score: "88%" },
+            { name: "Final Biology", score: "95%" },
+          ],
+        },
+        "Jane Smith": {
+          regNumber: "AM67890",
+          dob: "2004-11-20",
+          presence: "Absent",
+          absenceSince: "2024-03-10",
+          exams: [
+            { name: "Mid-Term Physics", score: "70%" },
+            { name: "Mid-Term Chemistry", score: "65%" },
+            { name: "Mid-Term Biology", score: "80%" },
+          ],
+        },
+      };
+
+      function openStudentPortal() {
+        studentPortalModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+        studentLoginForm.style.display = "flex";
+        studentResults.style.display = "none";
+        loginError.style.display = "none";
+        studentLoginForm.reset(); // Clear form fields
+      }
+
+      if (studentsBtn)
+        studentsBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          openStudentPortal();
+        });
+      if (mobileStudentsBtn)
+        mobileStudentsBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          openStudentPortal();
+        });
+      if (footerStudentPortalBtn)
+        footerStudentPortalBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          openStudentPortal();
+        });
+
+      if (studentPortalClose) {
+        studentPortalClose.addEventListener("click", () => {
+          studentPortalModal.style.display = "none";
+          document.body.style.overflow = "";
+        });
+      }
+
+      window.addEventListener("click", (event) => {
+        if (event.target == studentPortalModal) {
+          studentPortalModal.style.display = "none";
+          document.body.style.overflow = "";
+        }
+      });
+
+      if (studentLoginForm) {
+        studentLoginForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("studentName").value.trim();
+          const regNumber = document.getElementById("regNumber").value.trim();
+          const dob = document.getElementById("dob").value;
+
+          const student = dummyStudentData[name];
+
+          if (
+            student &&
+            student.regNumber === regNumber &&
+            student.dob === dob
+          ) {
+            document.getElementById("loggedInStudentName").textContent = name;
+            document.getElementById("displayRegNumber").textContent = regNumber;
+            document.getElementById("displayDob").textContent = dob;
+            document.getElementById("presenceStatus").textContent =
+              student.presence;
+            document.getElementById("absenceSince").textContent =
+              student.absenceSince;
+
+            const detailedExamResults = document.getElementById(
+              "detailedExamResults"
+            );
+            detailedExamResults.innerHTML = "";
+            student.exams.forEach((exam) => {
+              const li = document.createElement("li");
+              li.innerHTML = `<strong>${exam.name}:</strong> ${exam.score}`;
+              detailedExamResults.appendChild(li);
+            });
+
+            studentLoginForm.style.display = "none";
+            studentResults.style.display = "block";
+            loginError.style.display = "none";
+          } else {
+            loginError.style.display = "block";
+            studentResults.style.display = "none";
+          }
+        });
+      }
+
+      // Initialize everything when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        setupPhotoGallery("hallOfFameScroll", "hallOfFameDots");
+        setupNewsScroll();
+        setupFacultyScroll();
+      });
+
+      // Make functions globally available
+      window.toggleExpand = toggleExpand;
+    </script>
+  </body>
+</html>
