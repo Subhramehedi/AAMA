@@ -311,35 +311,32 @@
 
       .nav-menu {
         display: flex;
-        flex-wrap: nowrap; /* Ensure items stay in a single line */
-        justify-content: flex-start;
+        flex-wrap: wrap; /* allow wrapping to new line */
+        justify-content: center; /* center the buttons */
         list-style: none;
         margin: 0;
-        padding: 0 5px; /* top-bottom padding komano */
-        gap: 0.8rem;
-        overflow-x: auto; /* Enable horizontal scrolling */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-        scrollbar-width: none; /* Hide scrollbar for Firefox */
-        height: 40px; /* Example height, adjust as needed */
-        align-items: center; /* Vertically center items */
+        padding: 5px 10px;
+        gap: 0.5rem;
+      }
+
+      .nav-menu a {
+        flex: 1 1 auto; /* allow buttons to resize */
+        min-width: 90px; /* prevent too narrow buttons */
+        max-width: 140px; /* keep them balanced */
+        text-align: center;
+        color: var(--dark-gray);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        padding: 6px 8px;
+        border-radius: 6px;
+        white-space: normal; /* allow text to wrap */
+        line-height: 1.3;
       }
 
       .nav-menu::-webkit-scrollbar {
         display: none; /* Hide scrollbar for Webkit browsers */
-      }
-
-      .nav-menu a {
-        flex: 0 0 auto; /* Prevent items from shrinking */
-        color: var(--dark-gray);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.9rem; /* font-size ektu chhoto */
-        transition: all 0.3s ease;
-        padding: 4px 10px; /* niche height komano */
-        border-radius: 4px;
-        white-space: nowrap; /* Keep text on a single line */
-        line-height: 1.2; /* line-height komano */
-        position: relative;
       }
 
       .nav-menu a::after {
