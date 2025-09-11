@@ -140,7 +140,9 @@
         transition: opacity 0.1s linear;
         will-change: opacity;
       }
-
+      .content-wrapper {
+        transition: margin-top 0.8s ease; /* স্ক্রল ধীরে হবে */
+      }
       /* Main content wrapper to allow scrolling over hero */
       .content-wrapper {
         position: relative;
@@ -1074,6 +1076,31 @@
 
         .news-card {
           width: 280px; /* Adjust width for smaller screens */
+        }
+      }
+      /* Responsive grid with safe scrolling if items overflow */
+      @media (max-width: 900px) {
+        .mobile-menu-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 10px;
+          width: 100%;
+          padding: 12px;
+          box-sizing: border-box;
+        }
+
+        /* Make container scrollable vertically if many rows */
+        .mobile-menu {
+          max-height: 100vh;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Ensure each item can shrink */
+        .mobile-menu-item {
+          min-width: 0;
+          padding: 10px;
+          white-space: normal;
         }
       }
 
