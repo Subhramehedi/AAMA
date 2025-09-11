@@ -140,9 +140,7 @@
         transition: opacity 0.1s linear;
         will-change: opacity;
       }
-      .content-wrapper {
-        transition: margin-top 0.8s ease; /* স্ক্রল ধীরে হবে */
-      }
+
       /* Main content wrapper to allow scrolling over hero */
       .content-wrapper {
         position: relative;
@@ -313,20 +311,35 @@
 
       .nav-menu {
         display: flex;
+        flex-wrap: nowrap; /* Ensure items stay in a single line */
+        justify-content: flex-start;
         list-style: none;
         margin: 0;
-        padding: 0;
-        gap: 0.6rem;
+        padding: 0 5px; /* top-bottom padding komano */
+        gap: 0.8rem;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        height: 40px; /* Example height, adjust as needed */
+        align-items: center; /* Vertically center items */
+      }
+
+      .nav-menu::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Webkit browsers */
       }
 
       .nav-menu a {
+        flex: 0 0 auto; /* Prevent items from shrinking */
         color: var(--dark-gray);
         text-decoration: none;
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 0.9rem; /* font-size ektu chhoto */
         transition: all 0.3s ease;
+        padding: 4px 10px; /* niche height komano */
+        border-radius: 4px;
+        white-space: nowrap; /* Keep text on a single line */
+        line-height: 1.2; /* line-height komano */
         position: relative;
-        padding: 70%;
       }
 
       .nav-menu a::after {
@@ -1032,8 +1045,12 @@
           display: none;
         }
 
+        /* Keep nav-menu visible for scrolling on mobile */
         .nav-menu {
-          display: none;
+          display: flex; /* Ensure it's visible */
+          padding: 0 10px; /* Adjust padding for smaller screens */
+          gap: 0.5rem; /* Smaller gap */
+          height: auto; /* Allow height to adjust if needed, or keep fixed */
         }
 
         .menu-dots {
@@ -1076,31 +1093,6 @@
 
         .news-card {
           width: 280px; /* Adjust width for smaller screens */
-        }
-      }
-      /* Responsive grid with safe scrolling if items overflow */
-      @media (max-width: 900px) {
-        .mobile-menu-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-          gap: 10px;
-          width: 100%;
-          padding: 12px;
-          box-sizing: border-box;
-        }
-
-        /* Make container scrollable vertically if many rows */
-        .mobile-menu {
-          max-height: 100vh;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-        }
-
-        /* Ensure each item can shrink */
-        .mobile-menu-item {
-          min-width: 0;
-          padding: 10px;
-          white-space: normal;
         }
       }
 
