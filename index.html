@@ -22,14 +22,19 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
-      /* Reset and ensure page loads at top */
+      /* Reset and Modern Base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       html {
-        scroll-behavior: auto !important;
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
       }
 
       body {
-        margin: 0;
-        padding: 0;
         overflow-x: hidden;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
@@ -37,33 +42,68 @@
         color: #333;
       }
 
-      /* Trust-building color palette */
+      /* Modern CSS Custom Properties */
       :root {
-        --primary-green: #2c5f2d;
-        --secondary-blue: #007bff;
+        /* Islamic-inspired color system */
+        --primary-green: #2ea85d;
+        --primary-green-light: #4aba7a;
+        --primary-green-dark: #1e7a41;
+        --secondary-blue: #1a5f8d;
+        --secondary-blue-light: #2b7fb8;
+        --gold: #af934c;
+        --gold-light: #dacbae;
+        --white: #ffffff;
         --light-gray: #f8f9fa;
         --medium-gray: #e9ecef;
         --dark-gray: #343a40;
-        --white: #ffffff;
-        --gold: #ffd700;
+        --shadow-light: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+        --shadow-heavy: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+
+        /* Fluid typography */
+        --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+        --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+        --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+        --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+        --text-xl: clamp(1.25rem, 1.125rem + 0.625vw, 1.5rem);
+        --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+        --text-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem);
+        --text-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3.5rem);
+
+        /* Responsive spacing */
+        --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+        --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+        --space-md: clamp(1rem, 0.8rem + 1vw, 2rem);
+        --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);
+        --space-xl: clamp(2rem, 1.6rem + 2vw, 4rem);
+        --space-2xl: clamp(3rem, 2.4rem + 3vw, 6rem);
+
+        /* Modern transitions */
+        --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-spring: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
 
-      /* Preloader styles */
+      /* Preloader */
       .preloader {
         position: fixed;
         inset: 0;
         width: 100%;
         height: 100vh;
-        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--primary-green-dark)
+        );
         z-index: 99999;
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 1;
         visibility: visible;
-        transition: opacity 0.1s ease, visibility 0.8s ease;
+        transition: all var(--transition-slow);
         pointer-events: auto;
-        overflow: hidden;
       }
 
       .preloader.fade-out {
@@ -78,12 +118,12 @@
       }
 
       .preloader-logo {
-        width: 120px;
-        height: 120px;
+        width: clamp(4rem, 10vw, 8rem);
+        height: clamp(4rem, 10vw, 8rem);
         border-radius: 50%;
-        margin: 0 auto 20px;
+        margin: 0 auto var(--space-md);
         animation: pulse 1.5s ease-in-out infinite;
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 2rem rgba(255, 255, 255, 0.3);
       }
 
       @keyframes pulse {
@@ -99,11 +139,11 @@
       }
 
       .preloader-spinner {
-        width: 48px;
-        height: 48px;
-        margin: 18px auto 0;
-        border: 4px solid rgba(255, 255, 255, 0.2);
-        border-top: 4px solid var(--gold);
+        width: 3rem;
+        height: 3rem;
+        margin: var(--space-sm) auto 0;
+        border: 0.25rem solid rgba(255, 255, 255, 0.2);
+        border-top: 0.25rem solid var(--gold);
         border-radius: 50%;
         animation: spin 1s linear infinite;
       }
@@ -114,7 +154,7 @@
         }
       }
 
-      /* Enhanced Hero Section with Fixed Background */
+      /* Enhanced Hero Section */
       .hero-section {
         position: fixed;
         top: 0;
@@ -128,65 +168,58 @@
         align-items: center;
         text-align: center;
         color: var(--white);
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.4),
-            rgba(44, 95, 45, 0.3)
-          ),
-          url("41.jpg");
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(46, 168, 93, 0.3)),
+          url("41.jpg") center/cover no-repeat;
         background-attachment: fixed;
-        transition: opacity 0.1s linear;
+        transition: opacity var(--transition-fast) linear;
         will-change: opacity;
       }
 
-      /* Main content wrapper to allow scrolling over hero */
       .content-wrapper {
         position: relative;
         z-index: 1;
         background: transparent;
-        margin-top: 100vh; /* Start after hero section */
+        margin-top: 100vh;
       }
 
       .hero-logo {
-        height: 180px;
+        height: clamp(8rem, 15vw, 12rem);
         width: auto;
-        margin-bottom: 1.5rem;
+        margin-bottom: var(--space-lg);
         animation: zoomIn 0.8s ease-out, float 4s ease-in-out infinite;
         border-radius: 50%;
-        box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 0 3rem rgba(255, 215, 0, 0.3);
+        transition: all var(--transition-normal);
       }
 
       .hero-wordmark {
-        font-size: calc(2.5rem + 2vw);
+        font-size: var(--text-4xl);
         font-weight: 300;
         letter-spacing: 0.1em;
-        margin-bottom: 0.5rem;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        margin-bottom: var(--space-sm);
+        text-shadow: 0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.7);
         animation: fadeInUp 1s ease-out 0.3s both;
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition: all var(--transition-normal);
       }
 
       .hero-subtitle {
-        font-size: calc(1rem + 0.6vw);
+        font-size: var(--text-xl);
         font-weight: 300;
-        margin-bottom: 1.5rem;
-        max-width: 800px;
+        margin-bottom: var(--space-lg);
+        max-width: 50rem;
         animation: fadeInUp 1s ease-out 0.5s both;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+        transition: all var(--transition-normal);
       }
 
       .scroll-indicator {
         position: absolute;
-        bottom: 3rem;
+        bottom: var(--space-xl);
         left: 50%;
         transform: translateX(-50%);
         animation: fadeInUp 1s ease-out 0.8s both,
           bounce 2s ease-in-out infinite;
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition: all var(--transition-normal);
       }
 
       .scroll-indicator a {
@@ -195,11 +228,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
-        transition: transform 0.3s;
-        font-size: 1.1rem;
+        gap: var(--space-sm);
+        transition: transform var(--transition-normal);
+        font-size: var(--text-lg);
         font-weight: 500;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
       }
 
       .scroll-indicator a:hover {
@@ -214,10 +247,10 @@
         right: 0;
         z-index: 1000;
         background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(15px);
-        transition: all 0.3s ease;
+        backdrop-filter: blur(1rem);
+        transition: all var(--transition-normal);
         transform: translateY(0);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-medium);
       }
 
       .header.nav-up {
@@ -226,16 +259,20 @@
 
       /* Brand Bar */
       #brand-bar {
-        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
-        padding: 0.8rem 0;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--primary-green-dark)
+        );
+        padding: var(--space-sm) 0;
         position: relative;
         animation: fadeInDown 0.6s ease-out;
       }
 
       #brand-bar .container {
-        max-width: 1200px;
+        max-width: 75rem;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 var(--space-md);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -244,13 +281,13 @@
       .su-brand {
         color: var(--white);
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: var(--text-lg);
         font-weight: 500;
         letter-spacing: 0.05em;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        transition: transform 0.3s ease;
+        gap: var(--space-sm);
+        transition: transform var(--transition-normal);
       }
 
       .su-brand:hover {
@@ -258,8 +295,8 @@
       }
 
       .brand-logo {
-        height: 32px;
-        width: 32px;
+        height: 2rem;
+        width: 2rem;
         border-radius: 50%;
         animation: float 3s ease-in-out infinite;
       }
@@ -267,18 +304,18 @@
       #gateway {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: var(--space-md);
       }
 
       .gateway-nav--label {
         color: rgba(255, 255, 255, 0.8);
-        font-size: 0.875rem;
+        font-size: var(--text-sm);
       }
 
       #menu-gateway-nav {
         display: flex;
         list-style: none;
-        gap: 1.5rem;
+        gap: var(--space-md);
         margin: 0;
         padding: 0;
       }
@@ -286,17 +323,50 @@
       #menu-gateway-nav a {
         color: var(--white);
         text-decoration: none;
-        font-size: 0.875rem;
-        transition: all 0.3s ease;
+        font-size: var(--text-sm);
+        transition: all var(--transition-normal);
         position: relative;
-        padding: 8px 16px;
-        border-radius: 25px;
+        padding: var(--space-sm) var(--space-md);
+        border-radius: 1.5rem;
         background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(0.5rem);
       }
 
       #menu-gateway-nav a:hover {
         background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
+        transform: translateY(-0.125rem);
+      }
+
+      /* Three Dots Menu for Mobile */
+      .menu-dots {
+        display: none;
+        flex-direction: column;
+        gap: 0.25rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-sm);
+        transition: all var(--transition-normal);
+      }
+
+      .menu-dots span {
+        width: 1.5rem;
+        height: 0.1875rem;
+        background: var(--white);
+        transition: all var(--transition-normal);
+        border-radius: 0.125rem;
+      }
+
+      .menu-dots.active span:nth-child(1) {
+        transform: rotate(45deg) translate(0.3125rem, 0.3125rem);
+      }
+
+      .menu-dots.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-dots.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(0.4375rem, -0.375rem);
       }
 
       /* Main Header Container */
@@ -304,8 +374,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0.8rem 1rem;
-        max-width: 1200px;
+        padding: var(--space-sm) var(--space-md);
+        max-width: 75rem;
         margin: 0 auto;
       }
 
@@ -315,8 +385,8 @@
         justify-content: flex-start;
         list-style: none;
         margin: 0;
-        padding: 0 5px; /* top-bottom padding komano */
-        gap: 0.8rem;
+        padding: var(--space-xs) var(--space-sm);
+        gap: var(--space-sm);
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
@@ -331,12 +401,12 @@
         color: var(--dark-gray);
         text-decoration: none;
         font-weight: 500;
-        font-size: 0.9rem; /* font-size ektu chhoto */
-        transition: all 0.3s ease;
-        padding: 4px 10px; /* niche height komano */
-        border-radius: 4px;
+        font-size: var(--text-sm);
+        transition: all var(--transition-normal);
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: 0.25rem;
         white-space: nowrap;
-        line-height: 1.2; /* line-height komano */
+        line-height: 1.2;
         position: relative;
       }
 
@@ -346,36 +416,18 @@
         bottom: 0;
         left: 0;
         width: 0;
-        height: 2px;
+        height: 0.125rem;
         background: var(--primary-green);
-        transition: width 0.3s ease;
+        transition: width var(--transition-normal);
       }
 
       .nav-menu a:hover {
         color: var(--primary-green);
-        transform: translateY(-2px);
+        transform: translateY(-0.125rem);
       }
 
       .nav-menu a:hover::after {
-        width: 100%;
-      }
-
-      .menu-dots {
-        display: none;
-        flex-direction: column;
-        gap: 4px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-      }
-
-      .menu-dots span {
-        width: 25px;
-        height: 3px;
-        background: #ffffff; /* White color */
-        transition: 0.3s;
-        border-radius: 2px;
+        width: 50%;
       }
 
       /* Enhanced Mobile Menu */
@@ -383,17 +435,17 @@
         position: fixed;
         top: 0;
         right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: rgba(255, 255, 255, 0.264);
-        backdrop-filter: blur(20px);
-        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        width: 90%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.255);
+        backdrop-filter: blur(1.25rem);
+        transition: right var(--transition-slow);
         z-index: 9999;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 80px;
+        padding-top: 5rem;
         overflow-y: auto;
       }
 
@@ -403,14 +455,14 @@
 
       .mobile-menu-close {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: var(--space-md);
+        right: var(--space-md);
         background: transparent;
         border: none;
         color: var(--dark-gray);
         font-size: 2.5rem;
         cursor: pointer;
-        transition: transform 0.3s ease;
+        transition: transform var(--transition-normal);
         z-index: 10000;
       }
 
@@ -420,18 +472,20 @@
 
       .mobile-menu-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 15px;
-        padding: 20px;
-        width: 90%;
-        max-width: 500px;
-        margin-bottom: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+        gap: var(--space-md);
+        padding: var(--space-md);
+        width: 100%;
+        max-width: 31.25rem;
+        margin-bottom: var(--space-md);
+        max-height: 70vh;
+        overflow-y: auto;
       }
 
       .mobile-menu-grid.gateway-grid {
-        margin-top: 30px;
-        border-top: 2px solid var(--medium-gray);
-        padding-top: 30px;
+        margin-top: var(--space-xl);
+        border-top: 0.125rem solid var(--medium-gray);
+        padding-top: var(--space-xl);
       }
 
       .mobile-menu-item {
@@ -439,27 +493,28 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 20px 15px;
+        padding: var(--space-md) var(--space-sm);
         text-align: center;
         text-decoration: none;
         color: var(--dark-gray);
-        border-radius: 15px;
-        transition: all 0.3s ease;
+        border-radius: 0.9375rem;
+        transition: all var(--transition-spring);
         background: var(--light-gray);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-light);
+        min-height: 5rem;
       }
 
       .mobile-menu-item:hover {
         background: var(--primary-green);
         color: var(--white);
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(44, 95, 45, 0.3);
+        transform: translateY(-0.3125rem) scale(1.02);
+        box-shadow: var(--shadow-medium);
       }
 
       .mobile-menu-item .menu-icon {
-        font-size: 2rem;
-        margin-bottom: 10px;
-        transition: transform 0.3s ease;
+        font-size: var(--text-2xl);
+        margin-bottom: var(--space-sm);
+        transition: transform var(--transition-normal);
       }
 
       .mobile-menu-item:hover .menu-icon {
@@ -467,16 +522,16 @@
       }
 
       .mobile-menu-item span {
-        font-size: 0.9rem;
+        font-size: var(--text-sm);
         font-weight: 600;
         letter-spacing: 0.05em;
       }
 
       /* Panel and content styles */
       .panel {
-        padding: 5rem 0;
+        padding: var(--space-2xl) 0;
         position: relative;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(0.625rem);
       }
 
       .theme--white {
@@ -495,79 +550,79 @@
       }
 
       .container {
-        max-width: 1200px;
+        max-width: 75rem;
         margin: 0 auto;
-        padding: 0 2rem;
+        padding: 0 var(--space-md);
       }
 
       .panel header {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: var(--space-xl);
       }
 
       .panel h2 {
-        font-size: 3rem;
+        font-size: var(--text-3xl);
         font-weight: 300;
-        margin-bottom: 1rem;
+        margin-bottom: var(--space-md);
         color: var(--primary-green);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
       }
 
       .panel header p {
-        font-size: 1.3rem;
+        font-size: var(--text-lg);
         color: #666;
-        max-width: 800px;
+        max-width: 50rem;
         margin: 0 auto;
         line-height: 1.7;
       }
 
       .mission-statement {
-        font-size: 1.3rem;
+        font-size: var(--text-lg);
         line-height: 1.9;
         text-align: center;
-        margin: 2rem 0;
+        margin: var(--space-md) 0;
         color: var(--dark-gray);
       }
 
       /* Enhanced Islamic Quote */
       .islamic-quote {
         text-align: center;
-        margin: 3rem 0;
-        padding: 3rem;
+        margin: var(--space-xl) 0;
+        padding: var(--space-xl);
         background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.9),
           rgba(248, 249, 250, 0.9)
         );
-        border-radius: 20px;
-        border-left: 6px solid var(--primary-green);
+        border-radius: 1.25rem;
+        border-left: 0.375rem solid var(--primary-green);
         position: relative;
         overflow: hidden;
-        transition: all 0.4s ease;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: all var(--transition-slow);
+        box-shadow: var(--shadow-medium);
       }
 
       .islamic-quote::before {
         content: '"';
         position: absolute;
-        top: -20px;
-        left: 30px;
-        font-size: 120px;
+        top: -1.25rem;
+        left: var(--space-xl);
+        font-size: 7.5rem;
         color: var(--primary-green);
         opacity: 0.1;
         font-family: serif;
       }
 
       .islamic-quote:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 60px rgba(44, 95, 45, 0.2);
+        transform: translateY(-0.625rem);
+        box-shadow: var(--shadow-heavy);
       }
 
       .quran-arabic {
         font-family: "Amiri", serif;
-        font-size: 2.2rem;
+        font-size: var(--text-2xl);
         color: var(--primary-green);
-        margin-bottom: 1.5rem;
+        margin-bottom: var(--space-lg);
         direction: rtl;
         line-height: 1.8;
         font-weight: 600;
@@ -576,24 +631,24 @@
       .quran-translation {
         font-style: italic;
         color: #555;
-        font-size: 1.2rem;
+        font-size: var(--text-lg);
         line-height: 1.6;
       }
 
       /* Enhanced Cards */
       .grid-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2.5rem;
-        margin-top: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(21.875rem, 1fr));
+        gap: var(--space-lg);
+        margin-top: var(--space-xl);
       }
 
       .highlight-card {
         background: var(--white);
-        border-radius: 20px;
+        border-radius: 1.25rem;
         overflow: hidden;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: var(--shadow-light);
+        transition: all var(--transition-spring);
         position: relative;
       }
 
@@ -604,9 +659,13 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--primary-green-dark)
+        );
         opacity: 0;
-        transition: opacity 0.4s ease;
+        transition: opacity var(--transition-slow);
         z-index: 1;
       }
 
@@ -615,15 +674,15 @@
       }
 
       .highlight-card:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 20px 60px rgba(44, 95, 45, 0.25);
+        transform: translateY(-0.9375rem) scale(1.02);
+        box-shadow: var(--shadow-heavy);
       }
 
       .highlight-card img {
         width: 100%;
-        height: 250px;
+        height: 15.625rem;
         object-fit: cover;
-        transition: transform 0.4s ease;
+        transition: transform var(--transition-slow);
         position: relative;
         z-index: 3;
       }
@@ -633,10 +692,10 @@
       }
 
       .highlight-card-content {
-        padding: 2rem;
+        padding: var(--space-md);
         position: relative;
         z-index: 4;
-        transition: all 0.4s ease;
+        transition: all var(--transition-slow);
       }
 
       .highlight-card:hover .highlight-card-content {
@@ -644,10 +703,10 @@
       }
 
       .highlight-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        font-size: var(--text-xl);
+        margin-bottom: var(--space-md);
         color: var(--primary-green);
-        transition: color 0.4s ease;
+        transition: color var(--transition-slow);
         font-weight: 600;
       }
 
@@ -658,59 +717,70 @@
       /* Enhanced Buttons */
       .btn-ripple {
         display: inline-block;
-        padding: 1rem 2.5rem;
-        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        padding: var(--space-md) var(--space-lg);
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--primary-green-dark)
+        );
         color: var(--white);
         text-decoration: none;
-        border-radius: 50px;
-        transition: all 0.3s ease;
+        border-radius: 3.125rem;
+        transition: all var(--transition-normal);
         position: relative;
         overflow: hidden;
         font-weight: 600;
         letter-spacing: 0.05em;
-        box-shadow: 0 8px 25px rgba(44, 95, 45, 0.3);
+        box-shadow: 0 0.5rem 1.5625rem rgba(46, 168, 93, 0.3);
+        border: none;
+        cursor: pointer;
+        font-size: var(--text-base);
       }
 
       .btn-ripple:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(44, 95, 45, 0.4);
+        transform: translateY(-0.1875rem);
+        box-shadow: 0 0.9375rem 2.5rem rgba(46, 168, 93, 0.4);
+      }
+
+      .btn-ripple:active {
+        transform: translateY(0);
       }
 
       .center-cta {
         text-align: center;
-        margin: 4rem 0;
+        margin: var(--space-xl) 0;
       }
 
       /* Enhanced Secretary Section */
       .secretary-section {
         position: relative;
-        padding: 6rem 0;
+        padding: var(--space-2xl) 0;
         background: linear-gradient(
             135deg,
             rgba(0, 0, 0, 0.7),
-            rgba(44, 95, 45, 0.6)
+            rgba(46, 168, 93, 0.6)
           ),
           url("1.jpg") center/cover no-repeat;
         color: var(--white);
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(0.3125rem);
       }
 
       .secretary-container {
-        max-width: 1000px;
+        max-width: 62.5rem;
         margin: 0 auto;
-        padding: 0 2rem;
+        padding: 0 var(--space-md);
         text-align: center;
       }
 
       .secretary-profile {
-        width: 220px;
-        height: 220px;
+        width: clamp(10rem, 20vw, 13.75rem);
+        height: clamp(10rem, 20vw, 13.75rem);
         border-radius: 50%;
         object-fit: cover;
-        border: 6px solid var(--white);
-        margin: 0 auto 2rem;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
-        transition: transform 0.3s ease;
+        border: 0.375rem solid var(--white);
+        margin: 0 auto var(--space-md);
+        box-shadow: var(--shadow-heavy);
+        transition: transform var(--transition-normal);
       }
 
       .secretary-profile:hover {
@@ -718,51 +788,55 @@
       }
 
       .secretary-quote {
-        font-size: 1.4rem;
+        font-size: var(--text-lg);
         font-style: italic;
-        margin-bottom: 2rem;
-        max-width: 800px;
-        margin: 0 auto 2rem;
+        margin-bottom: var(--space-md);
+        max-width: 50rem;
+        margin: 0 auto var(--space-md);
         line-height: 1.8;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
       }
 
       /* Enhanced Statistics */
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2.5rem;
-        margin: 4rem 0;
+        grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+        gap: var(--space-lg);
+        margin: var(--space-xl) 0;
         text-align: center;
       }
 
       .stat-item {
-        padding: 3rem 2rem;
+        padding: var(--space-xl) var(--space-md);
         background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.9),
           rgba(248, 249, 250, 0.9)
         );
-        border-radius: 20px;
-        transition: all 0.4s ease;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(44, 95, 45, 0.1);
+        border-radius: 1.25rem;
+        transition: all var(--transition-spring);
+        backdrop-filter: blur(0.625rem);
+        border: 0.0625rem solid rgba(46, 168, 93, 0.1);
       }
 
       .stat-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 50px rgba(44, 95, 45, 0.2);
-        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        transform: translateY(-0.625rem);
+        box-shadow: var(--shadow-heavy);
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--primary-green-dark)
+        );
         color: var(--white);
       }
 
       .stat-number {
-        font-size: 3.5rem;
+        font-size: var(--text-4xl);
         font-weight: 700;
         color: var(--primary-green);
         display: block;
-        margin-bottom: 1rem;
-        transition: color 0.3s ease;
+        margin-bottom: var(--space-md);
+        transition: color var(--transition-normal);
       }
 
       .stat-item:hover .stat-number {
@@ -770,10 +844,10 @@
       }
 
       .stat-label {
-        font-size: 1.1rem;
+        font-size: var(--text-lg);
         font-weight: 500;
         color: #666;
-        transition: color 0.3s ease;
+        transition: color var(--transition-normal);
       }
 
       .stat-item:hover .stat-label {
@@ -785,24 +859,29 @@
         position: relative;
         width: 100%;
         overflow: hidden;
-        margin: 3rem auto;
-        padding: 1rem 0;
+        margin: var(--space-xl) auto;
+        padding: var(--space-md) 0;
       }
 
       .news-arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(44, 95, 45, 0.9);
+        background: rgba(46, 168, 93, 0.9);
         color: white;
         border: none;
-        font-size: 1.5rem;
+        font-size: var(--text-xl);
         cursor: pointer;
-        padding: 1rem;
+        padding: var(--space-md);
         border-radius: 50%;
         z-index: 10;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all var(--transition-normal);
+        box-shadow: var(--shadow-light);
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .news-arrow:hover {
@@ -811,11 +890,11 @@
       }
 
       .news-arrow.left {
-        left: 10px;
+        left: var(--space-sm);
       }
 
       .news-arrow.right {
-        right: 10px;
+        right: var(--space-sm);
       }
 
       .news-scroll-wrapper {
@@ -825,25 +904,24 @@
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        padding: 0 50px;
+        padding: 0 var(--space-xl);
+        gap: var(--space-md);
       }
 
       .news-scroll-wrapper::-webkit-scrollbar {
         display: none;
       }
 
-      /* News Card Scaling Fix */
       .news-card {
         flex: 0 0 auto;
-        width: 320px; /* Fixed width for consistency */
-        margin: 0 15px;
+        width: clamp(17.5rem, 25vw, 20rem);
         scroll-snap-align: center;
         background: var(--white);
-        border-radius: 15px;
+        border-radius: 0.9375rem;
         overflow: hidden;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Added cubic-bezier for smoother effect */
-        position: relative; /* Added for pseudo-element */
+        box-shadow: var(--shadow-light);
+        transition: all var(--transition-spring);
+        position: relative;
       }
 
       .news-card::before {
@@ -853,9 +931,13 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, var(--primary-green), #1a3f1c);
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--primary-green-dark)
+        );
         opacity: 0;
-        transition: opacity 0.4s ease;
+        transition: opacity var(--transition-slow);
         z-index: 1;
       }
 
@@ -864,15 +946,15 @@
       }
 
       .news-card:hover {
-        transform: translateY(-15px) scale(1.02); /* Consistent scaling */
-        box-shadow: 0 20px 60px rgba(44, 95, 45, 0.25); /* Consistent shadow */
+        transform: translateY(-0.9375rem) scale(1.02);
+        box-shadow: var(--shadow-heavy);
       }
 
       .news-card img {
         width: 100%;
-        height: 200px; /* Adjusted height for news images */
+        height: 12.5rem;
         object-fit: cover;
-        transition: transform 0.4s ease;
+        transition: transform var(--transition-slow);
         position: relative;
         z-index: 3;
       }
@@ -882,10 +964,10 @@
       }
 
       .news-card-content {
-        padding: 1.5rem; /* Adjusted padding */
+        padding: var(--space-lg);
         position: relative;
         z-index: 4;
-        transition: all 0.4s ease;
+        transition: all var(--transition-slow);
       }
 
       .news-card:hover .news-card-content {
@@ -893,10 +975,10 @@
       }
 
       .news-card h3 {
-        font-size: 1.3rem; /* Adjusted font size */
-        margin-bottom: 0.8rem;
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-sm);
         color: var(--primary-green);
-        transition: color 0.4s ease;
+        transition: color var(--transition-slow);
         font-weight: 600;
       }
 
@@ -905,10 +987,10 @@
       }
 
       .news-card .news-category {
-        font-size: 0.9rem;
+        font-size: var(--text-sm);
         color: #888;
-        margin-bottom: 0.5rem;
-        transition: color 0.4s ease;
+        margin-bottom: var(--space-sm);
+        transition: color var(--transition-slow);
       }
 
       .news-card:hover .news-category {
@@ -919,23 +1001,23 @@
       footer {
         background: linear-gradient(135deg, var(--dark-gray), #1a1a1a);
         color: var(--white);
-        padding: 4rem 0 2rem;
-        backdrop-filter: blur(10px);
+        padding: var(--space-xl) 0 var(--space-md);
+        backdrop-filter: blur(0.625rem);
       }
 
       .footer-content {
-        max-width: 1200px;
+        max-width: 75rem;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 var(--space-md);
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+        gap: var(--space-xl);
       }
 
       .footer-section h3 {
-        margin-bottom: 1.5rem;
+        margin-bottom: var(--space-lg);
         color: var(--primary-green);
-        font-size: 1.3rem;
+        font-size: var(--text-lg);
         font-weight: 600;
       }
 
@@ -948,20 +1030,20 @@
         color: #ccc;
         text-decoration: none;
         line-height: 2.2;
-        transition: all 0.3s ease;
+        transition: all var(--transition-normal);
         display: inline-block;
       }
 
       .footer-section a:hover {
         color: var(--primary-green);
-        transform: translateX(5px);
+        transform: translateX(0.3125rem);
       }
 
       .footer-bottom {
         text-align: center;
-        padding: 2rem 0;
-        border-top: 1px solid #444;
-        margin-top: 3rem;
+        padding: var(--space-md) 0;
+        border-top: 0.0625rem solid #444;
+        margin-top: var(--space-xl);
         color: #999;
       }
 
@@ -980,17 +1062,17 @@
       @keyframes float {
         0%,
         100% {
-          transform: translateY(0px);
+          transform: translateY(0);
         }
         50% {
-          transform: translateY(-10px);
+          transform: translateY(-0.625rem);
         }
       }
 
       @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(1.875rem);
         }
         to {
           opacity: 1;
@@ -1001,7 +1083,7 @@
       @keyframes fadeInDown {
         from {
           opacity: 0;
-          transform: translateY(-30px);
+          transform: translateY(-1.875rem);
         }
         to {
           opacity: 1;
@@ -1018,93 +1100,10 @@
           transform: translateY(0) translateX(-50%);
         }
         40% {
-          transform: translateY(-10px) translateX(-50%);
+          transform: translateY(-0.625rem) translateX(-50%);
         }
         60% {
-          transform: translateY(-5px) translateX(-50%);
-        }
-      }
-
-      /* Mobile Responsive */
-      @media (max-width: 768px) {
-        .hero-section {
-          background-attachment: scroll;
-        }
-
-        .hero-wordmark {
-          font-size: 2.5rem;
-        }
-
-        .hero-logo {
-          height: 140px;
-        }
-
-        #gateway {
-          display: none;
-        }
-
-        .nav-menu {
-          display: none;
-        }
-
-        .menu-dots {
-          display: flex;
-        }
-
-        .header {
-          background: rgba(255, 255, 255, 0.95);
-        }
-
-        .panel {
-          padding: 3rem 0;
-        }
-
-        .panel h2 {
-          font-size: 2.2rem;
-        }
-
-        .grid-container {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-
-        .stats-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem;
-        }
-
-        .stat-item {
-          padding: 2rem 1rem;
-        }
-
-        .stat-number {
-          font-size: 2.5rem;
-        }
-
-        .news-scroll-wrapper {
-          padding: 0 20px; /* Adjust padding for smaller screens */
-        }
-
-        .news-card {
-          width: 280px; /* Adjust width for smaller screens */
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero-wordmark {
-          font-size: 2rem;
-        }
-
-        .hero-logo {
-          height: 120px;
-        }
-
-        .stats-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .container {
-          padding: 0 1rem;
+          transform: translateY(-0.3125rem) translateX(-50%);
         }
       }
 
@@ -1115,12 +1114,12 @@
 
       .expandable-text {
         overflow: hidden;
-        transition: max-height 0.3s ease;
-        max-height: 93px; /* Default collapsed height */
+        transition: max-height var(--transition-normal) ease;
+        max-height: 5.8125rem;
       }
 
       .expandable-text.expanded {
-        max-height: 1000px; /* Sufficiently large for expanded content */
+        max-height: 62.5rem;
       }
 
       .read-more-link {
@@ -1129,42 +1128,39 @@
         cursor: pointer;
         text-decoration: none;
         display: inline-block;
-        margin-top: 10px;
-        transition: color 0.3s ease;
+        margin-top: var(--space-sm);
+        transition: color var(--transition-normal);
       }
 
       .read-more-link:hover {
         text-decoration: underline;
       }
 
-      /* Bright color for read-more-link on dark backgrounds */
-      .secretary-section .read-more-link,
-      .superintendent-section .read-more-link {
-        color: var(--gold); /* Or any bright color like var(--white) */
+      .secretary-section .read-more-link {
+        color: var(--gold);
       }
 
-      .secretary-section .read-more-link:hover,
-      .superintendent-section .read-more-link:hover {
+      .secretary-section .read-more-link:hover {
         color: var(--white);
       }
 
       .show-less-btn {
         position: absolute;
-        top: -10px; /* Adjusted position */
+        top: -0.625rem;
         right: 0;
         background: var(--primary-green);
         color: white;
         border: none;
-        padding: 5px 10px;
-        border-radius: 5px;
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: 0.3125rem;
         cursor: pointer;
         display: none;
-        font-size: 0.9rem;
-        transition: background 0.3s ease;
+        font-size: var(--text-sm);
+        transition: background var(--transition-normal);
       }
 
       .show-less-btn:hover {
-        background: #1a3f1c;
+        background: var(--primary-green-dark);
       }
 
       .show-less-btn.active {
@@ -1182,7 +1178,7 @@
 
       /* Photo Gallery Styles */
       .photo-gallery-section {
-        padding: 5rem 0;
+        padding: var(--space-2xl) 0;
         background: var(--medium-gray);
       }
 
@@ -1190,8 +1186,8 @@
         position: relative;
         width: 100%;
         overflow: hidden;
-        margin: 3rem auto;
-        padding: 1rem 0;
+        margin: var(--space-xl) auto;
+        padding: var(--space-md) 0;
       }
 
       .scroll-wrapper {
@@ -1201,7 +1197,8 @@
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        padding: 0 20px;
+        padding: 0 var(--space-md);
+        gap: var(--space-sm);
       }
 
       .scroll-wrapper::-webkit-scrollbar {
@@ -1210,35 +1207,34 @@
 
       .scroll-item {
         flex: 0 0 auto;
-        width: 160px;
-        height: 200px;
-        margin: 0 10px;
+        width: 10rem;
+        height: 12.5rem;
         scroll-snap-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         background: var(--white);
-        border-radius: 15px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
+        border-radius: 0.9375rem;
+        box-shadow: var(--shadow-light);
+        transition: all var(--transition-normal);
         position: relative;
         overflow: hidden;
       }
 
       .scroll-item:hover {
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 15px 40px rgba(44, 95, 45, 0.2);
+        transform: translateY(-0.625rem) scale(1.05);
+        box-shadow: var(--shadow-medium);
       }
 
       .scroll-item img {
-        width: 120px;
-        height: 120px;
+        width: 7.5rem;
+        height: 7.5rem;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid var(--primary-green);
-        margin-bottom: 15px;
-        transition: transform 0.3s ease;
+        border: 0.1875rem solid var(--primary-green);
+        margin-bottom: var(--space-sm);
+        transition: transform var(--transition-normal);
       }
 
       .scroll-item:hover img {
@@ -1248,27 +1244,27 @@
       .scroll-item span {
         font-weight: 600;
         color: var(--dark-gray);
-        font-size: 0.95rem;
+        font-size: var(--text-sm);
         text-align: center;
-        padding: 0 10px;
+        padding: 0 var(--space-sm);
         line-height: 1.3;
       }
 
       .scroll-dots {
         display: flex;
         justify-content: center;
-        margin-top: 2rem;
-        gap: 10px;
+        margin-top: var(--space-md);
+        gap: var(--space-sm);
       }
 
       .dot {
-        width: 12px;
-        height: 12px;
+        width: 0.75rem;
+        height: 0.75rem;
         border-radius: 50%;
-        background: rgba(44, 95, 45, 0.3);
+        background: rgba(46, 168, 93, 0.3);
         cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid var(--primary-green);
+        transition: all var(--transition-normal);
+        border: 0.125rem solid var(--primary-green);
       }
 
       .dot.active {
@@ -1284,24 +1280,24 @@
       /* Social Icons */
       .social-logos {
         display: flex;
-        gap: 1.5rem;
+        gap: var(--space-lg);
         justify-content: center;
-        margin-top: 1.5rem;
+        margin-top: var(--space-lg);
       }
 
       .social-logos img.social-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.5rem;
+        transition: all var(--transition-normal);
         cursor: pointer;
         filter: grayscale(100%);
       }
 
       .social-logos img.social-icon:hover {
-        transform: translateY(-5px) scale(1.2);
+        transform: translateY(-0.3125rem) scale(1.2);
         filter: grayscale(0%);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: var(--shadow-light);
       }
 
       /* Ripple Effect */
@@ -1323,29 +1319,29 @@
 
       /* Modal/Popup Styles */
       .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 10001; /* Sit on top */
+        display: none;
+        position: fixed;
+        z-index: 10001;
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
-        backdrop-filter: blur(5px);
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(0.3125rem);
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        padding: var(--space-md);
       }
 
       .modal-content {
         background-color: #fefefe;
         margin: auto;
-        padding: 20px;
-        border-radius: 15px;
+        padding: var(--space-md);
+        border-radius: 0.9375rem;
         width: 90%;
         max-width: 60%;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: var(--shadow-heavy);
         position: relative;
         animation: fadeInScale 0.3s ease-out;
         max-height: 80vh;
@@ -1366,12 +1362,12 @@
       .close-button {
         color: #aaa;
         position: absolute;
-        top: 15px;
-        right: 25px;
-        font-size: 35px;
+        top: var(--space-sm);
+        right: var(--space-lg);
+        font-size: 2.1875rem;
         font-weight: bold;
         cursor: pointer;
-        transition: color 0.3s ease;
+        transition: color var(--transition-normal);
       }
 
       .close-button:hover,
@@ -1382,40 +1378,40 @@
 
       .modal-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+        gap: var(--space-md);
+        margin-top: var(--space-md);
       }
 
       .modal-card {
         background: var(--light-gray);
-        border-radius: 10px;
-        padding: 20px;
+        border-radius: 0.625rem;
+        padding: var(--space-md);
         text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
+        box-shadow: var(--shadow-light);
+        transition: transform var(--transition-normal);
       }
 
       .modal-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-0.3125rem);
       }
 
       .modal-card img {
-        width: 100px;
-        height: 100px;
+        width: 6.25rem;
+        height: 6.25rem;
         border-radius: 50%;
         object-fit: cover;
-        margin-bottom: 10px;
-        border: 3px solid var(--primary-green);
+        margin-bottom: var(--space-sm);
+        border: 0.1875rem solid var(--primary-green);
       }
 
       .modal-card h4 {
-        margin-bottom: 5px;
+        margin-bottom: var(--space-xs);
         color: var(--primary-green);
       }
 
       .modal-card p {
-        font-size: 0.9rem;
+        font-size: var(--text-sm);
         color: #555;
       }
 
@@ -1427,75 +1423,189 @@
       .student-portal-modal-content form {
         display: flex;
         flex-direction: column;
-        gap: 15px;
-        max-width: 400px;
-        margin: 20px auto;
+        gap: var(--space-sm);
+        max-width: 25rem;
+        margin: var(--space-md) auto;
       }
 
       .student-portal-modal-content input[type="text"],
       .student-portal-modal-content input[type="date"] {
-        padding: 10px;
-        border: 1px solid var(--medium-gray);
-        border-radius: 8px;
-        font-size: 1rem;
+        padding: var(--space-sm);
+        border: 0.0625rem solid var(--medium-gray);
+        border-radius: 0.5rem;
+        font-size: var(--text-base);
+        transition: all var(--transition-normal);
+      }
+
+      .student-portal-modal-content input:focus {
+        outline: none;
+        border-color: var(--primary-green);
+        box-shadow: 0 0 0 0.1875rem rgba(46, 168, 93, 0.2);
       }
 
       .student-portal-modal-content button {
-        padding: 12px 25px;
+        padding: var(--space-sm) var(--space-lg);
         background: var(--primary-green);
         color: white;
         border: none;
-        border-radius: 8px;
+        border-radius: 0.5rem;
         cursor: pointer;
-        font-size: 1.1rem;
-        transition: background 0.3s ease;
+        font-size: var(--text-lg);
+        transition: background var(--transition-normal);
       }
 
       .student-portal-modal-content button:hover {
-        background: #1a3f1c;
+        background: var(--primary-green-dark);
       }
 
       .student-portal-results {
-        margin-top: 30px;
+        margin-top: var(--space-xl);
         text-align: left;
-        border-top: 1px solid var(--medium-gray);
-        padding-top: 20px;
+        border-top: 0.0625rem solid var(--medium-gray);
+        padding-top: var(--space-md);
       }
 
       .student-portal-results h3 {
         color: var(--primary-green);
-        margin-bottom: 15px;
+        margin-bottom: var(--space-sm);
       }
 
       .student-portal-results p {
-        margin-bottom: 8px;
+        margin-bottom: var(--space-xs);
       }
 
       .student-portal-results .chart-placeholder {
         width: 100%;
-        height: 200px;
+        height: 12.5rem;
         background-color: var(--light-gray);
-        border-radius: 10px;
+        border-radius: 0.625rem;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #888;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: var(--space-md) 0;
       }
 
       .student-portal-results .download-btn {
         display: inline-block;
-        padding: 10px 20px;
+        padding: var(--space-sm) var(--space-md);
         background: var(--secondary-blue);
         color: white;
         text-decoration: none;
-        border-radius: 8px;
-        transition: background 0.3s ease;
+        border-radius: 0.5rem;
+        transition: background var(--transition-normal);
       }
 
       .student-portal-results .download-btn:hover {
         background: #0056b3;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 48rem) {
+        .hero-section {
+          background-attachment: scroll;
+        }
+
+        .hero-wordmark {
+          font-size: var(--text-2xl);
+        }
+
+        .hero-logo {
+          height: clamp(6rem, 12vw, 8.75rem);
+        }
+
+        #gateway {
+          display: none;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .menu-dots {
+          display: flex;
+        }
+
+        .header {
+          background: rgba(255, 255, 255, 0.95);
+        }
+
+        .panel {
+          padding: var(--space-xl) 0;
+        }
+
+        .panel h2 {
+          font-size: var(--text-2xl);
+        }
+
+        .grid-container {
+          grid-template-columns: 1fr;
+          gap: var(--space-md);
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--space-lg);
+        }
+
+        .stat-item {
+          padding: var(--space-md) var(--space-sm);
+        }
+
+        .stat-number {
+          font-size: var(--text-2xl);
+        }
+
+        .news-scroll-wrapper {
+          padding: 0 var(--space-md);
+        }
+
+        .news-card {
+          width: clamp(15rem, 80vw, 17.5rem);
+        }
+
+        .modal-content {
+          max-width: 95%;
+        }
+      }
+
+      @media (max-width: 30rem) {
+        .hero-wordmark {
+          font-size: var(--text-xl);
+        }
+
+        .hero-logo {
+          height: clamp(5rem, 15vw, 7.5rem);
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 0 var(--space-sm);
+        }
+
+        .mobile-menu-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Focus styles for accessibility */
+      *:focus {
+        outline: 0.125rem solid var(--primary-green);
+        outline-offset: 0.125rem;
+      }
+
+      /* Reduced motion preferences */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
       }
     </style>
   </head>
@@ -1535,16 +1645,21 @@
 
           <!-- Desktop Gateway Navigation -->
           <nav id="gateway" aria-label="Gateway navigation">
-            <div class="gateway-nav--label">Information for:</div>
+            <div class="gateway-nav--label">Quick Links:</div>
             <ul id="menu-gateway-nav">
               <li>
                 <a href="#" id="students-btn" class="btn-ripple">Students</a>
               </li>
               <li>
-                <a href="#faculty-staff" class="btn-ripple">Faculty & Staff</a>
+                <a href="#hall-of-fame" class="btn-ripple">Hall of Fame</a>
               </li>
               <li>
-                <a href="https://www.youtube.com" target="_blank">Alumni</a>
+                <a
+                  href="https://aamsystem.in/applications/"
+                  target="_blank"
+                  class="btn-ripple"
+                  >Apply</a
+                >
               </li>
             </ul>
           </nav>
@@ -1553,12 +1668,12 @@
 
       <div class="header-container">
         <nav class="nav-menu">
-          <a href="#mission">Home</a>
-          <a href="#programs">Our Esteemed Faculty & Staff</a>
+          <a href="#programs">Faculty & Staff</a>
           <a href="#admission">Academic Programs</a>
-          <a href="#results">Admission</a>
+          <a href="#admission">Admission</a>
           <a href="#hall-of-fame">Our Impact</a>
-          <a href="#contact">Result</a>
+          <a href="#results">Results</a>
+          <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -1569,27 +1684,39 @@
       <div class="mobile-menu-grid">
         <a href="#mission" class="mobile-menu-item">
           <span class="menu-icon">📖</span>
-          <span>Home</span>
-        </a>
-        <a href="#results" class="mobile-menu-item">
-          <span class="menu-icon">📊</span>
-          <span>Admission</span>
-        </a>
-        <a href="#programs" class="mobile-menu-item">
-          <span class="menu-icon">📚</span>
-          <span>Faculty & Staff</span>
+          <span>Mission</span>
         </a>
         <a href="#admission" class="mobile-menu-item">
           <span class="menu-icon">📝</span>
-          <span>Academic Programs</span>
+          <span>Admission</span>
+        </a>
+        <a href="#programs" class="mobile-menu-item">
+          <span class="menu-icon">👥</span>
+          <span>Faculty</span>
+        </a>
+        <a href="#programs" class="mobile-menu-item">
+          <span class="menu-icon">📚</span>
+          <span>Programs</span>
         </a>
         <a href="#hall-of-fame" class="mobile-menu-item">
           <span class="menu-icon">🏆</span>
-          <span>Our Impact</span>
+          <span>Impact</span>
+        </a>
+        <a href="#results" class="mobile-menu-item">
+          <span class="menu-icon">📊</span>
+          <span>Results</span>
         </a>
         <a href="#contact" class="mobile-menu-item">
           <span class="menu-icon">📞</span>
-          <span>Result</span>
+          <span>Contact</span>
+        </a>
+        <a
+          href="https://aamsystem.in/applications/"
+          target="_blank"
+          class="mobile-menu-item"
+        >
+          <span class="menu-icon">✍️</span>
+          <span>Apply</span>
         </a>
       </div>
 
@@ -1598,8 +1725,8 @@
           <span class="menu-icon">👤</span>
           <span>Students</span>
         </a>
-        <a href="#faculty-staff" class="mobile-menu-item">
-          <span class="menu-icon">👥</span>
+        <a href="#hall-of-fame" class="mobile-menu-item">
+          <span class="menu-icon">🌟</span>
           <span>Hall Of Fame</span>
         </a>
         <a
@@ -1813,7 +1940,13 @@
           </header>
 
           <div class="news-scroll-container">
-            <button class="news-arrow left" id="newsPrev">‹</button>
+            <button
+              class="news-arrow left"
+              id="newsPrev"
+              aria-label="Previous news"
+            >
+              ‹
+            </button>
             <div class="news-scroll-wrapper" id="newsScroll">
               <article class="news-card">
                 <img src="5.jpg" alt="News" />
@@ -1930,7 +2063,13 @@
                 </div>
               </article>
             </div>
-            <button class="news-arrow right" id="newsNext">›</button>
+            <button
+              class="news-arrow right"
+              id="newsNext"
+              aria-label="Next news"
+            >
+              ›
+            </button>
           </div>
 
           <div class="center-cta">
@@ -1952,50 +2091,6 @@
               >View Full Calendar</a
             >
           </div>
-        </div>
-      </section>
-
-      <!-- Superintendent Section -->
-      <section
-        class="superintendent-section secretary-section"
-        data-aos="fade-up"
-      >
-        <div class="secretary-container">
-          <img
-            src="44.png"
-            alt="Superintendent KM Haque"
-            class="secretary-profile"
-          />
-
-          <div class="expandable-content">
-            <div class="expandable-text" id="superintendent-text">
-              <p class="secretary-quote">
-                "Our commitment at Al-Ameen Mission extends beyond textbooks and
-                examinations. We strive to cultivate an environment where every
-                student feels empowered to explore their potential, embrace
-                challenges, and emerge as responsible global citizens. With a
-                strong emphasis on moral values and academic rigor, we aim to
-                instill a lifelong passion for learning and service. We believe
-                that true education is a journey of self-discovery and
-                contribution to society, and we are dedicated to guiding our
-                students every step of the way."
-              </p>
-            </div>
-            <span
-              class="read-more-link"
-              onclick="toggleExpand('superintendent-text', this)"
-              >Read more</span
-            >
-            <button
-              class="show-less-btn"
-              onclick="toggleExpand('superintendent-text', this.previousElementSibling)"
-            >
-              Show less
-            </button>
-          </div>
-
-          <h3 class="secretary-name">Janab K.M. Haque</h3>
-          <p class="secretary-title">Superintendent, Al-Ameen Mission</p>
         </div>
       </section>
 
@@ -2085,7 +2180,7 @@
       </section>
 
       <!-- Faculty & Staff Section -->
-      <section id="faculty-staff" class="panel theme--fog" data-aos="fade-up">
+      <section id="programs" class="panel theme--fog" data-aos="fade-up">
         <div class="container">
           <header>
             <h2>Our Esteemed Faculty & Staff</h2>
@@ -2093,7 +2188,13 @@
           </header>
 
           <div class="news-scroll-container">
-            <button class="news-arrow left" id="facultyPrev">‹</button>
+            <button
+              class="news-arrow left"
+              id="facultyPrev"
+              aria-label="Previous faculty"
+            >
+              ‹
+            </button>
             <div class="news-scroll-wrapper" id="facultyScroll">
               <!-- Faculty Member 1 -->
               <article class="news-card faculty-card">
@@ -2376,7 +2477,13 @@
                 </div>
               </article>
             </div>
-            <button class="news-arrow right" id="facultyNext">›</button>
+            <button
+              class="news-arrow right"
+              id="facultyNext"
+              aria-label="Next faculty"
+            >
+              ›
+            </button>
           </div>
 
           <div class="center-cta">
@@ -2388,7 +2495,7 @@
       </section>
 
       <!-- Academic Programs -->
-      <section id="programs" class="panel theme--white" data-aos="fade-up">
+      <section id="admission" class="panel theme--white" data-aos="fade-up">
         <div class="container">
           <header>
             <h2>Academic Programs</h2>
@@ -2485,16 +2592,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- Admission -->
-      <section id="admission" class="panel theme--fog" data-aos="fade-up">
-        <div class="container">
-          <header>
-            <h2>Admission</h2>
-            <p>Join our community of excellence</p>
-          </header>
 
           <div class="mission-statement">
             <p>
@@ -2504,7 +2601,7 @@
               environment.
             </p>
 
-            <div class="islamic-quote" style="margin-top: 2rem">
+            <div class="islamic-quote" style="margin-top: var(--space-md)">
               <p class="quran-arabic">
                 طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ
               </p>
@@ -2524,7 +2621,7 @@
       </section>
 
       <!-- Results Section -->
-      <section id="results" class="panel theme--white">
+      <section id="results" class="panel theme--fog">
         <div class="container">
           <header>
             <h2>Results</h2>
@@ -2572,7 +2669,7 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="panel theme--fog">
+      <section id="contact" class="panel theme--white">
         <div class="container">
           <header>
             <h2>Contact Us</h2>
@@ -2683,7 +2780,10 @@
           </ul>
           <a href="#" class="download-btn">Download Full Report (PDF)</a>
         </div>
-        <p id="loginError" style="color: red; display: none; margin-top: 15px">
+        <p
+          id="loginError"
+          style="color: red; display: none; margin-top: var(--space-sm)"
+        >
           Invalid credentials. Please try again.
         </p>
       </div>
@@ -2748,9 +2848,15 @@
     <!-- JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+      // Modern JavaScript with improved functionality
+
       // Force scroll to top on page load
       document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("preloader").classList.add("fade-out");
+        // Scroll to top immediately
+        window.scrollTo(0, 0);
+
+        // Initialize everything
+        initializeWebsite();
       });
 
       if (history.scrollRestoration) {
@@ -2761,156 +2867,181 @@
       window.addEventListener("load", function () {
         setTimeout(function () {
           const preloader = document.getElementById("preloader");
-          preloader.classList.add("fade-out");
-          setTimeout(function () {
-            preloader.style.display = "none";
-          }, 800);
-        }, 1000);
+          if (preloader) {
+            preloader.classList.add("fade-out");
+            setTimeout(function () {
+              preloader.style.display = "none";
+            }, 5);
+          }
+        }, 80);
       });
 
       // Initialize AOS with enhanced settings
-      AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 150,
-        easing: "ease-out-cubic",
-      });
+      if (typeof AOS !== "undefined") {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 150,
+          easing: "ease-out-cubic",
+        });
+      }
 
-      // Enhanced Hero Fade Effect
-      const hero = document.getElementById("heroSection");
-      const missionSection = document.getElementById("mission"); // Changed to mission section
-      let lastScroll = 0;
-      const header = document.getElementById("mainHeader");
+      // Main initialization function
+      function initializeWebsite() {
+        setupScrollEffects();
+        setupMobileMenu();
+        setupSmoothScrolling();
+        setupExpandableContent();
+        setupRippleEffects();
+        setupCounterAnimation();
+        setupCarousels();
+        setupModals();
+        setupStudentPortal();
+      }
 
-      window.addEventListener("scroll", function () {
-        const currentScroll = window.pageYOffset;
+      // Enhanced Scroll Effects
+      function setupScrollEffects() {
+        const hero = document.getElementById("heroSection");
+        const missionSection = document.getElementById("mission");
+        const header = document.getElementById("mainHeader");
+        let lastScroll = 0;
 
-        // Header behavior
-        if (currentScroll > 100) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
+        window.addEventListener("scroll", function () {
+          const currentScroll = window.pageYOffset;
 
-        if (
-          currentScroll > lastScroll &&
-          currentScroll > window.innerHeight / 2
-        ) {
-          header.classList.add("nav-up");
-        } else {
-          header.classList.remove("nav-up");
-        }
-
-        // Hero fade effect - fades to 0% when reaching mission section
-        if (hero && missionSection) {
-          const missionTop = missionSection.offsetTop;
-          const fadeStartPoint = window.innerHeight; // Start fading after first viewport
-          const fadeEndPoint = missionTop; // Complete fade at mission section
-
-          if (currentScroll >= fadeStartPoint) {
-            const fadeProgress =
-              (currentScroll - fadeStartPoint) /
-              (fadeEndPoint - fadeStartPoint);
-            const clampedProgress = Math.max(0, Math.min(1, fadeProgress));
-            const opacity = 1 - clampedProgress;
-
-            hero.style.opacity = opacity;
-
-            // Optional: Add slight transform for more dynamic effect
-            hero.style.transform = `translateY(${clampedProgress * 50}px)`;
+          // Header behavior
+          if (currentScroll > 100) {
+            header?.classList.add("scrolled");
           } else {
-            hero.style.opacity = 1;
-            hero.style.transform = "translateY(0px)";
+            header?.classList.remove("scrolled");
           }
+
+          if (
+            currentScroll > lastScroll &&
+            currentScroll > window.innerHeight / 2
+          ) {
+            header?.classList.add("nav-up");
+          } else {
+            header?.classList.remove("nav-up");
+          }
+
+          // Hero fade effect
+          if (hero && missionSection) {
+            const missionTop = missionSection.offsetTop;
+            const fadeStartPoint = window.innerHeight;
+            const fadeEndPoint = missionTop;
+
+            if (currentScroll >= fadeStartPoint) {
+              const fadeProgress =
+                (currentScroll - fadeStartPoint) /
+                (fadeEndPoint - fadeStartPoint);
+              const clampedProgress = Math.max(0, Math.min(1, fadeProgress));
+              const opacity = 1 - clampedProgress;
+
+              hero.style.opacity = opacity;
+              hero.style.transform = `translateY(${clampedProgress * 50}px)`;
+            } else {
+              hero.style.opacity = 1;
+              hero.style.transform = "translateY(0px)";
+            }
+          }
+
+          lastScroll = currentScroll;
+        });
+      }
+
+      // Enhanced Mobile Menu
+      function setupMobileMenu() {
+        const menuDots = document.getElementById("menuDots");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const menuClose = document.getElementById("menuClose");
+
+        function openMobileMenu() {
+          mobileMenu?.classList.add("active");
+          menuDots?.classList.add("active");
+          document.body.style.overflow = "hidden";
         }
 
-        lastScroll = currentScroll;
-      });
-
-      // Mobile Menu Toggle with enhanced animations
-      const menuDots = document.getElementById("menuDots");
-      const mobileMenu = document.getElementById("mobileMenu");
-      const menuClose = document.getElementById("menuClose");
-
-      if (menuDots && mobileMenu && menuClose) {
-        menuDots.addEventListener("click", function () {
-          mobileMenu.classList.add("active");
-          document.body.style.overflow = "hidden";
-
-          // Animate menu dots to X
-          const spans = menuDots.querySelectorAll("span");
-          spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-          spans[1].style.opacity = "0";
-          spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
-        });
-
-        menuClose.addEventListener("click", function () {
-          mobileMenu.classList.remove("active");
+        function closeMobileMenu() {
+          mobileMenu?.classList.remove("active");
+          menuDots?.classList.remove("active");
           document.body.style.overflow = "";
+        }
 
-          // Reset menu dots
-          const spans = menuDots.querySelectorAll("span");
-          spans[0].style.transform = "none";
-          spans[1].style.opacity = "1";
-          spans[2].style.transform = "none";
-        });
+        menuDots?.addEventListener("click", openMobileMenu);
+        menuClose?.addEventListener("click", closeMobileMenu);
 
         // Close mobile menu when clicking menu items
         document.querySelectorAll(".mobile-menu-item").forEach((item) => {
           item.addEventListener("click", function (e) {
             const target = this.getAttribute("href");
 
-            if (target.startsWith("http") || target === "#") {
-              // Added # to skip for now
-              return;
+            if (
+              target &&
+              !target.startsWith("http") &&
+              target !== "#" &&
+              target.startsWith("#")
+            ) {
+              e.preventDefault();
+              closeMobileMenu();
+
+              setTimeout(function () {
+                scrollToSection(target);
+              }, 300);
+            } else {
+              closeMobileMenu();
             }
-
-            e.preventDefault();
-            mobileMenu.classList.remove("active");
-            document.body.style.overflow = "";
-
-            // Reset menu dots
-            const spans = menuDots.querySelectorAll("span");
-            spans[0].style.transform = "none";
-            spans[1].style.opacity = "1";
-            spans[2].style.transform = "none";
-
-            setTimeout(function () {
-              const targetElement = document.querySelector(target);
-              if (targetElement) {
-                const headerHeight = header.offsetHeight;
-                const targetPosition =
-                  targetElement.offsetTop - headerHeight - 20;
-
-                window.scrollTo({
-                  top: targetPosition,
-                  behavior: "smooth",
-                });
-              }
-            }, 300);
           });
+        });
+
+        // Close on outside click
+        mobileMenu?.addEventListener("click", function (e) {
+          if (e.target === mobileMenu) {
+            closeMobileMenu();
+          }
         });
       }
 
-      // Enhanced smooth scroll for internal links
-      document
-        .querySelectorAll(
-          '.nav-menu a[href^="#"], .footer-section a[href^="#"]'
-        )
-        .forEach((anchor) => {
+      // Enhanced Smooth Scrolling
+      function setupSmoothScrolling() {
+        const header = document.getElementById("mainHeader");
+
+        function scrollToSection(target) {
+          const targetElement = document.querySelector(target);
+          if (!targetElement) return;
+
+          const headerHeight = header?.offsetHeight || 0;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+
+          // Check for reduced motion preference
+          const prefersReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+          ).matches;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+          });
+        }
+
+        // Setup smooth scroll for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+
+            // Skip certain buttons
             if (
               this.id === "explore-btn" ||
               this.id === "students-btn" ||
+              this.id === "mobile-students-btn" ||
               this.id === "more-faculty-btn" ||
               this.id === "footer-student-portal-btn"
-            )
-              return; // Exclude specific buttons
+            ) {
+              return;
+            }
 
-            e.preventDefault();
-            const href = this.getAttribute("href");
-
-            if (href === "#top") {
+            if (href === "#top" || href === "#") {
+              e.preventDefault();
               window.scrollTo({
                 top: 0,
                 behavior: "smooth",
@@ -2918,115 +3049,136 @@
               return;
             }
 
-            const targetElement = document.querySelector(href);
-            if (!targetElement) return;
-
-            const headerHeight = header.offsetHeight;
-            const targetPosition = targetElement.offsetTop - headerHeight - 20; // Adjusted offset
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth",
-            });
+            if (href.startsWith("#") && href.length > 1) {
+              e.preventDefault();
+              scrollToSection(href);
+            }
           });
         });
 
-      // Enhanced toggle expand/collapse for content
-      function toggleExpand(textId, linkElement) {
-        const textElement = document.getElementById(textId);
-        const showLessBtn =
-          linkElement.parentElement.querySelector(".show-less-btn");
-
-        if (textElement.classList.contains("expanded")) {
-          textElement.classList.remove("expanded");
-          if (linkElement.classList.contains("read-more-link")) {
-            linkElement.textContent = "Read more";
-          }
-          showLessBtn.classList.remove("active");
-        } else {
-          textElement.classList.add("expanded");
-          if (linkElement.classList.contains("read-more-link")) {
-            linkElement.textContent = ""; // Clear "Read more" text
-          }
-          showLessBtn.classList.add("active");
-        }
+        window.scrollToSection = scrollToSection; // Make globally available
       }
 
-      // Enhanced ripple effect for buttons
-      document.querySelectorAll(".btn-ripple").forEach((button) => {
-        button.addEventListener("click", function (e) {
-          const ripple = document.createElement("span");
-          const rect = this.getBoundingClientRect();
-          const size = Math.max(rect.width, rect.height);
-          const x = e.clientX - rect.left - size / 2;
-          const y = e.clientY - rect.top - size / 2;
+      // Enhanced Expandable Content
+      function setupExpandableContent() {
+        window.toggleExpand = function (textId, linkElement) {
+          const textElement = document.getElementById(textId);
+          const showLessBtn =
+            linkElement.parentElement.querySelector(".show-less-btn");
 
-          ripple.style.width = ripple.style.height = size + "px";
-          ripple.style.left = x + "px";
-          ripple.style.top = y + "px";
-          ripple.classList.add("ripple");
+          if (!textElement) return;
 
-          this.appendChild(ripple);
-
-          setTimeout(() => {
-            ripple.remove();
-          }, 600);
-        });
-      });
-
-      // Enhanced counter animation for stats
-      const observerOptions = {
-        threshold: 0.7,
-        rootMargin: "0px",
-      };
-
-      const counterObserver = new IntersectionObserver(function (entries) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const counter = entry.target;
-            const target = parseInt(counter.getAttribute("data-target"));
-            const duration = 2000; // 2 seconds
-            const increment = target / (duration / 16); // 60fps
-            let current = 0;
-
-            const updateCounter = () => {
-              current += increment;
-              if (current < target) {
-                counter.textContent = Math.ceil(current);
-                requestAnimationFrame(updateCounter);
-              } else {
-                counter.textContent =
-                  target +
-                  (counter.parentElement.textContent.includes("%") ? "%" : "+");
-              }
-            };
-
-            updateCounter();
-            counterObserver.unobserve(counter);
+          if (textElement.classList.contains("expanded")) {
+            textElement.classList.remove("expanded");
+            if (linkElement.classList.contains("read-more-link")) {
+              linkElement.textContent = "Read more";
+            }
+            showLessBtn?.classList.remove("active");
+          } else {
+            textElement.classList.add("expanded");
+            if (linkElement.classList.contains("read-more-link")) {
+              linkElement.textContent = "";
+            }
+            showLessBtn?.classList.add("active");
           }
-        });
-      }, observerOptions);
+        };
+      }
 
-      // Observe all stat numbers
-      document
-        .querySelectorAll(".stat-number[data-target]")
-        .forEach((counter) => {
-          counterObserver.observe(counter);
-        });
+      // Enhanced Ripple Effects
+      function setupRippleEffects() {
+        document.querySelectorAll(".btn-ripple").forEach((button) => {
+          button.addEventListener("click", function (e) {
+            // Don't prevent default for external links
+            if (
+              this.href &&
+              (this.href.startsWith("http") ||
+                this.href.startsWith("mailto") ||
+                this.href.startsWith("tel"))
+            ) {
+              return;
+            }
 
-      // Enhanced Photo Gallery Logic
+            const ripple = document.createElement("span");
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + "px";
+            ripple.style.left = x + "px";
+            ripple.style.top = y + "px";
+            ripple.classList.add("ripple");
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+              ripple.remove();
+            }, 600);
+          });
+        });
+      }
+
+      // Enhanced Counter Animation
+      function setupCounterAnimation() {
+        const observerOptions = {
+          threshold: 0.7,
+          rootMargin: "0px",
+        };
+
+        const counterObserver = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const counter = entry.target;
+              const target = parseInt(counter.getAttribute("data-target"));
+              const duration = 2000;
+              const increment = target / (duration / 16);
+              let current = 0;
+
+              const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                  counter.textContent = Math.ceil(current);
+                  requestAnimationFrame(updateCounter);
+                } else {
+                  counter.textContent =
+                    target +
+                    (counter.parentElement.textContent.includes("%")
+                      ? "%"
+                      : "+");
+                }
+              };
+
+              updateCounter();
+              counterObserver.unobserve(counter);
+            }
+          });
+        }, observerOptions);
+
+        document
+          .querySelectorAll(".stat-number[data-target]")
+          .forEach((counter) => {
+            counterObserver.observe(counter);
+          });
+      }
+
+      // Enhanced Carousel Setup
+      function setupCarousels() {
+        setupPhotoGallery("hallOfFameScroll", "hallOfFameDots");
+        setupNewsScroll();
+        setupFacultyScroll();
+      }
+
       function setupPhotoGallery(containerId, dotsId) {
         const scrollContainer = document.getElementById(containerId);
         if (!scrollContainer) return;
 
         const scrollWrapper = scrollContainer.querySelector(".scroll-wrapper");
-        const scrollItems = scrollWrapper.querySelectorAll(".scroll-item");
+        const scrollItems = scrollWrapper?.querySelectorAll(".scroll-item");
         const scrollDotsContainer = document.getElementById(dotsId);
 
-        if (!scrollWrapper || !scrollItems.length || !scrollDotsContainer)
+        if (!scrollWrapper || !scrollItems?.length || !scrollDotsContainer)
           return;
 
-        // Calculate item width dynamically, including margin
         const style = getComputedStyle(scrollItems[0]);
         const itemWidth =
           scrollItems[0].offsetWidth +
@@ -3036,10 +3188,8 @@
         const itemsPerPage = Math.floor(scrollWrapper.clientWidth / itemWidth);
         const totalPages = Math.ceil(scrollItems.length / itemsPerPage);
 
-        // Clear existing dots
         scrollDotsContainer.innerHTML = "";
 
-        // Create dots for pages
         for (let i = 0; i < totalPages; i++) {
           const dot = document.createElement("div");
           dot.classList.add("dot");
@@ -3065,7 +3215,6 @@
           });
         }
 
-        // Update dots on scroll
         scrollWrapper.addEventListener("scroll", () => {
           const currentPage = Math.round(
             scrollWrapper.scrollLeft / (itemsPerPage * itemWidth)
@@ -3073,7 +3222,6 @@
           updateDots(currentPage);
         });
 
-        // Enhanced auto-scroll functionality
         let autoScrollInterval;
         let currentPage = 0;
 
@@ -3095,7 +3243,6 @@
 
         startAutoScroll();
 
-        // Pause on hover and touch
         scrollContainer.addEventListener("mouseenter", stopAutoScroll);
         scrollContainer.addEventListener("mouseleave", startAutoScroll);
         scrollContainer.addEventListener("touchstart", stopAutoScroll);
@@ -3104,7 +3251,6 @@
         });
       }
 
-      // Enhanced News Scroll
       function setupNewsScroll() {
         const newsScroll = document.getElementById("newsScroll");
         const newsPrev = document.getElementById("newsPrev");
@@ -3112,19 +3258,16 @@
 
         if (!newsScroll) return;
 
-        const cardWidth = 350; // Card width + margin (approx)
+        const cardWidth = 320; // Approximate card width + gap
 
-        if (newsPrev && newsNext) {
-          newsPrev.addEventListener("click", () => {
-            newsScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
-          });
+        newsPrev?.addEventListener("click", () => {
+          newsScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
+        });
 
-          newsNext.addEventListener("click", () => {
-            newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
-          });
-        }
+        newsNext?.addEventListener("click", () => {
+          newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+        });
 
-        // Auto-scroll for news
         let newsScrollInterval = setInterval(() => {
           if (
             newsScroll.scrollLeft + newsScroll.clientWidth >=
@@ -3149,109 +3292,9 @@
             } else {
               newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
             }
-          }, 50);
+          }, 5000);
         });
       }
-
-      // Faculty & Staff Carousel and Modal Logic
-      const facultyData = [
-        {
-          name: "Prof. Ahmed Khan",
-          title: "Head of Physics Dept.",
-          img: "11.jpg",
-          bio: "Prof. Khan is a veteran educator with over 20 years of experience in teaching advanced physics. His passion for science inspires students to achieve excellence, focusing on conceptual clarity and problem-solving techniques for competitive exams. He has mentored numerous students who have gone on to prestigious universities.",
-        },
-        {
-          name: "Dr. Fatima Begum",
-          title: "Biology Specialist",
-          img: "12.jpg",
-          bio: "Dr. Begum holds a Ph.D. in Biotechnology and is renowned for her engaging teaching methods in Biology, making complex topics easy to understand. Her interactive sessions and practical insights help students grasp biological concepts thoroughly, preparing them for NEET and other medical entrance exams.",
-        },
-        {
-          name: "Mr. Mohammed Ali",
-          title: "Mathematics Expert",
-          img: "13.jpg",
-          bio: "Mr. Ali is known for his innovative approach to teaching Mathematics, helping students master challenging concepts for JEE and NEET. He simplifies complex mathematical problems, making them accessible and enjoyable for students, and has a track record of producing top rankers.",
-        },
-        {
-          name: "Ms. Aisha Rahman",
-          title: "Chemistry Instructor",
-          img: "14.jpg",
-          bio: "Ms. Rahman brings a dynamic energy to the Chemistry department, making learning fun and effective for all students. Her practical demonstrations and clear explanations ensure students develop a strong foundation in both organic and inorganic chemistry, crucial for competitive exams.",
-        },
-        {
-          name: "Prof. Omar Farooq",
-          title: "Senior Physics Lecturer",
-          img: "15.jpg",
-          bio: "Prof. Farooq is celebrated for his clear explanations and deep understanding of complex physics principles, guiding students to top scores. His extensive experience and ability to break down difficult topics into manageable parts make him a favorite among students aiming for engineering and medical careers.",
-        },
-        {
-          name: "Dr. Zainab Bibi",
-          title: "Biology Researcher",
-          img: "16.jpg",
-          bio: "Dr. Bibi's research background enriches her Biology classes, providing students with real-world insights and advanced knowledge. She encourages critical thinking and scientific inquiry, inspiring students to pursue careers in life sciences and medical fields.",
-        },
-        {
-          name: "Mr. Imran Hossain",
-          title: "Chemistry Lab Incharge",
-          img: "17.jpg",
-          bio: "Mr. Hossain ensures a safe and effective learning environment in the chemistry labs, guiding students through practical experiments. His meticulous approach and hands-on teaching style help students develop essential laboratory skills and a deeper understanding of chemical reactions.",
-        },
-        {
-          name: "Ms. Sana Khatun",
-          title: "English Language Trainer",
-          img: "18.jpg",
-          bio: "Ms. Khatun focuses on enhancing students' communication skills and preparing them for competitive exams requiring strong English proficiency. Her interactive lessons improve vocabulary, grammar, and comprehension, giving students an edge in all aspects of their academic journey.",
-        },
-        {
-          name: "Mr. Rahman Sheikh",
-          title: "Computer Science Instructor",
-          img: "19.jpg",
-          bio: "Mr. Sheikh introduces students to the world of computer science, fostering analytical thinking and problem-solving skills. He teaches programming fundamentals and computational logic, preparing students for future technological challenges and careers.",
-        },
-        {
-          name: "Ms. Nazia Parveen",
-          title: "Counselor & Mentor",
-          img: "20.jpg",
-          bio: "Ms. Parveen provides invaluable guidance and support to students, helping them navigate academic and personal challenges. Her empathetic approach and expert advice ensure students maintain their well-being and focus on their goals, fostering a positive learning environment.",
-        },
-        {
-          name: "Mr. Alok Sharma",
-          title: "Physics Faculty",
-          img: "21.jpg",
-          bio: "Mr. Sharma is a dedicated physics faculty member known for his clear and concise explanations. He specializes in making complex physics concepts understandable and enjoyable for students, ensuring a strong foundation for competitive exams.",
-        },
-        {
-          name: "Ms. Priya Singh",
-          title: "Chemistry Faculty",
-          img: "22.jpg",
-          bio: "Ms. Singh is an enthusiastic chemistry teacher who uses innovative methods to engage students. Her focus is on practical applications and problem-solving, helping students excel in both theoretical and experimental aspects of chemistry.",
-        },
-        {
-          name: "Dr. Sanjay Gupta",
-          title: "Biology Faculty",
-          img: "23.jpg",
-          bio: "Dr. Gupta, with his extensive research background, brings a unique perspective to biology classes. He inspires students to delve deeper into biological sciences, fostering a love for discovery and scientific inquiry.",
-        },
-        {
-          name: "Mr. Vivek Kumar",
-          title: "Mathematics Faculty",
-          img: "24.jpg",
-          bio: "Mr. Kumar is a highly experienced mathematics faculty member, adept at simplifying intricate mathematical problems. He employs various teaching strategies to cater to different learning styles, ensuring every student grasps the concepts.",
-        },
-        {
-          name: "Ms. Rina Das",
-          title: "Librarian",
-          img: "25.jpg",
-          bio: "Ms. Das manages our extensive library, ensuring students have access to a wide range of academic resources and literature. She assists students in research and promotes reading habits.",
-        },
-        {
-          name: "Mr. Subrata Ghosh",
-          title: "Administrative Staff",
-          img: "26.jpg",
-          bio: "Mr. Ghosh is a key member of our administrative team, ensuring smooth daily operations of the mission. He handles student records and assists with various logistical tasks.",
-        },
-      ];
 
       function setupFacultyScroll() {
         const facultyScroll = document.getElementById("facultyScroll");
@@ -3260,17 +3303,15 @@
 
         if (!facultyScroll) return;
 
-        const cardWidth = 350; // Card width + margin (approx)
+        const cardWidth = 320;
 
-        if (facultyPrev && facultyNext) {
-          facultyPrev.addEventListener("click", () => {
-            facultyScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
-          });
+        facultyPrev?.addEventListener("click", () => {
+          facultyScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
+        });
 
-          facultyNext.addEventListener("click", () => {
-            facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
-          });
-        }
+        facultyNext?.addEventListener("click", () => {
+          facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+        });
 
         let facultyScrollInterval = setInterval(() => {
           if (
@@ -3281,7 +3322,7 @@
           } else {
             facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
           }
-        }, 5000); // Auto-scroll every 5 seconds
+        }, 5000);
 
         facultyScroll.addEventListener("mouseenter", () =>
           clearInterval(facultyScrollInterval)
@@ -3300,138 +3341,204 @@
         });
       }
 
-      // Faculty Modal Logic
-      const facultyModal = document.getElementById("facultyModal");
-      const moreFacultyBtn = document.getElementById("more-faculty-btn");
-      const facultyModalClose = facultyModal.querySelector(".close-button");
-      const modalGrid = facultyModal.querySelector(".modal-grid");
+      // Enhanced Modal Setup
+      function setupModals() {
+        // Faculty Modal
+        const facultyModal = document.getElementById("facultyModal");
+        const moreFacultyBtn = document.getElementById("more-faculty-btn");
+        const facultyModalClose = facultyModal?.querySelector(".close-button");
+        const modalGrid = facultyModal?.querySelector(".modal-grid");
 
-      if (moreFacultyBtn && facultyModal && facultyModalClose && modalGrid) {
-        moreFacultyBtn.addEventListener("click", (e) => {
+        const facultyData = [
+          {
+            name: "Prof. Ahmed Khan",
+            title: "Head of Physics Dept.",
+            img: "11.jpg",
+            bio: "Prof. Khan is a veteran educator with over 20 years of experience in teaching advanced physics. His passion for science inspires students to achieve excellence, focusing on conceptual clarity and problem-solving techniques for competitive exams.",
+          },
+          {
+            name: "Dr. Fatima Begum",
+            title: "Biology Specialist",
+            img: "12.jpg",
+            bio: "Dr. Begum holds a Ph.D. in Biotechnology and is renowned for her engaging teaching methods in Biology, making complex topics easy to understand. Her interactive sessions help students grasp biological concepts thoroughly.",
+          },
+          {
+            name: "Mr. Mohammed Ali",
+            title: "Mathematics Expert",
+            img: "13.jpg",
+            bio: "Mr. Ali is known for his innovative approach to teaching Mathematics, helping students master challenging concepts for JEE and NEET. He simplifies complex mathematical problems with clarity.",
+          },
+          {
+            name: "Ms. Aisha Rahman",
+            title: "Chemistry Instructor",
+            img: "14.jpg",
+            bio: "Ms. Rahman brings dynamic energy to the Chemistry department, making learning fun and effective for all students. Her practical demonstrations ensure strong foundations.",
+          },
+          {
+            name: "Prof. Omar Farooq",
+            title: "Senior Physics Lecturer",
+            img: "15.jpg",
+            bio: "Prof. Farooq is celebrated for his clear explanations and deep understanding of complex physics principles, guiding students to top scores in competitive examinations.",
+          },
+          {
+            name: "Dr. Zainab Bibi",
+            title: "Biology Researcher",
+            img: "16.jpg",
+            bio: "Dr. Bibi's research background enriches her Biology classes, providing students with real-world insights and advanced knowledge in life sciences.",
+          },
+          {
+            name: "Mr. Imran Hossain",
+            title: "Chemistry Lab Incharge",
+            img: "17.jpg",
+            bio: "Mr. Hossain ensures a safe and effective learning environment in chemistry labs, guiding students through practical experiments with meticulous care.",
+          },
+          {
+            name: "Ms. Sana Khatun",
+            title: "English Language Trainer",
+            img: "18.jpg",
+            bio: "Ms. Khatun focuses on enhancing students' communication skills and preparing them for competitive exams requiring strong English proficiency.",
+          },
+          {
+            name: "Mr. Rahman Sheikh",
+            title: "Computer Science Instructor",
+            img: "19.jpg",
+            bio: "Mr. Sheikh introduces students to computer science, fostering analytical thinking and problem-solving skills for the digital age.",
+          },
+          {
+            name: "Ms. Nazia Parveen",
+            title: "Counselor & Mentor",
+            img: "20.jpg",
+            bio: "Ms. Parveen provides invaluable guidance and support to students, helping them navigate academic and personal challenges successfully.",
+          },
+        ];
+
+        moreFacultyBtn?.addEventListener("click", (e) => {
           e.preventDefault();
-          modalGrid.innerHTML = ""; // Clear previous content
+          if (modalGrid) {
+            modalGrid.innerHTML = "";
 
-          facultyData.forEach((faculty, index) => {
-            const modalCard = document.createElement("div");
-            modalCard.classList.add("modal-card");
-            modalCard.innerHTML = `
-              <img src="${faculty.img}" alt="${faculty.name}" />
-              <h4>${faculty.name}</h4>
-              <p>${faculty.title}</p>
-              <div class="expandable-content">
-                <div class="expandable-text" id="modal-faculty-${index}-text">
-                  <p>${faculty.bio}</p>
+            facultyData.forEach((faculty, index) => {
+              const modalCard = document.createElement("div");
+              modalCard.classList.add("modal-card");
+              modalCard.innerHTML = `
+                <img src="${faculty.img}" alt="${faculty.name}" />
+                <h4>${faculty.name}</h4>
+                <p>${faculty.title}</p>
+                <div class="expandable-content">
+                  <div class="expandable-text" id="modal-faculty-${index}-text">
+                    <p>${faculty.bio}</p>
+                  </div>
+                  <span class="read-more-link" onclick="toggleExpand('modal-faculty-${index}-text', this)">Read more</span>
+                  <button class="show-less-btn" onclick="toggleExpand('modal-faculty-${index}-text', this.previousElementSibling)">Show less</button>
                 </div>
-                <span class="read-more-link" onclick="toggleExpand('modal-faculty-${index}-text', this)">Read more</span>
-                <button class="show-less-btn" onclick="toggleExpand('modal-faculty-${index}-text', this.previousElementSibling)">Show less</button>
-              </div>
-            `;
-            modalGrid.appendChild(modalCard);
-          });
+              `;
+              modalGrid.appendChild(modalCard);
+            });
+          }
 
           facultyModal.style.display = "flex";
-          document.body.style.overflow = "hidden"; // Prevent scrolling background
+          document.body.style.overflow = "hidden";
         });
 
-        facultyModalClose.addEventListener("click", () => {
+        facultyModalClose?.addEventListener("click", () => {
           facultyModal.style.display = "none";
-          document.body.style.overflow = ""; // Restore scrolling
+          document.body.style.overflow = "";
         });
 
         window.addEventListener("click", (event) => {
-          if (event.target == facultyModal) {
+          if (event.target === facultyModal) {
             facultyModal.style.display = "none";
             document.body.style.overflow = "";
           }
         });
       }
 
-      // Student Portal Modal Logic
-      const studentsBtn = document.getElementById("students-btn");
-      const mobileStudentsBtn = document.getElementById("mobile-students-btn");
-      const footerStudentPortalBtn = document.getElementById(
-        "footer-student-portal-btn"
-      );
-      const studentPortalModal = document.getElementById("studentPortalModal");
-      const studentPortalClose =
-        studentPortalModal.querySelector(".close-button");
-      const studentLoginForm = document.getElementById("studentLoginForm");
-      const studentResults = document.getElementById("studentResults");
-      const loginError = document.getElementById("loginError");
+      // Enhanced Student Portal
+      function setupStudentPortal() {
+        const studentsBtn = document.getElementById("students-btn");
+        const mobileStudentsBtn = document.getElementById(
+          "mobile-students-btn"
+        );
+        const footerStudentPortalBtn = document.getElementById(
+          "footer-student-portal-btn"
+        );
+        const studentPortalModal =
+          document.getElementById("studentPortalModal");
+        const studentPortalClose =
+          studentPortalModal?.querySelector(".close-button");
+        const studentLoginForm = document.getElementById("studentLoginForm");
+        const studentResults = document.getElementById("studentResults");
+        const loginError = document.getElementById("loginError");
 
-      const dummyStudentData = {
-        "John Doe": {
-          regNumber: "AM12345",
-          dob: "2005-01-15",
-          presence: "Present",
-          absenceSince: "N/A",
-          exams: [
-            { name: "Mid-Term Physics", score: "85%" },
-            { name: "Mid-Term Chemistry", score: "78%" },
-            { name: "Mid-Term Biology", score: "92%" },
-            { name: "Final Physics", score: "90%" },
-            { name: "Final Chemistry", score: "88%" },
-            { name: "Final Biology", score: "95%" },
-          ],
-        },
-        "Jane Smith": {
-          regNumber: "AM67890",
-          dob: "2004-11-20",
-          presence: "Absent",
-          absenceSince: "2024-03-10",
-          exams: [
-            { name: "Mid-Term Physics", score: "70%" },
-            { name: "Mid-Term Chemistry", score: "65%" },
-            { name: "Mid-Term Biology", score: "80%" },
-          ],
-        },
-      };
+        const dummyStudentData = {
+          Subhra: {
+            regNumber: "12345",
+            dob: "2005-01-15",
+            presence: "Present",
+            absenceSince: "N/A",
+            exams: [
+              { name: "Mid-Term Physics", score: "85%" },
+              { name: "Mid-Term Chemistry", score: "78%" },
+              { name: "Mid-Term Biology", score: "92%" },
+              { name: "Final Physics", score: "90%" },
+              { name: "Final Chemistry", score: "88%" },
+              { name: "Final Biology", score: "95%" },
+            ],
+          },
+          Mehedi: {
+            regNumber: "67890",
+            dob: "2004-11-20",
+            presence: "Absent",
+            absenceSince: "2024-03-10",
+            exams: [
+              { name: "Mid-Term Physics", score: "70%" },
+              { name: "Mid-Term Chemistry", score: "65%" },
+              { name: "Mid-Term Biology", score: "80%" },
+            ],
+          },
+        };
 
-      function openStudentPortal() {
-        studentPortalModal.style.display = "flex";
-        document.body.style.overflow = "hidden";
-        studentLoginForm.style.display = "flex";
-        studentResults.style.display = "none";
-        loginError.style.display = "none";
-        studentLoginForm.reset(); // Clear form fields
-      }
-
-      if (studentsBtn)
-        studentsBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          openStudentPortal();
-        });
-      if (mobileStudentsBtn)
-        mobileStudentsBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          openStudentPortal();
-        });
-      if (footerStudentPortalBtn)
-        footerStudentPortalBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          openStudentPortal();
-        });
-
-      if (studentPortalClose) {
-        studentPortalClose.addEventListener("click", () => {
-          studentPortalModal.style.display = "none";
-          document.body.style.overflow = "";
-        });
-      }
-
-      window.addEventListener("click", (event) => {
-        if (event.target == studentPortalModal) {
-          studentPortalModal.style.display = "none";
-          document.body.style.overflow = "";
+        function openStudentPortal() {
+          studentPortalModal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+          studentLoginForm.style.display = "flex";
+          studentResults.style.display = "none";
+          loginError.style.display = "none";
+          studentLoginForm.reset();
         }
-      });
 
-      if (studentLoginForm) {
-        studentLoginForm.addEventListener("submit", (e) => {
+        studentsBtn?.addEventListener("click", (e) => {
           e.preventDefault();
-          const name = document.getElementById("studentName").value.trim();
-          const regNumber = document.getElementById("regNumber").value.trim();
-          const dob = document.getElementById("dob").value;
+          openStudentPortal();
+        });
+
+        mobileStudentsBtn?.addEventListener("click", (e) => {
+          e.preventDefault();
+          openStudentPortal();
+        });
+
+        footerStudentPortalBtn?.addEventListener("click", (e) => {
+          e.preventDefault();
+          openStudentPortal();
+        });
+
+        studentPortalClose?.addEventListener("click", () => {
+          studentPortalModal.style.display = "none";
+          document.body.style.overflow = "";
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target === studentPortalModal) {
+            studentPortalModal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+
+        studentLoginForm?.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("studentName")?.value.trim();
+          const regNumber = document.getElementById("regNumber")?.value.trim();
+          const dob = document.getElementById("dob")?.value;
 
           const student = dummyStudentData[name];
 
@@ -3451,12 +3558,14 @@
             const detailedExamResults = document.getElementById(
               "detailedExamResults"
             );
-            detailedExamResults.innerHTML = "";
-            student.exams.forEach((exam) => {
-              const li = document.createElement("li");
-              li.innerHTML = `<strong>${exam.name}:</strong> ${exam.score}`;
-              detailedExamResults.appendChild(li);
-            });
+            if (detailedExamResults) {
+              detailedExamResults.innerHTML = "";
+              student.exams.forEach((exam) => {
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${exam.name}:</strong> ${exam.score}`;
+                detailedExamResults.appendChild(li);
+              });
+            }
 
             studentLoginForm.style.display = "none";
             studentResults.style.display = "block";
@@ -3468,15 +3577,10 @@
         });
       }
 
-      // Initialize everything when DOM is loaded
-      document.addEventListener("DOMContentLoaded", () => {
-        setupPhotoGallery("hallOfFameScroll", "hallOfFameDots");
-        setupNewsScroll();
-        setupFacultyScroll();
+      // Error handling
+      window.addEventListener("error", function (e) {
+        console.warn("Error caught:", e.error);
       });
-
-      // Make functions globally available
-      window.toggleExpand = toggleExpand;
     </script>
   </body>
 </html>
