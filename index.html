@@ -438,7 +438,7 @@
         right: -100%;
         width: 70%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.255);
+        background: rgba(255, 255, 255, 0);
         backdrop-filter: blur(1.25rem);
         transition: right var(--transition-slow);
         z-index: 9999;
@@ -1162,6 +1162,8 @@
         z-index: 4;
         transition: all var(--transition-slow);
         will-change: color;
+        /* Allow content height to dictate card height */
+        height: auto;
       }
 
       .news-card:hover .news-card-content {
@@ -1484,15 +1486,22 @@
       }
 
       .scroll-wrapper {
-        display: flex;
-        flex-wrap: nowrap;
+        display: grid; /* Changed to grid */
+        grid-template-columns: repeat(
+          auto-fill,
+          minmax(10rem, 1fr)
+        ); /* Adjust column width as needed */
+        grid-auto-rows: 1fr; /* Equal height rows */
+        grid-auto-flow: column; /* Items flow into columns first */
+        gap: var(--space-sm);
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
         -ms-overflow-style: none;
         padding: 0 var(--space-md);
-        gap: var(--space-sm);
         scroll-behavior: smooth; /* Added for smooth scrolling */
+        height: auto; /* Allow height to adjust to content */
+        max-height: 35rem; /* Max height for 3 rows of 10rem items + gaps */
       }
 
       .scroll-wrapper::-webkit-scrollbar {
@@ -1500,10 +1509,10 @@
       }
 
       .scroll-item {
-        flex: 0 0 auto;
+        /* flex: 0 0 auto; Removed flex properties */
         width: 10rem;
-        height: 12.5rem;
-        scroll-snap-align: center;
+        height: 12.5rem; /* Fixed height for consistency in grid */
+        scroll-snap-align: start; /* Changed to start for grid */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1513,13 +1522,14 @@
         box-shadow: var(--shadow-light);
         transition: all var(--transition-normal);
         position: relative;
-
         will-change: transform, box-shadow;
+        border: 0.1875rem solid var(--medium-gray); /* Premium border */
       }
 
       .scroll-item:hover {
         transform: translateY(-0.625rem) scale(1.05);
-        box-shadow: var(--shadow-medium);
+        box-shadow: var(--shadow-heavy); /* Stronger shadow on hover */
+        border-color: var(--primary-green); /* Highlight border on hover */
       }
 
       .scroll-item img {
@@ -1527,14 +1537,17 @@
         height: 7.5rem;
         border-radius: 50%;
         object-fit: cover;
-        border: 0.1875rem solid var(--primary-green);
+        border: 0.25rem solid var(--primary-green-light); /* Thicker, lighter green border */
         margin-bottom: var(--space-sm);
-        transition: transform var(--transition-normal);
+        transition: transform var(--transition-normal),
+          border-color var(--transition-normal);
         will-change: transform;
+        box-shadow: var(--shadow-medium); /* Shadow for image */
       }
 
       .scroll-item:hover img {
         transform: scale(1.1);
+        border-color: var(--primary-green-dark); /* Darker border on hover */
       }
 
       .scroll-item span {
@@ -1815,7 +1828,23 @@
         background: #0056b3;
       }
       @media (max-width: 768px) {
+        .scroll-wrapper {
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(8rem, 1fr)
+          ); /* Smaller items on mobile */
+          max-height: 30rem; /* Adjust max height for mobile */
+        }
 
+        .scroll-item {
+          width: 8rem;
+          height: 10rem;
+        }
+
+        .scroll-item img {
+          width: 6rem;
+          height: 6rem;
+        }
       }
 
       /* Mobile Responsive */
@@ -2034,9 +2063,6 @@
           filter 600ms;
         transform-origin: center center;
       }
-
-
-
     </style>
   </head>
 
@@ -2633,53 +2659,53 @@
               <div class="scroll-item">
                 <img
                   src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000017786-1.jpg"
-                  alt="Student 1"
+                  alt="Abdul Rajeb Sk"
                 />
                 <span>Abdul Rajeb Sk</span>
               </div>
               <div class="scroll-item">
                 <img
                   src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000010923-scaled-e1757749134558.jpg"
-                  alt="Student 2"
+                  alt="Sekh Asif Ahamed"
                 />
                 <span>Sekh Asif Ahamed</span>
               </div>
               <div class="scroll-item">
                 <img
                   src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG20250812122430-1-scaled-e1757749202962.jpg"
-                  alt="Student 3"
+                  alt="Md Aminul Islam"
                 />
                 <span>Md Aminul Islam</span>
               </div>
               <div class="scroll-item">
                 <img
                   src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000038560.jpg"
-                  alt="Student 4"
+                  alt="Arij Arman Mandal"
                 />
                 <span>Arij Arman Mandal</span>
               </div>
               <div class="scroll-item">
                 <img
                   src="http://aamsantragachi.org/wp-content/uploads/2025/08/2156-scaled.jpg"
-                  alt="Student 5"
+                  alt="JAVED AKHTAR"
                 />
                 <span>JAVED AKHTAR</span>
               </div>
               <div class="scroll-item">
                 <img
                   src="http://aamsantragachi.org/wp-content/uploads/2025/08/20200122163939_IMG_5972-1-scaled.jpg"
-                  alt="Student 6"
+                  alt="SAYED IKBAL"
                 />
                 <span>SAYED IKBAL</span>
               </div>
               <div class="scroll-item">
-                <img src="13.jpg" alt="Student 7" />
+                <img src="13.jpg" alt="Imran Hossain" />
                 <span>Imran Hossain</span>
               </div>
               <div class="scroll-item">
                 <img
                   src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000012238-1-scaled.jpg"
-                  alt="Student 8"
+                  alt="Sk Nilay Islam"
                 />
                 <span>Sk Nilay Islam</span>
               </div>
@@ -2716,7 +2742,7 @@
                 <div class="soft-rect-frame">
                   <img
                     src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000035857-scaled.jpg"
-                    alt="hello world"
+                    alt="KM Haque"
                   />
                 </div>
                 <div class="news-card-content">
@@ -2724,7 +2750,13 @@
                   <p class="news-category">Head of Physics Dept.</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty1-text">
-                      <p>Super</p>
+                      <p>
+                        Prof. Khan is a veteran educator with over 20 years of
+                        experience in teaching advanced physics. His passion for
+                        science inspires students to achieve excellence,
+                        focusing on conceptual clarity and problem-solving
+                        techniques for competitive exams.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2745,7 +2777,7 @@
                 <div class="soft-rect-frame">
                   <img
                     src="http://aamsantragachi.org/wp-content/uploads/2025/08/Screenshot_2025-08-24-10-56-52-376_com.miui_.gallery.jpg"
-                    alt="..."
+                    alt="RIAJ ANSARI"
                   />
                 </div>
                 <div class="news-card-content">
@@ -2753,7 +2785,13 @@
                   <p class="news-category">Biology Specialist</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty2-text">
-                      <p></p>
+                      <p>
+                        Dr. Begum holds a Ph.D. in Biotechnology and is renowned
+                        for her engaging teaching methods in Biology, making
+                        complex topics easy to understand. Her interactive
+                        sessions help students grasp biological concepts
+                        thoroughly.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2774,7 +2812,7 @@
                 <div class="soft-rect-frame">
                   <img
                     src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg"
-                    alt="null"
+                    alt="SAKIL SEIKH"
                   />
                 </div>
                 <div class="news-card-content">
@@ -2782,7 +2820,12 @@
                   <p class="news-category">Mathematics Expert</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty3-text">
-                      <p></p>
+                      <p>
+                        Mr. Ali is known for his innovative approach to teaching
+                        Mathematics, helping students master challenging
+                        concepts for JEE and NEET. He simplifies complex
+                        mathematical problems with clarity.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2803,7 +2846,7 @@
                 <div class="soft-rect-frame">
                   <img
                     src="http://aamsantragachi.org/wp-content/uploads/2025/09/be4dba1c-eb2f-4700-864e-4e58cf340d3e.jpeg"
-                    alt="hello"
+                    alt="AZIZ ALI"
                   />
                 </div>
                 <div class="news-card-content">
@@ -2811,7 +2854,12 @@
                   <p class="news-category">Chemistry Instructor</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty4-text">
-                      <p></p>
+                      <p>
+                        Ms. Rahman brings dynamic energy to the Chemistry
+                        department, making learning fun and effective for all
+                        students. Her practical demonstrations ensure strong
+                        foundations.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2832,7 +2880,7 @@
                 <div class="soft-rect-frame">
                   <img
                     src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG_20240720_204344_539-scaled.jpg"
-                    alt="AAA"
+                    alt="Sihab shahariyar"
                   />
                 </div>
                 <div class="news-card-content">
@@ -2840,7 +2888,12 @@
                   <p class="news-category">Senior Physics Lecturer</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty5-text">
-                      <p></p>
+                      <p>
+                        Prof. Farooq is celebrated for his clear explanations
+                        and deep understanding of complex physics principles,
+                        guiding students to top scores in competitive
+                        examinations.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2861,7 +2914,7 @@
                 <div class="soft-rect-frame">
                   <img
                     src="http://aamsantragachi.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-11-at-20.16.37.jpeg"
-                    alt="member"
+                    alt="Tarik Hassan"
                   />
                 </div>
                 <div class="news-card-content">
@@ -2869,7 +2922,11 @@
                   <p class="news-category">Biology Researcher</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty6-text">
-                      <p></p>
+                      <p>
+                        Dr. Bibi's research background enriches her Biology
+                        classes, providing students with real-world insights and
+                        advanced knowledge in life sciences.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2890,7 +2947,7 @@
                 <div class="soft-rect-frame">
                   <img
                     src="http://aamsantragachi.org/wp-content/uploads/2025/08/23fe0cff-1448-4bba-a9af-c98c91fd3502-1_all_978-scaled.jpg"
-                    alt="lll"
+                    alt="Asma jahan mausm"
                   />
                 </div>
                 <div class="news-card-content">
@@ -2898,7 +2955,11 @@
                   <p class="news-category">Chemistry Lab Incharge</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty7-text">
-                      <p></p>
+                      <p>
+                        Mr. Hossain ensures a safe and effective learning
+                        environment in chemistry labs, guiding students through
+                        practical experiments with meticulous care.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2924,7 +2985,11 @@
                   <p class="news-category">English Language Trainer</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty8-text">
-                      <p></p>
+                      <p>
+                        Ms. Khatun focuses on enhancing students' communication
+                        skills and preparing them for competitive exams
+                        requiring strong English proficiency.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2950,7 +3015,11 @@
                   <p class="news-category">Computer Science Instructor</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty9-text">
-                      <p></p>
+                      <p>
+                        Mr. Sheikh introduces students to the world of computer
+                        science, fostering analytical thinking and
+                        problem-solving skills for the digital age.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2976,7 +3045,11 @@
                   <p class="news-category">Counselor & Mentor</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty10-text">
-                      <p></p>
+                      <p>
+                        Ms. Parveen provides invaluable guidance and support to
+                        students, helping them navigate academic and personal
+                        challenges successfully.
+                      </p>
                     </div>
                     <span
                       class="read-more-link"
@@ -4378,19 +4451,22 @@
           itemWidth = 160; // Fallback if no items
         }
 
-        const itemsPerPage = Math.floor(scrollWrapper.clientWidth / itemWidth);
-        const totalPages = Math.ceil(scrollItems.length / itemsPerPage);
+        // For grid layout, we need to calculate how many items fit in a column before scrolling
+        // Assuming 3 rows, and each item is 10rem wide + gap
+        const itemsPerColumn = 3; // Since we want 3 rows
+        const totalColumns = Math.ceil(scrollItems.length / itemsPerColumn);
 
         scrollDotsContainer.innerHTML = "";
 
-        for (let i = 0; i < totalPages; i++) {
+        for (let i = 0; i < totalColumns; i++) {
           const dot = document.createElement("div");
           dot.classList.add("dot");
           dot.innerHTML = '<div class="progress-bar"></div>'; // Add progress bar
           if (i === 0) dot.classList.add("active");
 
           dot.addEventListener("click", () => {
-            const scrollPosition = i * itemsPerPage * itemWidth;
+            // Scroll by one "column" width
+            const scrollPosition = i * itemWidth; // Assuming itemWidth is the column width
             scrollWrapper.scrollTo({
               left: scrollPosition,
               behavior: "smooth",
@@ -4418,26 +4494,19 @@
           });
         }
 
-        scrollWrapper.addEventListener("scroll", () => {
-          const currentPage = Math.round(
-            scrollWrapper.scrollLeft / (itemsPerPage * itemWidth)
-          );
-          updateDots(currentPage);
-        });
-
         let autoScrollInterval;
-        let currentPage = 0;
+        let currentColumn = 0;
 
         function startAutoScroll() {
           stopAutoScroll();
           autoScrollInterval = setInterval(() => {
-            currentPage = (currentPage + 1) % totalPages;
-            const scrollPosition = currentPage * itemsPerPage * itemWidth;
+            currentColumn = (currentColumn + 1) % totalColumns;
+            const scrollPosition = currentColumn * itemWidth; // Scroll by one column
             scrollWrapper.scrollTo({
               left: scrollPosition,
               behavior: "smooth",
             });
-            updateDots(currentPage);
+            updateDots(currentColumn);
           }, autoScrollIntervalTime);
         }
 
@@ -4458,7 +4527,7 @@
         }
 
         startAutoScroll();
-        updateDots(currentPage); // Initial update for dots and progress bar
+        updateDots(currentColumn); // Initial update for dots and progress bar
 
         scrollContainer.addEventListener("mouseenter", stopAutoScroll);
         scrollContainer.addEventListener("mouseleave", startAutoScroll);
