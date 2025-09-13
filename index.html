@@ -8,21 +8,22 @@
     />
     <title>Al-Ameen Mission | Santragachi Circle</title>
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="41.jpg" sizes="32x32" />
+    <link
+      icon"
+      type="image/png"
+      href="http://aamsantragachi.org/wp-content/uploads/2025/09/IMG_20230814_182612-scaled.jpg"
+      sizes="32x32"
+    />
     <link rel="apple-touch-icon" href="17.jpg" />
 
-    <!-- Arabic Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
-      /* Reset and Modern Base */
       * {
         box-sizing: border-box;
         margin: 0;
@@ -36,21 +37,19 @@
 
       body {
         overflow-x: hidden;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        font-family: -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
         line-height: 1.6;
         color: #333;
       }
 
-      /* Modern CSS Custom Properties */
       :root {
-        /* Islamic-inspired color system */
         --primary-green: #2ea85d;
         --primary-green-light: #4aba7a;
         --primary-green-dark: #1e7a41;
         --secondary-blue: #1a5f8d;
         --secondary-blue-light: #2b7fb8;
-        --gold: #af934c;
+        --gold: #ffffff;
         --gold-light: #dacbae;
         --white: #ffffff;
         --light-gray: #f8f9fa;
@@ -60,7 +59,6 @@
         --shadow-medium: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
         --shadow-heavy: 0 1rem 3rem rgba(0, 0, 0, 0.2);
 
-        /* Fluid typography */
         --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
         --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
         --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
@@ -70,7 +68,6 @@
         --text-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem);
         --text-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3.5rem);
 
-        /* Responsive spacing */
         --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
         --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
         --space-md: clamp(1rem, 0.8rem + 1vw, 2rem);
@@ -78,14 +75,12 @@
         --space-xl: clamp(2rem, 1.6rem + 2vw, 4rem);
         --space-2xl: clamp(3rem, 2.4rem + 3vw, 6rem);
 
-        /* Modern transitions */
         --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
         --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         --transition-spring: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
 
-      /* Preloader */
       .preloader {
         position: fixed;
         inset: 0;
@@ -154,7 +149,6 @@
         }
       }
 
-      /* Enhanced Hero Section */
       .hero-section {
         position: fixed;
         top: 0;
@@ -169,10 +163,11 @@
         text-align: center;
         color: var(--white);
         background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(46, 168, 93, 0.3)),
-          url("41.jpg") center/cover no-repeat;
+          url("http://aamsantragachi.org/wp-content/uploads/2025/09/IMG_20230814_182612-scaled.jpg")
+            center/cover no-repeat;
         background-attachment: fixed;
         transition: opacity var(--transition-fast) linear;
-        will-change: opacity;
+        will-change: opacity, transform; /* Added transform to will-change */
       }
 
       .content-wrapper {
@@ -190,6 +185,7 @@
         border-radius: 50%;
         box-shadow: 0 0 3rem rgba(255, 215, 0, 0.3);
         transition: all var(--transition-normal);
+        will-change: transform, opacity;
       }
 
       .hero-wordmark {
@@ -200,6 +196,7 @@
         text-shadow: 0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.7);
         animation: fadeInUp 1s ease-out 0.3s both;
         transition: all var(--transition-normal);
+        will-change: transform, opacity;
       }
 
       .hero-subtitle {
@@ -210,6 +207,7 @@
         animation: fadeInUp 1s ease-out 0.5s both;
         text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
         transition: all var(--transition-normal);
+        will-change: transform, opacity;
       }
 
       .scroll-indicator {
@@ -220,6 +218,7 @@
         animation: fadeInUp 1s ease-out 0.8s both,
           bounce 2s ease-in-out infinite;
         transition: all var(--transition-normal);
+        will-change: transform, opacity;
       }
 
       .scroll-indicator a {
@@ -239,7 +238,6 @@
         transform: scale(1.1);
       }
 
-      /* Enhanced Header */
       .header {
         position: fixed;
         top: 0;
@@ -251,13 +249,13 @@
         transition: all var(--transition-normal);
         transform: translateY(0);
         box-shadow: var(--shadow-medium);
+        will-change: transform, background, backdrop-filter, box-shadow;
       }
 
       .header.nav-up {
         transform: translateY(-100%);
       }
 
-      /* Brand Bar */
       #brand-bar {
         background: linear-gradient(
           135deg,
@@ -267,6 +265,7 @@
         padding: var(--space-sm) 0;
         position: relative;
         animation: fadeInDown 0.6s ease-out;
+        will-change: transform, opacity;
       }
 
       #brand-bar .container {
@@ -288,6 +287,7 @@
         align-items: center;
         gap: var(--space-sm);
         transition: transform var(--transition-normal);
+        will-change: transform;
       }
 
       .su-brand:hover {
@@ -299,6 +299,7 @@
         width: 2rem;
         border-radius: 50%;
         animation: float 3s ease-in-out infinite;
+        will-change: transform;
       }
 
       #gateway {
@@ -330,6 +331,7 @@
         border-radius: 1.5rem;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(0.5rem);
+        will-change: transform, background, backdrop-filter;
       }
 
       #menu-gateway-nav a:hover {
@@ -337,7 +339,6 @@
         transform: translateY(-0.125rem);
       }
 
-      /* Three Dots Menu for Mobile */
       .menu-dots {
         display: none;
         flex-direction: column;
@@ -347,6 +348,7 @@
         cursor: pointer;
         padding: var(--space-sm);
         transition: all var(--transition-normal);
+        will-change: transform;
       }
 
       .menu-dots span {
@@ -369,7 +371,6 @@
         transform: rotate(-45deg) translate(0.4375rem, -0.375rem);
       }
 
-      /* Main Header Container */
       .header-container {
         display: flex;
         justify-content: center;
@@ -408,6 +409,7 @@
         white-space: nowrap;
         line-height: 1.2;
         position: relative;
+        will-change: transform, color;
       }
 
       .nav-menu a::after {
@@ -430,12 +432,11 @@
         width: 50%;
       }
 
-      /* Enhanced Mobile Menu */
       .mobile-menu {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 90%;
+        width: 70%;
         height: 100%;
         background: rgba(255, 255, 255, 0.255);
         backdrop-filter: blur(1.25rem);
@@ -447,6 +448,7 @@
         align-items: center;
         padding-top: 5rem;
         overflow-y: auto;
+        will-change: right;
       }
 
       .mobile-menu.active {
@@ -464,6 +466,7 @@
         cursor: pointer;
         transition: transform var(--transition-normal);
         z-index: 10000;
+        will-change: transform;
       }
 
       .mobile-menu-close:hover {
@@ -502,6 +505,7 @@
         background: var(--light-gray);
         box-shadow: var(--shadow-light);
         min-height: 5rem;
+        will-change: transform, background, box-shadow, color;
       }
 
       .mobile-menu-item:hover {
@@ -515,6 +519,7 @@
         font-size: var(--text-2xl);
         margin-bottom: var(--space-sm);
         transition: transform var(--transition-normal);
+        will-change: transform;
       }
 
       .mobile-menu-item:hover .menu-icon {
@@ -527,9 +532,8 @@
         letter-spacing: 0.05em;
       }
 
-      /* Panel and content styles */
       .panel {
-        padding: var(--space-2xl) 0;
+        padding: 0.5rem 0;
         position: relative;
         backdrop-filter: blur(0.625rem);
       }
@@ -584,7 +588,6 @@
         color: var(--dark-gray);
       }
 
-      /* Enhanced Islamic Quote */
       .islamic-quote {
         text-align: center;
         margin: var(--space-xl) 0;
@@ -597,9 +600,10 @@
         border-radius: 1.25rem;
         border-left: 0.375rem solid var(--primary-green);
         position: relative;
-        overflow: hidden;
+
         transition: all var(--transition-slow);
         box-shadow: var(--shadow-medium);
+        will-change: transform, box-shadow;
       }
 
       .islamic-quote::before {
@@ -635,7 +639,182 @@
         line-height: 1.6;
       }
 
-      /* Enhanced Cards */
+      .horizontal-scroll-section {
+        position: relative;
+        padding: var(--space-2xl) 0;
+        background: var(--light-gray);
+      }
+
+      .horizontal-scroll-container {
+        position: relative;
+        width: 100%;
+        margin: var(--space-xl) auto;
+        padding: var(--space-md) 0;
+      }
+
+      .horizontal-scroll-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0 var(--space-xl);
+        gap: var(--space-md);
+        scroll-behavior: smooth;
+      }
+
+      .horizontal-scroll-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      .horizontal-scroll-card {
+        flex: 0 0 auto;
+        width: clamp(20rem, 40vw, 30rem); /* Adjust card width as needed */
+        scroll-snap-align: center;
+        background: var(--white);
+        border-radius: 1.25rem;
+        box-shadow: var(--shadow-light);
+        transition: all var(--transition-spring);
+        position: relative;
+        will-change: transform, box-shadow;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-lg);
+      }
+
+      .horizontal-scroll-card:hover {
+        transform: translateY(-0.625rem);
+        box-shadow: var(--shadow-heavy);
+      }
+
+      .horizontal-scroll-card-image {
+        width: 100%;
+        height: 12rem; /* Fixed height for images */
+        border-radius: 0.9375rem;
+        margin-bottom: var(--space-md);
+        box-shadow: var(--shadow-medium);
+        overflow: hidden; /* Ensure image doesn't overflow rounded corners */
+      }
+
+      .horizontal-scroll-card-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-normal);
+      }
+
+      .horizontal-scroll-card:hover .horizontal-scroll-card-image img {
+        transform: scale(1.15);
+      }
+
+      .horizontal-scroll-card-content {
+        text-align: center;
+      }
+
+      .horizontal-scroll-card-content h3 {
+        font-size: var(--text-xl);
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+      }
+
+      .horizontal-scroll-card-content p {
+        font-size: var(--text-base);
+        line-height: 1.7;
+        color: var(--dark-gray);
+      }
+
+      .horizontal-scroll-indicators {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-md);
+        gap: var(--space-sm);
+      }
+
+      .horizontal-scroll-indicators .dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background: rgba(46, 168, 93, 0.3);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+        border: 0.125rem solid var(--primary-green);
+        position: relative; /* For progress bar */
+        overflow: hidden; /* For progress bar */
+      }
+
+      .horizontal-scroll-indicators .dot.active {
+        background: var(--primary-green);
+        transform: scale(1.3);
+      }
+
+      .horizontal-scroll-indicators .dot:hover {
+        background: var(--primary-green);
+        opacity: 0.8;
+      }
+
+      /* Progress bar for dots */
+      .horizontal-scroll-indicators .dot .progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--gold); /* Gold color for progress */
+        transition: width 0.1s linear; /* Smooth width transition */
+      }
+
+      .horizontal-scroll-indicators .dot.active .progress-bar {
+        animation: fillProgressBar 3s linear forwards; /* Animation duration matches auto-scroll */
+      }
+
+      @keyframes fillProgressBar {
+        from {
+          width: 0%;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      .horizontal-scroll-nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(46, 168, 93, 0.9);
+        color: white;
+        border: none;
+        font-size: var(--text-xl);
+        cursor: pointer;
+        padding: var(--space-md);
+        border-radius: 50%;
+        z-index: 10;
+        transition: all var(--transition-normal);
+        box-shadow: var(--shadow-light);
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        will-change: transform, background, box-shadow;
+      }
+
+      .horizontal-scroll-nav-button:hover {
+        background: var(--primary-green);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .horizontal-scroll-nav-button.left {
+        left: var(--space-sm);
+      }
+
+      .horizontal-scroll-nav-button.right {
+        right: var(--space-sm);
+      }
+
       .grid-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(21.875rem, 1fr));
@@ -646,12 +825,14 @@
       .highlight-card {
         background: var(--white);
         border-radius: 1.25rem;
-        overflow: hidden;
+
         box-shadow: var(--shadow-light);
         transition: all var(--transition-spring);
         position: relative;
+        will-change: transform, box-shadow;
       }
 
+      .news-card::before,
       .highlight-card::before {
         content: "";
         position: absolute;
@@ -666,13 +847,20 @@
         );
         opacity: 0;
         transition: opacity var(--transition-slow);
-        z-index: 1;
+        z-index: 0; /* আগে 1 ছিল, এখন নিচে */
       }
 
+      .news-card:hover::before,
       .highlight-card:hover::before {
-        opacity: 0.9;
+        opacity: 0.6;
       }
-
+      .news-card .soft-rect-frame,
+      .news-card .soft-rect-frame img,
+      .highlight-card .soft-rect-frame,
+      .highlight-card .soft-rect-frame img {
+        position: relative;
+        z-index: 2;
+      }
       .highlight-card:hover {
         transform: translateY(-0.9375rem) scale(1.02);
         box-shadow: var(--shadow-heavy);
@@ -684,7 +872,8 @@
         object-fit: cover;
         transition: transform var(--transition-slow);
         position: relative;
-        z-index: 3;
+        z-index: 2;
+        will-change: transform;
       }
 
       .highlight-card:hover img {
@@ -694,8 +883,9 @@
       .highlight-card-content {
         padding: var(--space-md);
         position: relative;
-        z-index: 4;
+        z-index: 3;
         transition: all var(--transition-slow);
+        will-change: color;
       }
 
       .highlight-card:hover .highlight-card-content {
@@ -714,7 +904,6 @@
         color: var(--white);
       }
 
-      /* Enhanced Buttons */
       .btn-ripple {
         display: inline-block;
         padding: var(--space-md) var(--space-lg);
@@ -728,13 +917,14 @@
         border-radius: 3.125rem;
         transition: all var(--transition-normal);
         position: relative;
-        overflow: hidden;
+
         font-weight: 600;
         letter-spacing: 0.05em;
-        box-shadow: 0 0.5rem 1.5625rem rgba(46, 168, 93, 0.3);
+        box-shadow: 0 0.5rem 1.56225rem rgba(46, 168, 93, 0.3);
         border: none;
         cursor: pointer;
         font-size: var(--text-base);
+        will-change: transform, box-shadow, background;
       }
 
       .btn-ripple:hover {
@@ -751,7 +941,6 @@
         margin: var(--space-xl) 0;
       }
 
-      /* Enhanced Secretary Section */
       .secretary-section {
         position: relative;
         padding: var(--space-2xl) 0;
@@ -781,6 +970,7 @@
         margin: 0 auto var(--space-md);
         box-shadow: var(--shadow-heavy);
         transition: transform var(--transition-normal);
+        will-change: transform;
       }
 
       .secretary-profile:hover {
@@ -797,7 +987,6 @@
         text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
       }
 
-      /* Enhanced Statistics */
       .stats-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
@@ -817,6 +1006,7 @@
         transition: all var(--transition-spring);
         backdrop-filter: blur(0.625rem);
         border: 0.0625rem solid rgba(46, 168, 93, 0.1);
+        will-change: transform, box-shadow, background, color;
       }
 
       .stat-item:hover {
@@ -854,11 +1044,10 @@
         color: var(--white);
       }
 
-      /* Enhanced News Section */
       .news-scroll-container {
         position: relative;
         width: 100%;
-        overflow: hidden;
+
         margin: var(--space-xl) auto;
         padding: var(--space-md) 0;
       }
@@ -882,6 +1071,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        will-change: transform, background, box-shadow;
       }
 
       .news-arrow:hover {
@@ -906,6 +1096,7 @@
         -ms-overflow-style: none;
         padding: 0 var(--space-xl);
         gap: var(--space-md);
+        scroll-behavior: smooth;
       }
 
       .news-scroll-wrapper::-webkit-scrollbar {
@@ -918,10 +1109,11 @@
         scroll-snap-align: center;
         background: var(--white);
         border-radius: 0.9375rem;
-        overflow: hidden;
+
         box-shadow: var(--shadow-light);
         transition: all var(--transition-spring);
         position: relative;
+        will-change: transform, box-shadow;
       }
 
       .news-card::before {
@@ -938,7 +1130,7 @@
         );
         opacity: 0;
         transition: opacity var(--transition-slow);
-        z-index: 1;
+        z-index: 0;
       }
 
       .news-card:hover::before {
@@ -957,10 +1149,11 @@
         transition: transform var(--transition-slow);
         position: relative;
         z-index: 3;
+        will-change: transform;
       }
 
       .news-card:hover img {
-        transform: scale(1.1);
+        transform: scale(1.15);
       }
 
       .news-card-content {
@@ -968,12 +1161,14 @@
         position: relative;
         z-index: 4;
         transition: all var(--transition-slow);
+        will-change: color;
       }
 
       .news-card:hover .news-card-content {
+        background: linear-gradient(135deg, var(--primary-green-dark));
         color: var(--white);
+        border-radius: 0 0 1.25rem 1.25rem;
       }
-
       .news-card h3 {
         font-size: var(--text-lg);
         margin-bottom: var(--space-sm);
@@ -997,7 +1192,103 @@
         color: var(--white);
       }
 
-      /* Enhanced Footer */
+      .results-section {
+        position: relative;
+        padding: var(--space-2xl) 0;
+      }
+
+      .results-scroll-container {
+        position: relative;
+        width: 100%;
+
+        margin: var(--space-xl) auto;
+      }
+
+      .results-scroll-wrapper {
+        display: flex;
+        gap: var(--space-lg);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: var(--space-md) var(--space-lg);
+        scroll-behavior: smooth;
+      }
+
+      .results-scroll-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      .result-card {
+        flex: 0 0 auto;
+        width: clamp(18rem, 22vw, 22rem);
+        scroll-snap-align: center;
+        background: var(--white);
+        border-radius: 1.25rem;
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-light);
+        transition: all var(--transition-spring);
+        text-align: center;
+        border: 2px solid transparent;
+        will-change: transform, box-shadow, border-color;
+      }
+
+      .result-card:hover {
+        transform: translateY(-0.625rem);
+        box-shadow: var(--shadow-heavy);
+        border-color: var(--primary-green);
+      }
+
+      .result-card h3 {
+        font-size: var(--text-xl);
+        color: var(--primary-green);
+        margin-bottom: var(--space-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm);
+      }
+
+      .result-card p {
+        margin-bottom: var(--space-lg);
+        color: #666;
+      }
+
+      .results-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(46, 168, 93, 0.9);
+        color: white;
+        border: none;
+        font-size: var(--text-xl);
+        cursor: pointer;
+        padding: var(--space-md);
+        border-radius: 50%;
+        z-index: 10;
+        transition: all var(--transition-normal);
+        box-shadow: var(--shadow-light);
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        will-change: transform, background, box-shadow;
+      }
+
+      .results-arrow:hover {
+        background: var(--primary-green);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .results-arrow.left {
+        left: var(--space-sm);
+      }
+
+      .results-arrow.right {
+        right: var(--space-sm);
+      }
+
       footer {
         background: linear-gradient(135deg, var(--dark-gray), #1a1a1a);
         color: var(--white);
@@ -1032,6 +1323,7 @@
         line-height: 2.2;
         transition: all var(--transition-normal);
         display: inline-block;
+        will-change: transform, color;
       }
 
       .footer-section a:hover {
@@ -1047,7 +1339,6 @@
         color: #999;
       }
 
-      /* Animation keyframes */
       @keyframes zoomIn {
         from {
           opacity: 0;
@@ -1107,19 +1398,18 @@
         }
       }
 
-      /* Expandable content styles */
       .expandable-content {
         position: relative;
       }
 
       .expandable-text {
-        overflow: hidden;
         transition: max-height var(--transition-normal) ease;
         max-height: 5.8125rem;
+        overflow: hidden;
       }
 
       .expandable-text.expanded {
-        max-height: 62.5rem;
+        max-height: 62.5rem; /* Sufficiently large value */
       }
 
       .read-more-link {
@@ -1167,12 +1457,15 @@
         display: block;
       }
 
-      .highlight-card:hover .read-more-link {
-        color: white !important;
+      /* Read more/Show less button color change on card hover */
+      .highlight-card:hover .read-more-link,
+      .news-card:hover .read-more-link {
+        color: var(--white) !important;
       }
 
-      .highlight-card:hover .show-less-btn.active {
-        background: white !important;
+      .highlight-card:hover .show-less-btn.active,
+      .news-card:hover .show-less-btn.active {
+        background: var(--white) !important;
         color: var(--dark-gray) !important;
       }
 
@@ -1185,7 +1478,7 @@
       .scroll-container {
         position: relative;
         width: 100%;
-        overflow: hidden;
+
         margin: var(--space-xl) auto;
         padding: var(--space-md) 0;
       }
@@ -1199,6 +1492,7 @@
         -ms-overflow-style: none;
         padding: 0 var(--space-md);
         gap: var(--space-sm);
+        scroll-behavior: smooth; /* Added for smooth scrolling */
       }
 
       .scroll-wrapper::-webkit-scrollbar {
@@ -1219,7 +1513,8 @@
         box-shadow: var(--shadow-light);
         transition: all var(--transition-normal);
         position: relative;
-        overflow: hidden;
+
+        will-change: transform, box-shadow;
       }
 
       .scroll-item:hover {
@@ -1235,6 +1530,7 @@
         border: 0.1875rem solid var(--primary-green);
         margin-bottom: var(--space-sm);
         transition: transform var(--transition-normal);
+        will-change: transform;
       }
 
       .scroll-item:hover img {
@@ -1265,6 +1561,8 @@
         cursor: pointer;
         transition: all var(--transition-normal);
         border: 0.125rem solid var(--primary-green);
+        position: relative; /* For progress bar */
+        overflow: hidden; /* For progress bar */
       }
 
       .dot.active {
@@ -1275,6 +1573,21 @@
       .dot:hover {
         background: var(--primary-green);
         opacity: 0.8;
+      }
+
+      /* Progress bar for dots */
+      .dot .progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--gold); /* Gold color for progress */
+        transition: width 0.1s linear; /* Smooth width transition */
+      }
+
+      .dot.active .progress-bar {
+        animation: fillProgressBar 3s linear forwards; /* Animation duration matches auto-scroll */
       }
 
       /* Social Icons */
@@ -1292,6 +1605,7 @@
         transition: all var(--transition-normal);
         cursor: pointer;
         filter: grayscale(100%);
+        will-change: transform, filter, box-shadow;
       }
 
       .social-logos img.social-icon:hover {
@@ -1390,6 +1704,7 @@
         text-align: center;
         box-shadow: var(--shadow-light);
         transition: transform var(--transition-normal);
+        will-change: transform;
       }
 
       .modal-card:hover {
@@ -1499,6 +1814,9 @@
       .student-portal-results .download-btn:hover {
         background: #0056b3;
       }
+      @media (max-width: 768px) {
+
+      }
 
       /* Mobile Responsive */
       @media (max-width: 48rem) {
@@ -1567,6 +1885,41 @@
         .modal-content {
           max-width: 95%;
         }
+
+        .horizontal-scroll-card {
+          flex-direction: column;
+          width: 95%;
+          height: auto;
+          padding: var(--space-md);
+        }
+
+        .horizontal-scroll-card-image {
+          width: 100%;
+          height: 12rem;
+          margin-bottom: var(--space-md);
+        }
+
+        .horizontal-scroll-card-content {
+          width: 100%;
+          padding: 0;
+          text-align: center;
+        }
+
+        .horizontal-scroll-card-content h3 {
+          font-size: var(--text-xl);
+        }
+
+        .horizontal-scroll-card-content p {
+          font-size: var(--text-sm);
+        }
+
+        .results-scroll-wrapper {
+          padding: var(--space-md);
+        }
+
+        .result-card {
+          width: clamp(16rem, 80vw, 18rem);
+        }
       }
 
       @media (max-width: 30rem) {
@@ -1606,7 +1959,84 @@
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
         }
+
+        /* Disable 3D transforms and complex animations for horizontal scroll sections */
+        .horizontal-scroll-card {
+          transform: none !important;
+          opacity: 1 !important;
+          transition: none !important;
+        }
+
+        .horizontal-scroll-card-image img {
+          transform: none !important;
+          filter: none !important;
+          opacity: 1 !important;
+          box-shadow: none !important;
+          transition: none !important;
+        }
       }
+
+      html,
+      body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: auto;
+        touch-action: auto;
+      }
+
+      /* Ensure parent frame clips image and image zooms from center */
+      .soft-rect-frame,
+      .horizontal-scroll-card-image,
+      .scroll-item {
+        overflow: hidden; /* parent clips overflow */
+        position: relative;
+      }
+
+      .soft-rect-frame img,
+      .horizontal-scroll-card-image img,
+      .scroll-item img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* fill frame without stretching */
+        object-position: center center; /* keep center visible */
+        transform-origin: center center; /* zoom from center of frame */
+        transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.2, 1);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-transform: translateZ(0);
+      }
+
+      /* Hover zoom (change scale value if you want stronger/weaker zoom) */
+      .soft-rect-frame:hover img,
+      .horizontal-scroll-card-image:hover img,
+      .scroll-item:hover img {
+        transform: scale(1.15);
+      }
+
+      /* Pin/3D slide animation helpers (will-change + safer defaults) */
+      .slide,
+      .slides,
+      .pin-slide {
+        will-change: transform, opacity, filter;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+      }
+
+      .pin-scroll-container {
+        perspective: 1200px; /* depth context for 3D */
+        -webkit-perspective: 1200px;
+      }
+
+      /* Subtle preset: less rotation/translate/blur for mobile-safety */
+      .pin-slide .slide-media {
+        transition: transform 600ms cubic-bezier(0.2, 0.9, 0.2, 1),
+          filter 600ms;
+        transform-origin: center center;
+      }
+
+
+
     </style>
   </head>
 
@@ -1615,7 +2045,7 @@
     <div class="preloader" id="preloader">
       <div class="preloader-content">
         <img
-          src="https://play-lh.googleusercontent.com/gufR1twVlU6_SzC-iIAD_8bLLf-XYVAwwwwJF-cphD32IX0GeHNLi4GrN42hRYDHg-A"
+          src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG-20250630-WA0014.jpg"
           alt="Loading"
           class="preloader-logo"
         />
@@ -1629,11 +2059,11 @@
         <div class="container">
           <a href="#top" class="su-brand">
             <img
-              src="https://play-lh.googleusercontent.com/gufR1twVlU6_SzC-iIAD_8bLLf-XYVAwwwwJF-cphD32IX0GeHNLi4GrN42hRYDHg-A"
+              src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG-20250630-WA0014.jpg"
               alt="Mission Logo"
               class="brand-logo"
             />
-            Al-Ameen Mission
+            Al-Ameen Mission Trust
           </a>
 
           <!-- Three Dots Menu for Mobile -->
@@ -1653,6 +2083,15 @@
               <li>
                 <a href="#hall-of-fame" class="btn-ripple">Hall of Fame</a>
               </li>
+              <!-- NEW: Alumni button for desktop -->
+              <li>
+                <a
+                  href="https://aamsantragachi.org/our-alumni/"
+                  target="_blank"
+                  class="btn-ripple"
+                  >Alumni</a
+                >
+              </li>
               <li>
                 <a
                   href="https://aamsystem.in/applications/"
@@ -1668,12 +2107,30 @@
 
       <div class="header-container">
         <nav class="nav-menu">
-          <a href="#programs">Faculty & Staff</a>
-          <a href="#admission">Academic Programs</a>
-          <a href="#admission">Admission</a>
-          <a href="#hall-of-fame">Our Impact</a>
-          <a href="#results">Results</a>
-          <a href="#contact">Contact</a>
+          <a
+            href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#faculty"
+            >Faculty & Staff</a
+          >
+          <a
+            href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#programs"
+            >Academic Programs</a
+          >
+          <a
+            href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#admission"
+            >Admission</a
+          >
+          <a
+            href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#hall-of-fame"
+            >Our Impact</a
+          >
+          <a
+            href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#results"
+            >Results</a
+          >
+          <a
+            href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#contact"
+            >Contact</a
+          >
         </nav>
       </div>
     </header>
@@ -1686,27 +2143,45 @@
           <span class="menu-icon">📖</span>
           <span>Mission</span>
         </a>
-        <a href="#admission" class="mobile-menu-item">
+        <a
+          href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#admission"
+          class="mobile-menu-item"
+        >
           <span class="menu-icon">📝</span>
           <span>Admission</span>
         </a>
-        <a href="#programs" class="mobile-menu-item">
+        <a
+          href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#faculty"
+          class="mobile-menu-item"
+        >
           <span class="menu-icon">👥</span>
           <span>Faculty</span>
         </a>
-        <a href="#programs" class="mobile-menu-item">
+        <a
+          href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#programs"
+          class="mobile-menu-item"
+        >
           <span class="menu-icon">📚</span>
           <span>Programs</span>
         </a>
-        <a href="#hall-of-fame" class="mobile-menu-item">
+        <a
+          href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#hall-of-fame"
+          class="mobile-menu-item"
+        >
           <span class="menu-icon">🏆</span>
           <span>Impact</span>
         </a>
-        <a href="#results" class="mobile-menu-item">
+        <a
+          href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#results"
+          class="mobile-menu-item"
+        >
           <span class="menu-icon">📊</span>
           <span>Results</span>
         </a>
-        <a href="#contact" class="mobile-menu-item">
+        <a
+          href="file:///C:/Users/SUBHRAs_Expertbook/Desktop/AAMAN/index11.html#contact"
+          class="mobile-menu-item"
+        >
           <span class="menu-icon">📞</span>
           <span>Contact</span>
         </a>
@@ -1715,7 +2190,7 @@
           target="_blank"
           class="mobile-menu-item"
         >
-          <span class="menu-icon">✍️</span>
+          <span class="menu-icon">✏️</span>
           <span>Apply</span>
         </a>
       </div>
@@ -1729,8 +2204,9 @@
           <span class="menu-icon">🌟</span>
           <span>Hall Of Fame</span>
         </a>
+        <!-- NEW: Alumni button for mobile -->
         <a
-          href="https://www.youtube.com"
+          href="https://aamsantragachi.org/our-alumni/"
           target="_blank"
           class="mobile-menu-item"
         >
@@ -1743,7 +2219,7 @@
     <!-- Hero Section (Fixed Background) -->
     <section class="hero-section" id="heroSection">
       <img
-        src="https://play-lh.googleusercontent.com/gufR1twVlU6_SzC-iIAD_8bLLf-XYVAwwwwJF-cphD32IX0GeHNLi4GrN42hRYDHg-A"
+        src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG-20250630-WA0014.jpg"
         alt="Mission Logo"
         class="hero-logo"
       />
@@ -1791,102 +2267,96 @@
         </div>
       </section>
 
-      <!-- Why Choose Us Section -->
-      <section class="panel theme--fog" data-aos="fade-up">
+      <!-- Why Choose Us Section - Now with Horizontal Scroll -->
+      <section
+        id="why-choose-us"
+        class="horizontal-scroll-section panel theme--fog"
+        data-aos="fade-up"
+      >
         <div class="container">
           <header>
             <h2>Why Choose Us?</h2>
             <p>Excellence in education with Islamic values</p>
           </header>
 
-          <div class="grid-container">
-            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="100">
-              <img src="2.jpg" alt="Hostel" />
-              <div class="highlight-card-content">
-                <h3>🏡 Hostel Accommodation</h3>
-                <div class="expandable-content">
-                  <div class="expandable-text" id="hostel-text">
-                    <p>
-                      Clean, secure, disciplined campus life with all modern
-                      amenities for comfortable student living. Our hostel
-                      provides a safe and nurturing environment where students
-                      can focus on their studies while developing life skills
-                      and friendships that last a lifetime.
-                    </p>
-                  </div>
-                  <span
-                    class="read-more-link"
-                    onclick="toggleExpand('hostel-text', this)"
-                    >Read more</span
-                  >
-                  <button
-                    class="show-less-btn"
-                    onclick="toggleExpand('hostel-text', this.previousElementSibling)"
-                  >
-                    Show less
-                  </button>
+          <div class="horizontal-scroll-container">
+            <button
+              class="horizontal-scroll-nav-button left"
+              id="whyChooseUsPrev"
+              aria-label="Previous slide"
+            >
+              ‹
+            </button>
+            <div class="horizontal-scroll-wrapper" id="whyChooseUsScroll">
+              <div class="horizontal-scroll-card">
+                <div class="horizontal-scroll-card-image">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/01/20250111_005422_0000.jpg"
+                    alt="Hostel Accommodation"
+                  />
+                </div>
+                <div class="horizontal-scroll-card-content">
+                  <h3>🏡 Hostel Accommodation</h3>
+                  <p>
+                    Clean, secure, disciplined campus life with all modern
+                    amenities for comfortable student living. Our hostel
+                    provides a safe and nurturing environment where students can
+                    focus on their studies while developing life skills and
+                    friendships that last a lifetime. We maintain strict
+                    discipline while ensuring students feel at home.
+                  </p>
+                </div>
+              </div>
+              <div class="horizontal-scroll-card">
+                <div class="horizontal-scroll-card-image">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/01/20250111_005422_0000.jpg"
+                    alt="Islamic Environment"
+                  />
+                </div>
+                <div class="horizontal-scroll-card-content">
+                  <h3>🕌 Islamic Environment</h3>
+                  <p>
+                    Prayer halls and daily moral education to nurture spiritual
+                    growth alongside academic excellence. We provide a balanced
+                    environment where students can strengthen their faith while
+                    pursuing their educational goals, creating well-rounded
+                    individuals who contribute positively to society with strong
+                    moral foundations.
+                  </p>
+                </div>
+              </div>
+              <div class="horizontal-scroll-card">
+                <div class="horizontal-scroll-card-image">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/01/20250111_005422_0000.jpg"
+                    alt="Digital Classrooms"
+                  />
+                </div>
+                <div class="horizontal-scroll-card-content">
+                  <h3>💻 Digital Classrooms</h3>
+                  <p>
+                    Modern smart-class facilities for interactive and engaging
+                    learning experiences. Our state-of-art technology enhances
+                    the learning process, making complex concepts easier to
+                    understand and retain through multimedia presentations,
+                    interactive sessions, and digital resources that prepare
+                    students for the modern world.
+                  </p>
                 </div>
               </div>
             </div>
-
-            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="200">
-              <img src="3.jpg" alt="Islamic Environment" />
-              <div class="highlight-card-content">
-                <h3>🕌 Islamic Environment</h3>
-                <div class="expandable-content">
-                  <div class="expandable-text" id="islamic-text">
-                    <p>
-                      Prayer halls and daily moral education to nurture
-                      spiritual growth alongside academic excellence. We provide
-                      a balanced environment where students can strengthen their
-                      faith while pursuing their educational goals, creating
-                      well-rounded individuals who contribute positively to
-                      society.
-                    </p>
-                  </div>
-                  <span
-                    class="read-more-link"
-                    onclick="toggleExpand('islamic-text', this)"
-                    >Read more</span
-                  >
-                  <button
-                    class="show-less-btn"
-                    onclick="toggleExpand('islamic-text', this.previousElementSibling)"
-                  >
-                    Show less
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="300">
-              <img src="4.jpg" alt="Digital Classrooms" />
-              <div class="highlight-card-content">
-                <h3>💻 Digital Classrooms</h3>
-                <div class="expandable-content">
-                  <div class="expandable-text" id="digital-text">
-                    <p>
-                      Modern smart-class facilities for interactive and engaging
-                      learning experiences. Our state-of-the-art technology
-                      enhances the learning process, making complex concepts
-                      easier to understand and retain through multimedia
-                      presentations and interactive sessions.
-                    </p>
-                  </div>
-                  <span
-                    class="read-more-link"
-                    onclick="toggleExpand('digital-text', this)"
-                    >Read more</span
-                  >
-                  <button
-                    class="show-less-btn"
-                    onclick="toggleExpand('digital-text', this.previousElementSibling)"
-                  >
-                    Show less
-                  </button>
-                </div>
-              </div>
-            </div>
+            <button
+              class="horizontal-scroll-nav-button right"
+              id="whyChooseUsNext"
+              aria-label="Next slide"
+            >
+              ›
+            </button>
+            <div
+              class="horizontal-scroll-indicators"
+              id="whyChooseUsDots"
+            ></div>
           </div>
         </div>
       </section>
@@ -1894,7 +2364,11 @@
       <!-- General Secretary Section -->
       <section class="secretary-section" data-aos="fade-up">
         <div class="secretary-container">
-          <img src="43.png" alt="General Secretary" class="secretary-profile" />
+          <img
+            src="http://aamsantragachi.org/wp-content/uploads/2025/08/gs.png"
+            alt="General Secretary"
+            class="secretary-profile"
+          />
 
           <div class="expandable-content">
             <div class="expandable-text" id="secretary-text">
@@ -1949,7 +2423,12 @@
             </button>
             <div class="news-scroll-wrapper" id="newsScroll">
               <article class="news-card">
-                <img src="5.jpg" alt="News" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/FB_IMG_1754170589469.jpg"
+                    alt="News"
+                  />
+                </div>
                 <div class="news-card-content">
                   <p class="news-category">Academic Achievement</p>
                   <h3>Outstanding NEET Results 2025</h3>
@@ -1978,7 +2457,12 @@
               </article>
 
               <article class="news-card">
-                <img src="16.jpg" alt="News" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/FB_IMG_1754170589469.jpg"
+                    alt="News"
+                  />
+                </div>
                 <div class="news-card-content">
                   <p class="news-category">Campus Event</p>
                   <h3>Annual Science Fair Success</h3>
@@ -2007,7 +2491,12 @@
               </article>
 
               <article class="news-card">
-                <img src="6.jpg" alt="News" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/FB_IMG_1754170589469.jpg"
+                    alt="News"
+                  />
+                </div>
                 <div class="news-card-content">
                   <p class="news-category">Achievement</p>
                   <h3>JEE Main Top Performers</h3>
@@ -2036,7 +2525,12 @@
               </article>
 
               <article class="news-card">
-                <img src="7.jpg" alt="News" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/FB_IMG_1754170589469.jpg"
+                    alt="News"
+                  />
+                </div>
                 <div class="news-card-content">
                   <p class="news-category">Sports</p>
                   <h3>Inter-School Cricket Championship</h3>
@@ -2137,36 +2631,57 @@
           <div class="scroll-container" id="hallOfFameScroll">
             <div class="scroll-wrapper">
               <div class="scroll-item">
-                <img src="images.jpeg" alt="Student 1" />
-                <span>Ahmed Khan</span>
+                <img
+                  src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000017786-1.jpg"
+                  alt="Student 1"
+                />
+                <span>Abdul Rajeb Sk</span>
               </div>
               <div class="scroll-item">
-                <img src="8.jpg" alt="Student 2" />
-                <span>Fatima Begum</span>
+                <img
+                  src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000010923-scaled-e1757749134558.jpg"
+                  alt="Student 2"
+                />
+                <span>Sekh Asif Ahamed</span>
               </div>
               <div class="scroll-item">
-                <img src="9.jpg" alt="Student 3" />
-                <span>Mohammed Ali</span>
+                <img
+                  src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG20250812122430-1-scaled-e1757749202962.jpg"
+                  alt="Student 3"
+                />
+                <span>Md Aminul Islam</span>
               </div>
               <div class="scroll-item">
-                <img src="10.jpg" alt="Student 4" />
-                <span>Aisha Rahman</span>
+                <img
+                  src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000038560.jpg"
+                  alt="Student 4"
+                />
+                <span>Arij Arman Mandal</span>
               </div>
               <div class="scroll-item">
-                <img src="11.jpg" alt="Student 5" />
-                <span>Omar Farooq</span>
+                <img
+                  src="http://aamsantragachi.org/wp-content/uploads/2025/08/2156-scaled.jpg"
+                  alt="Student 5"
+                />
+                <span>JAVED AKHTAR</span>
               </div>
               <div class="scroll-item">
-                <img src="12.jpg" alt="Student 6" />
-                <span>Zainab Bibi</span>
+                <img
+                  src="http://aamsantragachi.org/wp-content/uploads/2025/08/20200122163939_IMG_5972-1-scaled.jpg"
+                  alt="Student 6"
+                />
+                <span>SAYED IKBAL</span>
               </div>
               <div class="scroll-item">
                 <img src="13.jpg" alt="Student 7" />
                 <span>Imran Hossain</span>
               </div>
               <div class="scroll-item">
-                <img src="14.jpg" alt="Student 8" />
-                <span>Sana Khatun</span>
+                <img
+                  src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000012238-1-scaled.jpg"
+                  alt="Student 8"
+                />
+                <span>Sk Nilay Islam</span>
               </div>
             </div>
           </div>
@@ -2180,7 +2695,7 @@
       </section>
 
       <!-- Faculty & Staff Section -->
-      <section id="programs" class="panel theme--fog" data-aos="fade-up">
+      <section id="faculty" class="panel theme--fog" data-aos="fade-up">
         <div class="container">
           <header>
             <h2>Our Esteemed Faculty & Staff</h2>
@@ -2198,17 +2713,18 @@
             <div class="news-scroll-wrapper" id="facultyScroll">
               <!-- Faculty Member 1 -->
               <article class="news-card faculty-card">
-                <img src="1.jpg" alt="Prof. Ahmed" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000035857-scaled.jpg"
+                    alt="hello world"
+                  />
+                </div>
                 <div class="news-card-content">
-                  <h3>Prof. Ahmed Khan</h3>
+                  <h3>KM Haque</h3>
                   <p class="news-category">Head of Physics Dept.</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty1-text">
-                      <p>
-                        Prof. Khan is a veteran educator with over 20 years of
-                        experience in teaching advanced physics. His passion for
-                        science inspires students to achieve excellence.
-                      </p>
+                      <p>Super</p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2226,17 +2742,18 @@
               </article>
               <!-- Faculty Member 2 -->
               <article class="news-card faculty-card">
-                <img src="2.jpg" alt="Dr. Fatima" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/Screenshot_2025-08-24-10-56-52-376_com.miui_.gallery.jpg"
+                    alt="..."
+                  />
+                </div>
                 <div class="news-card-content">
-                  <h3>Dr. Fatima Begum</h3>
+                  <h3>RIAJ ANSARI</h3>
                   <p class="news-category">Biology Specialist</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty2-text">
-                      <p>
-                        Dr. Begum holds a Ph.D. in Biotechnology and is renowned
-                        for her engaging teaching methods in Biology, making
-                        complex topics easy to understand.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2254,17 +2771,18 @@
               </article>
               <!-- Faculty Member 3 -->
               <article class="news-card faculty-card">
-                <img src="3.jpg" alt="Mr. Mohammed" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg"
+                    alt="null"
+                  />
+                </div>
                 <div class="news-card-content">
-                  <h3>Mr. Mohammed Ali</h3>
+                  <h3>SAKIL SEIKH</h3>
                   <p class="news-category">Mathematics Expert</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty3-text">
-                      <p>
-                        Mr. Ali is known for his innovative approach to teaching
-                        Mathematics, helping students master challenging
-                        concepts for JEE and NEET.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2282,17 +2800,18 @@
               </article>
               <!-- Faculty Member 4 -->
               <article class="news-card faculty-card">
-                <img src="4.jpg" alt="Ms. Aisha" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/09/be4dba1c-eb2f-4700-864e-4e58cf340d3e.jpeg"
+                    alt="hello"
+                  />
+                </div>
                 <div class="news-card-content">
-                  <h3>Ms. Aisha Rahman</h3>
+                  <h3>AZIZ ALI</h3>
                   <p class="news-category">Chemistry Instructor</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty4-text">
-                      <p>
-                        Ms. Rahman brings a dynamic energy to the Chemistry
-                        department, making learning fun and effective for all
-                        students.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2310,17 +2829,18 @@
               </article>
               <!-- Faculty Member 5 -->
               <article class="news-card faculty-card">
-                <img src="5.jpg" alt="Prof. Omar" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG_20240720_204344_539-scaled.jpg"
+                    alt="AAA"
+                  />
+                </div>
                 <div class="news-card-content">
-                  <h3>Prof. Omar Farooq</h3>
+                  <h3>Sihab shahariyar</h3>
                   <p class="news-category">Senior Physics Lecturer</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty5-text">
-                      <p>
-                        Prof. Farooq is celebrated for his clear explanations
-                        and deep understanding of complex physics principles,
-                        guiding students to top scores.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2338,17 +2858,18 @@
               </article>
               <!-- Faculty Member 6 -->
               <article class="news-card faculty-card">
-                <img src="6.jpg" alt="Dr. Zainab" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-11-at-20.16.37.jpeg"
+                    alt="member"
+                  />
+                </div>
                 <div class="news-card-content">
-                  <h3>Dr. Zainab Bibi</h3>
+                  <h3>Tarik Hassan</h3>
                   <p class="news-category">Biology Researcher</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty6-text">
-                      <p>
-                        Dr. Bibi's research background enriches her Biology
-                        classes, providing students with real-world insights and
-                        advanced knowledge.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2366,17 +2887,18 @@
               </article>
               <!-- Faculty Member 7 -->
               <article class="news-card faculty-card">
-                <img src="7.jpg" alt="Mr. Imran" />
+                <div class="soft-rect-frame">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/23fe0cff-1448-4bba-a9af-c98c91fd3502-1_all_978-scaled.jpg"
+                    alt="lll"
+                  />
+                </div>
                 <div class="news-card-content">
-                  <h3>Mr. Imran Hossain</h3>
+                  <h3>Asma jahan mausm</h3>
                   <p class="news-category">Chemistry Lab Incharge</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty7-text">
-                      <p>
-                        Mr. Hossain ensures a safe and effective learning
-                        environment in the chemistry labs, guiding students
-                        through practical experiments.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2394,17 +2916,15 @@
               </article>
               <!-- Faculty Member 8 -->
               <article class="news-card faculty-card">
-                <img src="8.jpg" alt="Ms. Sana" />
+                <div class="soft-rect-frame">
+                  <img src="8.jpg" alt="M" />
+                </div>
                 <div class="news-card-content">
-                  <h3>Ms. Sana Khatun</h3>
+                  <h3>M</h3>
                   <p class="news-category">English Language Trainer</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty8-text">
-                      <p>
-                        Ms. Khatun focuses on enhancing students' communication
-                        skills and preparing them for competitive exams
-                        requiring strong English proficiency.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2422,17 +2942,15 @@
               </article>
               <!-- Faculty Member 9 -->
               <article class="news-card faculty-card">
-                <img src="9.jpg" alt="Mr. Rahman" />
+                <div class="soft-rect-frame">
+                  <img src="9.jpg" alt="M" />
+                </div>
                 <div class="news-card-content">
-                  <h3>Mr. Rahman Sheikh</h3>
+                  <h3>M</h3>
                   <p class="news-category">Computer Science Instructor</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty9-text">
-                      <p>
-                        Mr. Sheikh introduces students to the world of computer
-                        science, fostering analytical thinking and
-                        problem-solving skills.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2450,17 +2968,15 @@
               </article>
               <!-- Faculty Member 10 -->
               <article class="news-card faculty-card">
-                <img src="10.jpg" alt="Ms. Nazia" />
+                <div class="soft-rect-frame">
+                  <img src="10.jpg" alt="M" />
+                </div>
                 <div class="news-card-content">
-                  <h3>Ms. Nazia Parveen</h3>
+                  <h3>M</h3>
                   <p class="news-category">Counselor & Mentor</p>
                   <div class="expandable-content">
                     <div class="expandable-text" id="faculty10-text">
-                      <p>
-                        Ms. Parveen provides invaluable guidance and support to
-                        students, helping them navigate academic and personal
-                        challenges.
-                      </p>
+                      <p></p>
                     </div>
                     <span
                       class="read-more-link"
@@ -2494,105 +3010,99 @@
         </div>
       </section>
 
-      <!-- Academic Programs -->
-      <section id="admission" class="panel theme--white" data-aos="fade-up">
+      <section
+        id="programs"
+        class="horizontal-scroll-section panel theme--white"
+        data-aos="fade-up"
+      >
         <div class="container">
           <header>
             <h2>Academic Programs</h2>
             <p>Comprehensive education programs for aspiring professionals</p>
           </header>
 
-          <div class="grid-container">
-            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="100">
-              <img src="Screenshot 2025-09-11 023930.png" alt="Science" />
-              <div class="highlight-card-content">
-                <h3>Class XI & XII Science</h3>
-                <div class="expandable-content">
-                  <div class="expandable-text" id="prog1-text">
-                    <p>
-                      Comprehensive science curriculum with focus on board
-                      examinations and competitive preparation. Our experienced
-                      faculty provides personalized attention to ensure every
-                      student excels in Physics, Chemistry, Biology/Mathematics
-                      with practical lab sessions, regular assessments, and
-                      doubt clearing classes.
-                    </p>
-                  </div>
-                  <span
-                    class="read-more-link"
-                    onclick="toggleExpand('prog1-text', this)"
-                    >Read more</span
-                  >
-                  <button
-                    class="show-less-btn"
-                    onclick="toggleExpand('prog1-text', this.previousElementSibling)"
-                  >
-                    Show less
-                  </button>
+          <div class="horizontal-scroll-container">
+            <button
+              class="horizontal-scroll-nav-button left"
+              id="programsPrev"
+              aria-label="Previous slide"
+            >
+              ‹
+            </button>
+            <div class="horizontal-scroll-wrapper" id="programsScroll">
+              <div class="horizontal-scroll-card">
+                <div class="horizontal-scroll-card-image">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/09/IMG_20230814_182612-scaled.jpg"
+                    alt="Science"
+                    class="soft-rect-frame"
+                  />
+                </div>
+                <div class="horizontal-scroll-card-content">
+                  <h3>Class XI & XII Science</h3>
+                  <p>
+                    Comprehensive science curriculum with focus on board
+                    examinations and competitive preparation. Our experienced
+                    faculty provides personalized attention to ensure every
+                    student excels in Physics, Chemistry, Biology/Mathematics
+                    with practical lab sessions, regular assessments, and doubt
+                    clearing classes.
+                  </p>
                 </div>
               </div>
-            </div>
 
-            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="200">
-              <img src="15.jpg" alt="NEET" />
-              <div class="highlight-card-content">
-                <h3>NEET Preparation</h3>
-                <div class="expandable-content">
-                  <div class="expandable-text" id="prog2-text">
-                    <p>
-                      Specialized coaching for medical entrance with experienced
-                      faculty and comprehensive study materials. Our NEET
-                      program includes intensive coaching, regular mock tests,
-                      performance analysis, one-on-one mentoring, and access to
-                      extensive question banks and study resources.
-                    </p>
-                  </div>
-                  <span
-                    class="read-more-link"
-                    onclick="toggleExpand('prog2-text', this)"
-                    >Read more</span
-                  >
-                  <button
-                    class="show-less-btn"
-                    onclick="toggleExpand('prog2-text', this.previousElementSibling)"
-                  >
-                    Show less
-                  </button>
+              <div class="horizontal-scroll-card">
+                <div class="horizontal-scroll-card-image">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/09/IMG_20230814_182612-scaled.jpg"
+                    alt="NEET"
+                    class="soft-rect-frame"
+                  />
+                </div>
+                <div class="horizontal-scroll-card-content">
+                  <h3>NEET Preparation</h3>
+                  <p>
+                    Specialized coaching for medical entrance with experienced
+                    faculty and comprehensive study materials. Our NEET program
+                    includes intensive coaching, regular mock tests, performance
+                    analysis, one-on-one mentoring, and access to extensive
+                    question banks and study resources.
+                  </p>
                 </div>
               </div>
-            </div>
 
-            <div class="highlight-card" data-aos="zoom-in" data-aos-delay="300">
-              <img src="16.jpg" alt="JEE" />
-              <div class="highlight-card-content">
-                <h3>JEE Preparation</h3>
-                <div class="expandable-content">
-                  <div class="expandable-text" id="prog3-text">
-                    <p>
-                      Expert guidance for engineering aspirants with focus on
-                      JEE Main and Advanced. Our comprehensive JEE program
-                      covers complete syllabus with conceptual clarity,
-                      problem-solving techniques, time management strategies,
-                      and extensive practice through chapter-wise tests and
-                      full-length mock exams.
-                    </p>
-                  </div>
-                  <span
-                    class="read-more-link"
-                    onclick="toggleExpand('prog3-text', this)"
-                    >Read more</span
-                  >
-                  <button
-                    class="show-less-btn"
-                    onclick="toggleExpand('prog3-text', this.previousElementSibling)"
-                  >
-                    Show less
-                  </button>
+              <div class="horizontal-scroll-card">
+                <div class="horizontal-scroll-card-image">
+                  <img
+                    src="http://aamsantragachi.org/wp-content/uploads/2025/09/IMG_20230814_182612-scaled.jpg"
+                    alt="JEE"
+                    class="soft-rect-frame"
+                  />
+                </div>
+                <div class="horizontal-scroll-card-content">
+                  <h3>JEE Preparation</h3>
+                  <p>
+                    Expert guidance for engineering aspirants with focus on JEE
+                    Main and Advanced. Our comprehensive JEE program covers
+                    complete syllabus with conceptual clarity, problem-solving
+                    techniques, time management strategies, and extensive
+                    practice through chapter-wise tests and full-length mock
+                    exams.
+                  </p>
                 </div>
               </div>
             </div>
+            <button
+              class="horizontal-scroll-nav-button right"
+              id="programsNext"
+              aria-label="Next slide"
+            >
+              ›
+            </button>
+            <div class="horizontal-scroll-indicators" id="programsDots"></div>
           </div>
-
+        </div>
+        <div class="container">
           <div class="mission-statement">
             <p>
               We look for dedicated students who exhibit curiosity and
@@ -2620,56 +3130,151 @@
         </div>
       </section>
 
-      <!-- Results Section -->
-      <section id="results" class="panel theme--fog">
+      <!-- Admission Section -->
+      <section id="admission" class="panel theme--fog" data-aos="fade-up">
+        <div class="container">
+          <header>
+            <h2>Admission Process</h2>
+            <p>Join our mission of academic excellence with Islamic values</p>
+          </header>
+
+          <div class="mission-statement">
+            <p>
+              We welcome students who are passionate about learning and
+              committed to academic excellence. Our admission process is
+              designed to identify students who will benefit from our
+              comprehensive educational approach and contribute positively to
+              our academic community.
+            </p>
+          </div>
+
+          <div class="center-cta">
+            <a
+              href="https://aamsystem.in/applications/"
+              target="_blank"
+              class="btn-ripple"
+              >Start Your Application</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Section - Enhanced with Horizontal Scroll -->
+      <section
+        id="results"
+        class="panel theme--white results-section"
+        data-aos="fade-up"
+      >
         <div class="container">
           <header>
             <h2>Results</h2>
             <p>Check your examination results</p>
           </header>
-          <div class="grid-container">
-            <div class="highlight-card">
-              <div class="highlight-card-content">
+
+          <div class="results-scroll-container">
+            <button
+              class="results-arrow left"
+              id="resultsPrev"
+              aria-label="Previous results"
+            >
+              ‹
+            </button>
+            <div class="results-scroll-wrapper" id="resultsScroll">
+              <div class="result-card">
                 <h3>📊 BIOCT Result</h3>
-                <p>View your Biology Competitive Test results</p>
+                <p>
+                  View your Biology Competitive Test results with detailed
+                  analysis and performance metrics
+                </p>
                 <div class="center-cta">
-                  <a href="/bioct-result" class="btn-ripple">Check Result</a>
+                  <a
+                    href="https://aamsantragachi.org/bioct_result/"
+                    class="btn-ripple"
+                    >Check Result</a
+                  >
                 </div>
               </div>
-            </div>
-            <div class="highlight-card">
-              <div class="highlight-card-content">
+
+              <div class="result-card">
                 <h3>🧪 Nanotest Result</h3>
-                <p>Check your Nanotest examination scores</p>
+                <p>
+                  Check your Nanotest examination scores and get insights into
+                  your preparation level
+                </p>
                 <div class="center-cta">
-                  <a href="/nanotest-result" class="btn-ripple">Check Result</a>
+                  <a
+                    href="https://aamsantragachi.org/nanotest_result/"
+                    class="btn-ripple"
+                    >Check Result</a
+                  >
                 </div>
               </div>
-            </div>
-            <div class="highlight-card">
-              <div class="highlight-card-content">
+
+              <div class="result-card">
                 <h3>📝 Pre-PT Result</h3>
-                <p>Access your Pre-Preparatory Test results</p>
+                <p>
+                  Access your Pre-Preparatory Test results and track your
+                  academic progress
+                </p>
                 <div class="center-cta">
-                  <a href="/pre-pt-result" class="btn-ripple">Check Result</a>
+                  <a
+                    href="https://aamsantragachi.org/pre-pt_result/"
+                    class="btn-ripple"
+                    >Check Result</a
+                  >
                 </div>
               </div>
-            </div>
-            <div class="highlight-card">
-              <div class="highlight-card-content">
+
+              <div class="result-card">
                 <h3>🎯 PT Result</h3>
-                <p>View your Preparatory Test performance</p>
+                <p>
+                  View your Preparatory Test performance and get personalized
+                  recommendations
+                </p>
                 <div class="center-cta">
-                  <a href="/pt-result" class="btn-ripple">Check Result</a>
+                  <a
+                    href="https://aamsantragachi.org/pt_result/"
+                    class="btn-ripple"
+                    >Check Result</a
+                  >
                 </div>
               </div>
-            </div>
+
+              <!-- <div class="result-card">
+                <h3>📋 Board Results</h3>
+                <p>
+                  Check your Class XI and XII board examination results and
+                  certificates
+                </p>
+                <div class="center-cta">
+                  <a href="/board-result" class="btn-ripple">Check Result</a>
+                </div>
+              </div> 
+
+              <div class="result-card">
+                <h3>🏆 Merit List</h3>
+                <p>
+                  View merit lists and toppers from various examinations and
+                  competitions
+                </p>
+                <div class="center-cta">
+                  <a href="/merit-list" class="btn-ripple">View Merit List</a>
+                </div>
+              </div>
+            </div> -->
+            <button
+              class="results-arrow right"
+              id="resultsNext"
+              aria-label="Next results"
+            >
+              ›
+            </button>
           </div>
         </div>
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="panel theme--white">
+      <section id="contact" class="panel theme--fog" data-aos="fade-up">
         <div class="container">
           <header>
             <h2>Contact Us</h2>
@@ -2692,6 +3297,7 @@
                 >info@alaameenmission.org</a
               >
             </p>
+            <p>📍 Santragachi Circle, Howrah, West Bengal, India</p>
           </div>
           <div class="social-logos">
             <a href="https://www.facebook.com/" target="_blank">
@@ -2812,7 +3418,9 @@
             <li><a href="academic-calendar.html">Academic Calendar</a></li>
             <li><a href="/library">Library</a></li>
             <li>
-              <a href="https://www.youtube.com" target="_blank">Alumni</a>
+              <a href="https://aamsantragachi.org/our-alumni/" target="_blank"
+                >Alumni</a
+              >
             </li>
           </ul>
         </div>
@@ -2871,9 +3479,9 @@
             preloader.classList.add("fade-out");
             setTimeout(function () {
               preloader.style.display = "none";
-            }, 5);
+            }, 500);
           }
-        }, 80);
+        }, 800);
       });
 
       // Initialize AOS with enhanced settings
@@ -2886,6 +3494,51 @@
         });
       }
 
+      // Performance Monitor Class (No longer needed for PinScrollController, but kept for general monitoring)
+      class AnimationPerformanceMonitor {
+        constructor() {
+          this.fps = 0;
+          this.frameCount = 0;
+          this.lastTime = performance.now();
+          this.rafId = null; // To store the requestAnimationFrame ID
+        }
+
+        startMonitoring() {
+          const measurePerformance = (currentTime) => {
+            this.frameCount++;
+
+            if (currentTime >= this.lastTime + 1000) {
+              this.fps = Math.round(
+                (this.frameCount * 1000) / (currentTime - this.lastTime)
+              );
+
+              if (this.fps < 45) {
+                console.warn(
+                  `Performance warning: FPS below 45 (${this.fps} FPS)`
+                );
+              } else {
+                // console.log(`Current FPS: ${this.fps}`); // Uncomment for continuous FPS logging
+              }
+
+              this.frameCount = 0;
+              this.lastTime = currentTime;
+            }
+
+            this.rafId = requestAnimationFrame(measurePerformance);
+          };
+
+          this.rafId = requestAnimationFrame(measurePerformance);
+        }
+
+        stopMonitoring() {
+          if (this.rafId) {
+            cancelAnimationFrame(this.rafId);
+            this.rafId = null;
+            console.log("Performance monitoring stopped.");
+          }
+        }
+      }
+
       // Main initialization function
       function initializeWebsite() {
         setupScrollEffects();
@@ -2894,9 +3547,13 @@
         setupExpandableContent();
         setupRippleEffects();
         setupCounterAnimation();
-        setupCarousels();
+        setupCarousels(); // This will now include the new horizontal scroll functions
         setupModals();
         setupStudentPortal();
+
+        // Initialize performance monitor
+        const performanceMonitor = new AnimationPerformanceMonitor();
+        performanceMonitor.startMonitoring();
       }
 
       // Enhanced Scroll Effects
@@ -2906,47 +3563,533 @@
         const header = document.getElementById("mainHeader");
         let lastScroll = 0;
 
-        window.addEventListener("scroll", function () {
-          const currentScroll = window.pageYOffset;
+        window.addEventListener(
+          "scroll",
+          function () {
+            const currentScroll = window.scrollY;
 
-          // Header behavior
-          if (currentScroll > 100) {
-            header?.classList.add("scrolled");
-          } else {
-            header?.classList.remove("scrolled");
-          }
-
-          if (
-            currentScroll > lastScroll &&
-            currentScroll > window.innerHeight / 2
-          ) {
-            header?.classList.add("nav-up");
-          } else {
-            header?.classList.remove("nav-up");
-          }
-
-          // Hero fade effect
-          if (hero && missionSection) {
-            const missionTop = missionSection.offsetTop;
-            const fadeStartPoint = window.innerHeight;
-            const fadeEndPoint = missionTop;
-
-            if (currentScroll >= fadeStartPoint) {
-              const fadeProgress =
-                (currentScroll - fadeStartPoint) /
-                (fadeEndPoint - fadeStartPoint);
-              const clampedProgress = Math.max(0, Math.min(1, fadeProgress));
-              const opacity = 1 - clampedProgress;
-
-              hero.style.opacity = opacity;
-              hero.style.transform = `translateY(${clampedProgress * 50}px)`;
+            // Header behavior
+            if (currentScroll > 100) {
+              header?.classList.add("scrolled");
             } else {
-              hero.style.opacity = 1;
-              hero.style.transform = "translateY(0px)";
+              header?.classList.remove("scrolled");
             }
-          }
 
-          lastScroll = currentScroll;
+            if (
+              currentScroll > lastScroll &&
+              currentScroll > window.innerHeight / 2
+            ) {
+              header?.classList.add("nav-up");
+            } else {
+              header?.classList.remove("nav-up");
+            }
+
+            // Hero fade effect and parallax
+            if (hero && missionSection) {
+              const missionTop = missionSection.offsetTop;
+              const fadeStartPoint = 0; // Start fading from the top
+              const fadeEndPoint = window.innerHeight; // Fully faded when mission section reaches top
+
+              if (
+                currentScroll >= fadeStartPoint &&
+                currentScroll < fadeEndPoint
+              ) {
+                const fadeProgress =
+                  (currentScroll - fadeStartPoint) /
+                  (fadeEndPoint - fadeStartPoint);
+                const clampedProgress = Math.max(0, Math.min(1, fadeProgress));
+                const opacity = 1 - clampedProgress;
+
+                hero.style.opacity = opacity;
+                // Parallax effect: move hero up slower than scroll
+                hero.style.transform = `translateY(${currentScroll * 0.5}px)`;
+              } else if (currentScroll >= fadeEndPoint) {
+                hero.style.opacity = 0;
+                hero.style.transform = `translateY(${fadeEndPoint * 0.5}px)`; // Keep it at the last parallax position
+              } else {
+                hero.style.opacity = 1;
+                hero.style.transform = "translateY(0px)";
+              }
+            }
+
+            lastScroll = currentScroll;
+          },
+          { passive: true }
+        );
+      }
+      /* News Scroll === */
+      function setupNewsScroll(autoScrollIntervalTime = 10000) {
+        const newsScroll = document.getElementById("newsScroll");
+        const newsPrev = document.getElementById("newsPrev");
+        const newsNext = document.getElementById("newsNext");
+        if (!newsScroll) return;
+
+        const cards = newsScroll.querySelectorAll(".news-card");
+        if (!cards.length) return;
+
+        // calc width (card + margins)
+        const firstCard = cards[0];
+        const cs = getComputedStyle(firstCard);
+        let cardWidth =
+          firstCard.offsetWidth +
+          parseFloat(cs.marginLeft) +
+          parseFloat(cs.marginRight);
+
+        // items per "page" (how many cards fit)
+        const itemsPerPage = Math.max(
+          1,
+          Math.floor(newsScroll.clientWidth / cardWidth)
+        );
+        const totalPages = Math.max(1, Math.ceil(cards.length / itemsPerPage));
+
+        if (totalPages <= 1) {
+          // no need to auto-scroll
+          newsPrev?.addEventListener("click", () =>
+            newsScroll.scrollBy({ left: -cardWidth, behavior: "smooth" })
+          );
+          newsNext?.addEventListener("click", () =>
+            newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" })
+          );
+          return;
+        }
+
+        let currentPage = 0;
+        let direction = 1; // 1 => forward, -1 => backward
+        let intervalId = null;
+
+        function goToPage(page) {
+          const left = page * itemsPerPage * cardWidth;
+          newsScroll.scrollTo({ left, behavior: "smooth" });
+        }
+
+        function step() {
+          // advance
+          currentPage += direction;
+          if (currentPage >= totalPages) {
+            // hit end -> reverse
+            direction = -1;
+            currentPage = Math.max(0, totalPages - 2);
+          } else if (currentPage < 0) {
+            // hit start -> reverse
+            direction = 1;
+            currentPage = 1;
+          }
+          goToPage(currentPage);
+        }
+
+        function start() {
+          stop();
+          intervalId = setInterval(step, autoScrollIntervalTime);
+        }
+        function stop() {
+          if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+          }
+        }
+        function reset() {
+          stop();
+          // give smooth scroll time to finish before restart
+          setTimeout(start, Math.max(300, autoScrollIntervalTime));
+        }
+
+        newsPrev?.addEventListener("click", () => {
+          // manual previous: go backwards one "page"
+          currentPage = Math.max(
+            0,
+            Math.round(newsScroll.scrollLeft / (itemsPerPage * cardWidth)) - 1
+          );
+          direction = -1;
+          goToPage(currentPage);
+          reset();
+        });
+
+        newsNext?.addEventListener("click", () => {
+          currentPage = Math.min(
+            totalPages - 1,
+            Math.round(newsScroll.scrollLeft / (itemsPerPage * cardWidth)) + 1
+          );
+          direction = 1;
+          goToPage(currentPage);
+          reset();
+        });
+
+        // pause on hover / touch
+        newsScroll.addEventListener("mouseenter", stop);
+        newsScroll.addEventListener("mouseleave", () => setTimeout(start, 200));
+        newsScroll.addEventListener("touchstart", stop, { passive: true });
+        newsScroll.addEventListener("touchend", () =>
+          setTimeout(start, autoScrollIntervalTime)
+        );
+
+        // window resize recalculation
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            const fc = newsScroll.querySelector(".news-card");
+            if (fc) {
+              const cs2 = getComputedStyle(fc);
+              cardWidth =
+                fc.offsetWidth +
+                parseFloat(cs2.marginLeft) +
+                parseFloat(cs2.marginRight);
+            }
+            // recalc pages
+            const ipp = Math.max(
+              1,
+              Math.floor(newsScroll.clientWidth / cardWidth)
+            );
+            // adjust totalPages/currentPage if needed (keep simple: recalc and clamp)
+            const newTotal = Math.max(1, Math.ceil(cards.length / ipp));
+            if (currentPage >= newTotal) currentPage = newTotal - 1;
+            start();
+          }, 200);
+        });
+
+        start();
+      }
+
+      /* === Ping-Pong Faculty Scroll === */
+      function setupFacultyScroll(autoScrollIntervalTime = 4000) {
+        const facultyScroll = document.getElementById("facultyScroll");
+        const facultyPrev = document.getElementById("facultyPrev");
+        const facultyNext = document.getElementById("facultyNext");
+        if (!facultyScroll) return;
+
+        const cards = facultyScroll.querySelectorAll(".news-card");
+        if (!cards.length) return;
+
+        const firstCard = cards[0];
+        const cs = getComputedStyle(firstCard);
+        let cardWidth =
+          firstCard.offsetWidth +
+          parseFloat(cs.marginLeft) +
+          parseFloat(cs.marginRight);
+
+        const itemsPerPage = Math.max(
+          1,
+          Math.floor(facultyScroll.clientWidth / cardWidth)
+        );
+        const totalPages = Math.max(1, Math.ceil(cards.length / itemsPerPage));
+
+        if (totalPages <= 1) {
+          facultyPrev?.addEventListener("click", () =>
+            facultyScroll.scrollBy({ left: -cardWidth, behavior: "smooth" })
+          );
+          facultyNext?.addEventListener("click", () =>
+            facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" })
+          );
+          return;
+        }
+
+        let currentPage = 0;
+        let direction = 1;
+        let intervalId = null;
+
+        function goToPage(page) {
+          const left = page * itemsPerPage * cardWidth;
+          facultyScroll.scrollTo({ left, behavior: "smooth" });
+        }
+
+        function step() {
+          currentPage += direction;
+          if (currentPage >= totalPages) {
+            direction = -1;
+            currentPage = Math.max(0, totalPages - 2);
+          } else if (currentPage < 0) {
+            direction = 1;
+            currentPage = 1;
+          }
+          goToPage(currentPage);
+        }
+
+        function start() {
+          stop();
+          intervalId = setInterval(step, autoScrollIntervalTime);
+        }
+        function stop() {
+          if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+          }
+        }
+        function reset() {
+          stop();
+          setTimeout(start, Math.max(300, autoScrollIntervalTime));
+        }
+
+        facultyPrev?.addEventListener("click", () => {
+          currentPage = Math.max(
+            0,
+            Math.round(facultyScroll.scrollLeft / (itemsPerPage * cardWidth)) -
+              1
+          );
+          direction = -1;
+          goToPage(currentPage);
+          reset();
+        });
+
+        facultyNext?.addEventListener("click", () => {
+          currentPage = Math.min(
+            totalPages - 1,
+            Math.round(facultyScroll.scrollLeft / (itemsPerPage * cardWidth)) +
+              1
+          );
+          direction = 1;
+          goToPage(currentPage);
+          reset();
+        });
+
+        facultyScroll.addEventListener("mouseenter", stop);
+        facultyScroll.addEventListener("mouseleave", () =>
+          setTimeout(start, 200)
+        );
+        facultyScroll.addEventListener("touchstart", stop, { passive: true });
+        facultyScroll.addEventListener("touchend", () =>
+          setTimeout(start, autoScrollIntervalTime)
+        );
+
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            const fc = facultyScroll.querySelector(".news-card");
+            if (fc) {
+              const cs2 = getComputedStyle(fc);
+              cardWidth =
+                fc.offsetWidth +
+                parseFloat(cs2.marginLeft) +
+                parseFloat(cs2.marginRight);
+            }
+            start();
+          }, 200);
+        });
+
+        start();
+      }
+
+      /* === Generic Horizontal Scroll (Why Choose Us, Programs) with ping-pong ===
+   Usage: setupHorizontalScroll("whyChooseUsScroll","prevId","nextId","dotsId",".horizontal-scroll-card", intervalMs)
+*/
+      function setupHorizontalScroll(
+        scrollWrapperId,
+        prevButtonId,
+        nextButtonId,
+        dotsContainerId,
+        cardSelector,
+        autoScrollIntervalTime = 4000
+      ) {
+        const scrollWrapper = document.getElementById(scrollWrapperId);
+        const prevButton = document.getElementById(prevButtonId);
+        const nextButton = document.getElementById(nextButtonId);
+        const dotsContainer = document.getElementById(dotsContainerId);
+        if (!scrollWrapper) return;
+
+        const cards = scrollWrapper.querySelectorAll(cardSelector);
+        if (!cards.length) return;
+
+        const firstCard = cards[0];
+        const cs = getComputedStyle(firstCard);
+        let cardWidth =
+          firstCard.offsetWidth +
+          parseFloat(cs.marginLeft) +
+          parseFloat(cs.marginRight);
+
+        // create dots (if supplied)
+        if (dotsContainer) {
+          dotsContainer.innerHTML = "";
+          for (let i = 0; i < cards.length; i++) {
+            const dot = document.createElement("div");
+            dot.className = "dot";
+            dot.addEventListener("click", () => {
+              scrollWrapper.scrollTo({
+                left: i * cardWidth,
+                behavior: "smooth",
+              });
+              resetAuto();
+            });
+            dotsContainer.appendChild(dot);
+          }
+        }
+
+        const itemsPerPage = Math.max(
+          1,
+          Math.floor(scrollWrapper.clientWidth / cardWidth)
+        );
+        const totalPages = Math.max(1, Math.ceil(cards.length / itemsPerPage));
+
+        if (totalPages <= 1) {
+          prevButton?.addEventListener("click", () =>
+            scrollWrapper.scrollBy({ left: -cardWidth, behavior: "smooth" })
+          );
+          nextButton?.addEventListener("click", () =>
+            scrollWrapper.scrollBy({ left: cardWidth, behavior: "smooth" })
+          );
+          return;
+        }
+
+        let currentPage = 0;
+        let direction = 1;
+        let intervalId = null;
+
+        function updateDots() {
+          if (!dotsContainer) return;
+          const dots = dotsContainer.querySelectorAll(".dot");
+          const active = Math.round(scrollWrapper.scrollLeft / cardWidth);
+          dots.forEach((d, i) => d.classList.toggle("active", i === active));
+        }
+
+        function goToPage(page) {
+          const left = page * itemsPerPage * cardWidth;
+          scrollWrapper.scrollTo({ left, behavior: "smooth" });
+          updateDots();
+        }
+
+        function step() {
+          currentPage += direction;
+          if (currentPage >= totalPages) {
+            direction = -1;
+            currentPage = Math.max(0, totalPages - 2);
+          } else if (currentPage < 0) {
+            direction = 1;
+            currentPage = 1;
+          }
+          goToPage(currentPage);
+        }
+
+        function start() {
+          stop();
+          intervalId = setInterval(step, autoScrollIntervalTime);
+        }
+        function stop() {
+          if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+          }
+        }
+        function resetAuto() {
+          stop();
+          setTimeout(start, Math.max(300, autoScrollIntervalTime));
+        }
+
+        prevButton?.addEventListener("click", () => {
+          currentPage = Math.max(
+            0,
+            Math.round(scrollWrapper.scrollLeft / (itemsPerPage * cardWidth)) -
+              1
+          );
+          direction = -1;
+          goToPage(currentPage);
+          resetAuto();
+        });
+        nextButton?.addEventListener("click", () => {
+          currentPage = Math.min(
+            totalPages - 1,
+            Math.round(scrollWrapper.scrollLeft / (itemsPerPage * cardWidth)) +
+              1
+          );
+          direction = 1;
+          goToPage(currentPage);
+          resetAuto();
+        });
+
+        scrollWrapper.addEventListener("scroll", () => {
+          updateDots();
+        });
+
+        scrollWrapper.addEventListener("mouseenter", stop);
+        scrollWrapper.addEventListener("mouseleave", () =>
+          setTimeout(start, 200)
+        );
+        scrollWrapper.addEventListener("touchstart", stop, { passive: true });
+        scrollWrapper.addEventListener("touchend", () =>
+          setTimeout(start, autoScrollIntervalTime)
+        );
+
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            const fc = scrollWrapper.querySelector(cardSelector);
+            if (fc) {
+              const cs2 = getComputedStyle(fc);
+              cardWidth =
+                fc.offsetWidth +
+                parseFloat(cs2.marginLeft) +
+                parseFloat(cs2.marginRight);
+            }
+            start();
+          }, 200);
+        });
+
+        // start initial auto-scroll
+        start();
+      }
+
+      // Results Scroll Setup
+      function setupResultsScroll(autoScrollIntervalTime = 3000) {
+        const resultsScroll = document.getElementById("resultsScroll");
+        const resultsPrev = document.getElementById("resultsPrev");
+        const resultsNext = document.getElementById("resultsNext");
+
+        if (!resultsScroll) return;
+
+        // Calculate card width dynamically, including gap
+        const firstCard = resultsScroll.querySelector(".result-card");
+        let cardWidth = 0;
+        if (firstCard) {
+          const cardStyle = getComputedStyle(firstCard);
+          cardWidth =
+            firstCard.offsetWidth +
+            parseFloat(cardStyle.marginRight) +
+            parseFloat(cardStyle.marginLeft);
+        } else {
+          cardWidth = 360; // Fallback if no cards
+        }
+
+        resultsPrev?.addEventListener("click", () => {
+          resultsScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
+          resetResultsAutoScroll();
+        });
+
+        resultsNext?.addEventListener("click", () => {
+          resultsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+          resetResultsAutoScroll();
+        });
+
+        let resultsScrollInterval;
+
+        function startResultsAutoScroll() {
+          stopResultsAutoScroll();
+          resultsScrollInterval = setInterval(() => {
+            if (
+              resultsScroll.scrollLeft + resultsScroll.clientWidth >=
+              resultsScroll.scrollWidth
+            ) {
+              resultsScroll.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+              resultsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
+            }
+          }, autoScrollIntervalTime);
+        }
+
+        function stopResultsAutoScroll() {
+          clearInterval(resultsScrollInterval);
+        }
+
+        function resetResultsAutoScroll() {
+          stopResultsAutoScroll();
+          startResultsAutoScroll();
+        }
+
+        startResultsAutoScroll();
+
+        resultsScroll.addEventListener("mouseenter", stopResultsAutoScroll);
+        resultsScroll.addEventListener("mouseleave", startResultsAutoScroll);
+        resultsScroll.addEventListener("touchstart", stopResultsAutoScroll);
+        resultsScroll.addEventListener("touchend", () => {
+          setTimeout(startResultsAutoScroll, autoScrollIntervalTime);
         });
       }
 
@@ -3002,16 +4145,29 @@
         });
       }
 
-      // Enhanced Smooth Scrolling
+      // Enhanced Smooth Scrolling with Fixed Navigation
       function setupSmoothScrolling() {
         const header = document.getElementById("mainHeader");
+        const sections = {
+          "#mission": "mission",
+          "#faculty": "faculty",
+          "#programs": "programs",
+          "#admission": "admission",
+          "#hall-of-fame": "hall-of-fame",
+          "#results": "results",
+          "#contact": "contact",
+          "#why-choose-us": "why-choose-us",
+          "#our-impact": "our-impact",
+        };
 
         function scrollToSection(target) {
-          const targetElement = document.querySelector(target);
+          const targetElement = document.getElementById(
+            sections[target] || target.substring(1)
+          );
           if (!targetElement) return;
 
           const headerHeight = header?.offsetHeight || 0;
-          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+          const targetPosition = targetElement.offsetTop - headerHeight - 2;
 
           // Check for reduced motion preference
           const prefersReducedMotion = window.matchMedia(
@@ -3118,7 +4274,7 @@
         });
       }
 
-      // Enhanced Counter Animation
+      // Enhanced Counter Animation (re-triggers every time)
       function setupCounterAnimation() {
         const observerOptions = {
           threshold: 0.7,
@@ -3133,6 +4289,9 @@
               const duration = 2000;
               const increment = target / (duration / 16);
               let current = 0;
+
+              // Reset counter to 0 before starting animation
+              counter.textContent = "0";
 
               const updateCounter = () => {
                 current += increment;
@@ -3149,7 +4308,11 @@
               };
 
               updateCounter();
-              counterObserver.unobserve(counter);
+              // Removed: counterObserver.unobserve(counter);
+              // This allows the animation to re-trigger every time the element enters the viewport
+            } else {
+              // Optional: Reset counter when it leaves the viewport
+              entry.target.textContent = "0";
             }
           });
         }, observerOptions);
@@ -3163,12 +4326,35 @@
 
       // Enhanced Carousel Setup
       function setupCarousels() {
-        setupPhotoGallery("hallOfFameScroll", "hallOfFameDots");
-        setupNewsScroll();
-        setupFacultyScroll();
+        setupPhotoGallery("hallOfFameScroll", "hallOfFameDots", 2500); // Hall of Fame: 2.5 seconds
+        setupNewsScroll(3000); // Latest News: 3 seconds
+        setupFacultyScroll(3000); // Our Esteemed Faculty & Staff: 3 seconds
+        setupResultsScroll(3000); // Results: 3 seconds
+
+        // New horizontal scrolls for "Why Choose Us" and "Academic Programs"
+        setupHorizontalScroll(
+          "whyChooseUsScroll",
+          "whyChooseUsPrev",
+          "whyChooseUsNext",
+          "whyChooseUsDots",
+          ".horizontal-scroll-card",
+          1000 // Why Choose Us: 2 seconds
+        );
+        setupHorizontalScroll(
+          "programsScroll",
+          "programsPrev",
+          "programsNext",
+          "programsDots",
+          ".horizontal-scroll-card",
+          2000 // Academic Programs: 2 seconds
+        );
       }
 
-      function setupPhotoGallery(containerId, dotsId) {
+      function setupPhotoGallery(
+        containerId,
+        dotsId,
+        autoScrollIntervalTime = 3000
+      ) {
         const scrollContainer = document.getElementById(containerId);
         if (!scrollContainer) return;
 
@@ -3179,11 +4365,18 @@
         if (!scrollWrapper || !scrollItems?.length || !scrollDotsContainer)
           return;
 
-        const style = getComputedStyle(scrollItems[0]);
-        const itemWidth =
-          scrollItems[0].offsetWidth +
-          parseFloat(style.marginLeft) +
-          parseFloat(style.marginRight);
+        // Calculate item width dynamically, including gap
+        const firstItem = scrollItems[0];
+        let itemWidth = 0;
+        if (firstItem) {
+          const itemStyle = getComputedStyle(firstItem);
+          itemWidth =
+            firstItem.offsetWidth +
+            parseFloat(itemStyle.marginRight) +
+            parseFloat(itemStyle.marginLeft);
+        } else {
+          itemWidth = 160; // Fallback if no items
+        }
 
         const itemsPerPage = Math.floor(scrollWrapper.clientWidth / itemWidth);
         const totalPages = Math.ceil(scrollItems.length / itemsPerPage);
@@ -3193,6 +4386,7 @@
         for (let i = 0; i < totalPages; i++) {
           const dot = document.createElement("div");
           dot.classList.add("dot");
+          dot.innerHTML = '<div class="progress-bar"></div>'; // Add progress bar
           if (i === 0) dot.classList.add("active");
 
           dot.addEventListener("click", () => {
@@ -3201,7 +4395,7 @@
               left: scrollPosition,
               behavior: "smooth",
             });
-            updateDots(i);
+            resetAutoScroll(); // Reset auto-scroll on manual interaction
           });
 
           scrollDotsContainer.appendChild(dot);
@@ -3212,6 +4406,15 @@
         function updateDots(activeIndex) {
           dots.forEach((dot, index) => {
             dot.classList.toggle("active", index === activeIndex);
+            const progressBar = dot.querySelector(".progress-bar");
+            if (progressBar) {
+              progressBar.style.width = "0%"; // Reset progress bar
+              if (index === activeIndex) {
+                progressBar.style.animation = `fillProgressBar ${autoScrollIntervalTime}ms linear forwards`;
+              } else {
+                progressBar.style.animation = "none";
+              }
+            }
           });
         }
 
@@ -3226,6 +4429,7 @@
         let currentPage = 0;
 
         function startAutoScroll() {
+          stopAutoScroll();
           autoScrollInterval = setInterval(() => {
             currentPage = (currentPage + 1) % totalPages;
             const scrollPosition = currentPage * itemsPerPage * itemWidth;
@@ -3234,110 +4438,33 @@
               behavior: "smooth",
             });
             updateDots(currentPage);
-          }, 4000);
+          }, autoScrollIntervalTime);
         }
 
         function stopAutoScroll() {
           clearInterval(autoScrollInterval);
+          dots.forEach((dot) => {
+            const progressBar = dot.querySelector(".progress-bar");
+            if (progressBar) {
+              progressBar.style.animation = "none";
+              progressBar.style.width = "0%";
+            }
+          });
+        }
+
+        function resetAutoScroll() {
+          stopAutoScroll();
+          startAutoScroll();
         }
 
         startAutoScroll();
+        updateDots(currentPage); // Initial update for dots and progress bar
 
         scrollContainer.addEventListener("mouseenter", stopAutoScroll);
         scrollContainer.addEventListener("mouseleave", startAutoScroll);
         scrollContainer.addEventListener("touchstart", stopAutoScroll);
         scrollContainer.addEventListener("touchend", () => {
-          setTimeout(startAutoScroll, 3000);
-        });
-      }
-
-      function setupNewsScroll() {
-        const newsScroll = document.getElementById("newsScroll");
-        const newsPrev = document.getElementById("newsPrev");
-        const newsNext = document.getElementById("newsNext");
-
-        if (!newsScroll) return;
-
-        const cardWidth = 320; // Approximate card width + gap
-
-        newsPrev?.addEventListener("click", () => {
-          newsScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
-        });
-
-        newsNext?.addEventListener("click", () => {
-          newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
-        });
-
-        let newsScrollInterval = setInterval(() => {
-          if (
-            newsScroll.scrollLeft + newsScroll.clientWidth >=
-            newsScroll.scrollWidth
-          ) {
-            newsScroll.scrollTo({ left: 0, behavior: "smooth" });
-          } else {
-            newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
-          }
-        }, 5000);
-
-        newsScroll.addEventListener("mouseenter", () =>
-          clearInterval(newsScrollInterval)
-        );
-        newsScroll.addEventListener("mouseleave", () => {
-          newsScrollInterval = setInterval(() => {
-            if (
-              newsScroll.scrollLeft + newsScroll.clientWidth >=
-              newsScroll.scrollWidth
-            ) {
-              newsScroll.scrollTo({ left: 0, behavior: "smooth" });
-            } else {
-              newsScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
-            }
-          }, 5000);
-        });
-      }
-
-      function setupFacultyScroll() {
-        const facultyScroll = document.getElementById("facultyScroll");
-        const facultyPrev = document.getElementById("facultyPrev");
-        const facultyNext = document.getElementById("facultyNext");
-
-        if (!facultyScroll) return;
-
-        const cardWidth = 320;
-
-        facultyPrev?.addEventListener("click", () => {
-          facultyScroll.scrollBy({ left: -cardWidth, behavior: "smooth" });
-        });
-
-        facultyNext?.addEventListener("click", () => {
-          facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
-        });
-
-        let facultyScrollInterval = setInterval(() => {
-          if (
-            facultyScroll.scrollLeft + facultyScroll.clientWidth >=
-            facultyScroll.scrollWidth
-          ) {
-            facultyScroll.scrollTo({ left: 0, behavior: "smooth" });
-          } else {
-            facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
-          }
-        }, 5000);
-
-        facultyScroll.addEventListener("mouseenter", () =>
-          clearInterval(facultyScrollInterval)
-        );
-        facultyScroll.addEventListener("mouseleave", () => {
-          facultyScrollInterval = setInterval(() => {
-            if (
-              facultyScroll.scrollLeft + facultyScroll.clientWidth >=
-              facultyScroll.scrollWidth
-            ) {
-              facultyScroll.scrollTo({ left: 0, behavior: "smooth" });
-            } else {
-              facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" });
-            }
-          }, 5000);
+          setTimeout(startAutoScroll, autoScrollIntervalTime);
         });
       }
 
@@ -3402,7 +4529,7 @@
             name: "Mr. Rahman Sheikh",
             title: "Computer Science Instructor",
             img: "19.jpg",
-            bio: "Mr. Sheikh introduces students to computer science, fostering analytical thinking and problem-solving skills for the digital age.",
+            bio: "Mr. Sheikh introduces students to the world of computer science, fostering analytical thinking and problem-solving skills for the digital age.",
           },
           {
             name: "Ms. Nazia Parveen",
@@ -3576,6 +4703,59 @@
           }
         });
       }
+
+      // Optional JS: cursor-aware zoom
+      document
+        .querySelectorAll(
+          ".soft-rect-frame, .horizontal-scroll-card-image, .scroll-item"
+        )
+        .forEach((frame) => {
+          const img = frame.querySelector("img");
+          if (!img) return;
+          frame.style.overflow = "hidden"; // ensure clipping
+          frame.addEventListener("mousemove", (e) => {
+            const rect = frame.getBoundingClientRect();
+            const px = ((e.clientX - rect.left) / rect.width) * 100;
+            const py = ((e.clientY - rect.top) / rect.height) * 100;
+            img.style.transformOrigin = `${px}% ${py}%`;
+            img.style.transform = "scale(1.18)";
+          });
+          frame.addEventListener("mouseleave", () => {
+            img.style.transform = "";
+            img.style.transformOrigin = "center center";
+          });
+        });
+
+      // Subtle preset: smoother, smaller 3D effect
+      (function () {
+        // This function would typically be integrated into a PinScrollController class's updateSlideTransforms method.
+        // Since there's no explicit PinScrollController class in this file, this is a standalone example
+        // of how the transforms would be applied if such a controller existed and iterated through slides.
+
+        function applySubtleTransforms(slide, transitionProgress) {
+          // transitionProgress: 0 -> 1 between slides
+          const translateY = transitionProgress * -12; // smaller vertical pull
+          const rotateX = transitionProgress * 8; // smaller rotation
+          const depthZ = transitionProgress * -50; // reduced z-depth
+          const scale = 1 - transitionProgress * 0.04; // subtle scale
+          const blur = transitionProgress * 1; // small blur
+
+          slide.style.transform = `translate3d(0, ${translateY}px, ${depthZ}px) rotateX(${rotateX}deg) scale(${scale})`;
+          slide.style.filter = `blur(${blur}px)`;
+        }
+
+        // Example of how you might call this if you had a PinScrollController
+        // This is illustrative and assumes a structure that might not exist directly in this file.
+        // If you have a PinScrollController, you would modify its `updateSlideTransforms` method.
+        // For a simple demonstration, let's assume we want to apply this to elements with class 'pin-slide'
+        // based on their scroll position within a 'pin-scroll-container'.
+        // This would require a more complex scroll-listening and progress calculation logic.
+
+        // For the purpose of this request, the CSS is added, and this JS snippet
+        // provides the `applySubtleTransforms` function which would be used by a
+        // hypothetical or existing PinScrollController.
+        // If you need a full PinScrollController implementation, please provide its existing structure.
+      })();
 
       // Error handling
       window.addEventListener("error", function (e) {
