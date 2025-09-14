@@ -8,12 +8,9 @@
     />
     <title>Al-Ameen Mission | Santragachi Circle</title>
 
-    <link
-      icon"
-      type="image/png"
-      href="http://aamsantragachi.org/wp-content/uploads/2025/09/IMG_20230814_182612-scaled.jpg"
-      sizes="32x32"
-    />
+    <link icon" type="image/png"
+    href="http://aamsantragachi.org/wp-content/uploads/2025/09/IMG_20230814_182612-scaled.jpg"
+    sizes="32x32" />
     <link rel="apple-touch-icon" href="17.jpg" />
 
     <link
@@ -22,6 +19,12 @@
     />
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 
     <style>
       * {
@@ -2059,9 +2062,371 @@
 
       /* Subtle preset: less rotation/translate/blur for mobile-safety */
       .pin-slide .slide-media {
-        transition: transform 600ms cubic-bezier(0.2, 0.9, 0.2, 1),
-          filter 600ms;
+        transition: transform 600ms cubic-bezier(0.2, 0.9, 0.2, 1), filter 600ms;
         transform-origin: center center;
+      }
+
+      /* Custom Swiper Styles for Faculty Section */
+      .faculty-swiper-container {
+        width: 100%;
+        padding-bottom: var(--space-xl); /* Space for pagination */
+      }
+
+      .faculty-swiper-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: var(--white);
+        border-radius: 1.25rem;
+        box-shadow: var(--shadow-medium);
+        padding: var(--space-lg);
+        transition: all var(--transition-spring);
+        height: auto; /* Allow height to adjust to content */
+      }
+
+      .faculty-swiper-slide:hover {
+        transform: translateY(-0.625rem);
+        box-shadow: var(--shadow-heavy);
+      }
+
+      .faculty-swiper-slide .soft-rect-frame {
+        width: 100%;
+        max-width: 15rem; /* Adjust as needed */
+        height: 15rem; /* Fixed height for image container */
+        border-radius: 0.9375rem;
+        margin-bottom: var(--space-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-light);
+      }
+
+      .faculty-swiper-slide .soft-rect-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-normal);
+      }
+
+      .faculty-swiper-slide:hover .soft-rect-frame img {
+        transform: scale(1.15);
+      }
+
+      .faculty-swiper-slide h3 {
+        font-size: var(--text-xl);
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+        font-weight: 600;
+      }
+
+      .faculty-swiper-slide p.faculty-subject {
+        font-size: var(--text-base);
+        color: var(--dark-gray);
+        margin-bottom: var(--space-md);
+      }
+
+      .faculty-swiper-pagination {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: var(--space-lg);
+        gap: var(--space-sm);
+      }
+
+      .faculty-swiper-pagination .swiper-pagination-bullet {
+        background: var(--light-gray);
+        color: var(--dark-gray);
+        border: 1px solid var(--medium-gray);
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: var(--text-sm);
+        transition: all var(--transition-normal);
+        opacity: 1; /* Override default Swiper opacity */
+        width: auto; /* Allow text to define width */
+        height: auto; /* Allow text to define height */
+        line-height: 1; /* Adjust line height for text */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .faculty-swiper-pagination .swiper-pagination-bullet-active {
+        background: var(--primary-green);
+        color: var(--white);
+        border-color: var(--primary-green-dark);
+        transform: translateY(-0.125rem) scale(1.05);
+        box-shadow: var(--shadow-light);
+      }
+
+      .faculty-swiper-pagination .swiper-pagination-bullet:hover {
+        background: var(--primary-green-light);
+        color: var(--white);
+        border-color: var(--primary-green);
+      }
+
+      /* Swiper Navigation Arrows */
+      .faculty-swiper-button-prev,
+      .faculty-swiper-button-next {
+        color: var(--primary-green);
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-light);
+        transition: all var(--transition-normal);
+      }
+
+      .faculty-swiper-button-prev:hover,
+      .faculty-swiper-button-next:hover {
+        background-color: var(--primary-green);
+        color: var(--white);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .faculty-swiper-button-prev::after,
+      .faculty-swiper-button-next::after {
+        font-size: var(--text-xl);
+      }
+
+      /* Vivo-Style Faculty Gallery */
+      .vivo-gallery-container {
+        position: relative;
+        width: 100%;
+        margin: var(--space-xl) 0;
+        overflow: hidden;
+      }
+
+      .vivo-gallery-scroll {
+        display: flex;
+        gap: var(--space-md);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        padding: var(--space-md) var(--space-lg);
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .vivo-gallery-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .vivo-gallery-card {
+        flex: 0 0 auto;
+        width: clamp(16rem, 25vw, 20rem);
+        height: 22rem;
+        scroll-snap-align: center;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: var(--white);
+        box-shadow: var(--shadow-light);
+        transition: all var(--transition-normal);
+        cursor: pointer;
+        will-change: transform, box-shadow;
+      }
+
+      .vivo-gallery-card:hover {
+        box-shadow: var(--shadow-heavy);
+        transform: translateY(-0.5rem);
+      }
+
+      .vivo-card-image {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 1.25rem;
+      }
+
+      .vivo-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-origin: center top;
+        will-change: transform;
+      }
+
+      .vivo-gallery-card:hover .vivo-card-image img,
+      .vivo-gallery-card:focus-within .vivo-card-image img {
+        transform: scale(1.15);
+      }
+
+      .vivo-card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: var(--white);
+        padding: var(--space-xl) var(--space-md) var(--space-md);
+        transform: translateY(100%);
+        transition: transform var(--transition-normal);
+      }
+
+      .vivo-gallery-card:hover .vivo-card-overlay,
+      .vivo-gallery-card:focus-within .vivo-card-overlay {
+        transform: translateY(0);
+      }
+
+      .vivo-card-overlay h3 {
+        font-size: var(--text-lg);
+        font-weight: 600;
+        margin-bottom: var(--space-xs);
+        color: var(--white);
+      }
+
+      .vivo-card-overlay p {
+        font-size: var(--text-sm);
+        opacity: 0.9;
+        color: var(--gold-light);
+      }
+
+      .vivo-gallery-indicators {
+        text-align: center;
+        margin-top: var(--space-md);
+        opacity: 0.7;
+      }
+
+      .vivo-scroll-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        font-size: var(--text-sm);
+        color: var(--primary-green);
+      }
+
+      .vivo-scroll-hint span:first-child,
+      .vivo-scroll-hint span:last-child {
+        font-weight: bold;
+        font-size: var(--text-lg);
+      }
+
+      /* 3D News Cards Enhancement */
+      .news-card {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+      }
+
+      .news-card::before {
+        content: "";
+        position: absolute;
+        top: -0.25rem;
+        left: -0.25rem;
+        right: -0.25rem;
+        bottom: -0.25rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--primary-green-dark)
+        );
+        opacity: 0;
+        border-radius: 1.25rem;
+        z-index: -1;
+        transition: opacity var(--transition-slow);
+        transform: translateZ(-1px);
+      }
+
+      .news-card:hover::before {
+        opacity: 0.1;
+      }
+
+      .news-card:hover {
+        transform: translateY(-0.9375rem) rotateX(5deg) rotateY(2deg)
+          scale(1.02);
+        box-shadow: 0 1.5625rem 3.125rem rgba(46, 168, 93, 0.2),
+          0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
+      }
+
+      .news-card .soft-rect-frame,
+      .news-card .news-card-content {
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+      }
+
+      .news-card:hover .soft-rect-frame {
+        transform: translateZ(0.625rem);
+      }
+
+      .news-card:hover .news-card-content {
+        transform: translateZ(0.3125rem);
+      }
+
+      /* Mobile Responsive Adjustments */
+      @media (max-width: 48rem) {
+        .vivo-gallery-card {
+          width: clamp(14rem, 70vw, 16rem);
+          height: 20rem;
+        }
+
+        .vivo-gallery-scroll {
+          padding: var(--space-md);
+          gap: var(--space-sm);
+        }
+
+        .vivo-card-overlay {
+          transform: translateY(0);
+          background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.9));
+        }
+
+        .news-card:hover {
+          transform: translateY(-0.5rem) scale(1.02);
+          box-shadow: var(--shadow-heavy);
+        }
+      }
+
+      /* Touch device optimizations */
+      @media (hover: none) and (pointer: coarse) {
+        .vivo-gallery-card:active {
+          transform: translateY(-0.25rem) scale(0.98);
+        }
+
+        .vivo-card-overlay {
+          transform: translateY(0);
+        }
+
+        .vivo-gallery-card:active .vivo-card-image img {
+          transform: scale(1.1);
+        }
+      }
+
+      /* Accessibility improvements */
+      .vivo-gallery-card:focus {
+        outline: 0.125rem solid var(--primary-green);
+        outline-offset: 0.25rem;
+      }
+
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        .vivo-card-overlay {
+          background: rgba(0, 0, 0, 0.9);
+        }
+
+        .vivo-gallery-card {
+          border: 0.125rem solid var(--primary-green);
+        }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .vivo-gallery-card,
+        .vivo-card-image img,
+        .vivo-card-overlay,
+        .news-card {
+          transition: none !important;
+          animation: none !important;
+        }
+
+        .vivo-gallery-card:hover,
+        .news-card:hover {
+          transform: none !important;
+        }
       }
     </style>
   </head>
@@ -2720,7 +3085,8 @@
         </div>
       </section>
 
-      <!-- Faculty & Staff Section -->
+      <!-- Faculty & Staff Section (Swiper.js) -->
+      <!-- Faculty & Staff Section - Vivo Style Gallery -->
       <section id="faculty" class="panel theme--fog" data-aos="fade-up">
         <div class="container">
           <header>
@@ -2728,351 +3094,207 @@
             <p>Meet the dedicated individuals shaping futures</p>
           </header>
 
-          <div class="news-scroll-container">
-            <button
-              class="news-arrow left"
-              id="facultyPrev"
-              aria-label="Previous faculty"
-            >
-              ‹
-            </button>
-            <div class="news-scroll-wrapper" id="facultyScroll">
-              <!-- Faculty Member 1 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img
-                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000035857-scaled.jpg"
-                    alt="KM Haque"
-                  />
-                </div>
-                <div class="news-card-content">
-                  <h3>KM Haque</h3>
-                  <p class="news-category">Head of Physics Dept.</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty1-text">
-                      <p>
-                        Prof. Khan is a veteran educator with over 20 years of
-                        experience in teaching advanced physics. His passion for
-                        science inspires students to achieve excellence,
-                        focusing on conceptual clarity and problem-solving
-                        techniques for competitive exams.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty1-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty1-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
+          <div class="vivo-gallery-container">
+            <div class="vivo-gallery-scroll">
+              <!-- Faculty Card 1 -->
+              <div class="vivo-gallery-card">
+                <div class="vivo-card-image">
+                  <picture>
+                    <source
+                      srcset="
+                        http://aamsantragachi.org/wp-content/uploads/2025/08/1000035857-scaled.jpg
+                      "
+                      media="(min-width: 768px)"
+                      type="image/jpeg"
+                    />
+                    <img
+                      src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000035857-scaled.jpg"
+                      alt="KM Haque - Head of Physics Dept."
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div class="vivo-card-overlay">
+                    <h3>KM Haque</h3>
+                    <p>Head of Physics Dept.</p>
                   </div>
                 </div>
-              </article>
-              <!-- Faculty Member 2 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img
-                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/Screenshot_2025-08-24-10-56-52-376_com.miui_.gallery.jpg"
-                    alt="RIAJ ANSARI"
-                  />
-                </div>
-                <div class="news-card-content">
-                  <h3>RIAJ ANSARI</h3>
-                  <p class="news-category">Biology Specialist</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty2-text">
-                      <p>
-                        Dr. Begum holds a Ph.D. in Biotechnology and is renowned
-                        for her engaging teaching methods in Biology, making
-                        complex topics easy to understand. Her interactive
-                        sessions help students grasp biological concepts
-                        thoroughly.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty2-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty2-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
+              </div>
+
+              <!-- Faculty Card 2 -->
+              <div class="vivo-gallery-card">
+                <div class="vivo-card-image">
+                  <picture>
+                    <source
+                      srcset="
+                        http://aamsantragachi.org/wp-content/uploads/2025/08/Screenshot_2025-08-24-10-56-52-376_com.miui_.gallery.jpg
+                      "
+                      media="(min-width: 768px)"
+                      type="image/jpeg"
+                    />
+                    <img
+                      src="http://aamsantragachi.org/wp-content/uploads/2025/08/Screenshot_2025-08-24-10-56-52-376_com.miui_.gallery.jpg"
+                      alt="RIAJ ANSARI - Biology Specialist"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div class="vivo-card-overlay">
+                    <h3>RIAJ ANSARI</h3>
+                    <p>Biology Specialist</p>
                   </div>
                 </div>
-              </article>
-              <!-- Faculty Member 3 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img
-                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg"
-                    alt="SAKIL SEIKH"
-                  />
-                </div>
-                <div class="news-card-content">
-                  <h3>SAKIL SEIKH</h3>
-                  <p class="news-category">Mathematics Expert</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty3-text">
-                      <p>
-                        Mr. Ali is known for his innovative approach to teaching
-                        Mathematics, helping students master challenging
-                        concepts for JEE and NEET. He simplifies complex
-                        mathematical problems with clarity.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty3-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty3-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
+              </div>
+
+              <!-- Faculty Card 3 -->
+              <div class="vivo-gallery-card">
+                <div class="vivo-card-image">
+                  <picture>
+                    <source
+                      srcset="
+                        http://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg
+                      "
+                      media="(min-width: 768px)"
+                      type="image/jpeg"
+                    />
+                    <img
+                      src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg"
+                      alt="SAKIL SEIKH - Mathematics Expert"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div class="vivo-card-overlay">
+                    <h3>SAKIL SEIKH</h3>
+                    <p>Mathematics Expert</p>
                   </div>
                 </div>
-              </article>
-              <!-- Faculty Member 4 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img
-                    src="http://aamsantragachi.org/wp-content/uploads/2025/09/be4dba1c-eb2f-4700-864e-4e58cf340d3e.jpeg"
-                    alt="AZIZ ALI"
-                  />
-                </div>
-                <div class="news-card-content">
-                  <h3>AZIZ ALI</h3>
-                  <p class="news-category">Chemistry Instructor</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty4-text">
-                      <p>
-                        Ms. Rahman brings dynamic energy to the Chemistry
-                        department, making learning fun and effective for all
-                        students. Her practical demonstrations ensure strong
-                        foundations.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty4-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty4-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
+              </div>
+
+              <!-- Faculty Card 4 -->
+              <div class="vivo-gallery-card">
+                <div class="vivo-card-image">
+                  <picture>
+                    <source
+                      srcset="
+                        http://aamsantragachi.org/wp-content/uploads/2025/09/be4dba1c-eb2f-4700-864e-4e58cf340d3e.jpeg
+                      "
+                      media="(min-width: 768px)"
+                      type="image/jpeg"
+                    />
+                    <img
+                      src="http://aamsantragachi.org/wp-content/uploads/2025/09/be4dba1c-eb2f-4700-864e-4e58cf340d3e.jpeg"
+                      alt="AZIZ ALI - Chemistry Instructor"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div class="vivo-card-overlay">
+                    <h3>AZIZ ALI</h3>
+                    <p>Chemistry Instructor</p>
                   </div>
                 </div>
-              </article>
-              <!-- Faculty Member 5 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img
-                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG_20240720_204344_539-scaled.jpg"
-                    alt="Sihab shahariyar"
-                  />
-                </div>
-                <div class="news-card-content">
-                  <h3>Sihab shahariyar</h3>
-                  <p class="news-category">Senior Physics Lecturer</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty5-text">
-                      <p>
-                        Prof. Farooq is celebrated for his clear explanations
-                        and deep understanding of complex physics principles,
-                        guiding students to top scores in competitive
-                        examinations.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty5-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty5-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
+              </div>
+
+              <!-- Faculty Card 5 -->
+              <div class="vivo-gallery-card">
+                <div class="vivo-card-image">
+                  <picture>
+                    <source
+                      srcset="
+                        http://aamsantragachi.org/wp-content/uploads/2025/08/IMG_20240720_204344_539-scaled.jpg
+                      "
+                      media="(min-width: 768px)"
+                      type="image/jpeg"
+                    />
+                    <img
+                      src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG_20240720_204344_539-scaled.jpg"
+                      alt="Sihab shahariyar - Senior Physics Lecturer"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div class="vivo-card-overlay">
+                    <h3>Sihab shahariyar</h3>
+                    <p>Senior Physics Lecturer</p>
                   </div>
                 </div>
-              </article>
-              <!-- Faculty Member 6 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img
-                    src="http://aamsantragachi.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-11-at-20.16.37.jpeg"
-                    alt="Tarik Hassan"
-                  />
-                </div>
-                <div class="news-card-content">
-                  <h3>Tarik Hassan</h3>
-                  <p class="news-category">Biology Researcher</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty6-text">
-                      <p>
-                        Dr. Bibi's research background enriches her Biology
-                        classes, providing students with real-world insights and
-                        advanced knowledge in life sciences.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty6-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty6-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
+              </div>
+
+              <!-- Faculty Card 6 -->
+              <div class="vivo-gallery-card">
+                <div class="vivo-card-image">
+                  <picture>
+                    <source
+                      srcset="
+                        http://aamsantragachi.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-11-at-20.16.37.jpeg
+                      "
+                      media="(min-width: 768px)"
+                      type="image/jpeg"
+                    />
+                    <img
+                      src="http://aamsantragachi.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-11-at-20.16.37.jpeg"
+                      alt="Tarik Hassan - Biology Researcher"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div class="vivo-card-overlay">
+                    <h3>Tarik Hassan</h3>
+                    <p>Biology Researcher</p>
                   </div>
                 </div>
-              </article>
-              <!-- Faculty Member 7 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img
-                    src="http://aamsantragachi.org/wp-content/uploads/2025/08/23fe0cff-1448-4bba-a9af-c98c91fd3502-1_all_978-scaled.jpg"
-                    alt="Asma jahan mausm"
-                  />
-                </div>
-                <div class="news-card-content">
-                  <h3>Asma jahan mausm</h3>
-                  <p class="news-category">Chemistry Lab Incharge</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty7-text">
-                      <p>
-                        Mr. Hossain ensures a safe and effective learning
-                        environment in chemistry labs, guiding students through
-                        practical experiments with meticulous care.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty7-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty7-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
+              </div>
+
+              <!-- Faculty Card 7 -->
+              <div class="vivo-gallery-card">
+                <div class="vivo-card-image">
+                  <picture>
+                    <source
+                      srcset="
+                        http://aamsantragachi.org/wp-content/uploads/2025/08/23fe0cff-1448-4bba-a9af-c98c91fd3502-1_all_978-scaled.jpg
+                      "
+                      media="(min-width: 768px)"
+                      type="image/jpeg"
+                    />
+                    <img
+                      src="http://aamsantragachi.org/wp-content/uploads/2025/08/23fe0cff-1448-4bba-a9af-c98c91fd3502-1_all_978-scaled.jpg"
+                      alt="Asma jahan mausm - Chemistry Lab Incharge"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div class="vivo-card-overlay">
+                    <h3>Asma jahan mausm</h3>
+                    <p>Chemistry Lab Incharge</p>
                   </div>
                 </div>
-              </article>
-              <!-- Faculty Member 8 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img src="8.jpg" alt="M" />
-                </div>
-                <div class="news-card-content">
-                  <h3>M</h3>
-                  <p class="news-category">English Language Trainer</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty8-text">
-                      <p>
-                        Ms. Khatun focuses on enhancing students' communication
-                        skills and preparing them for competitive exams
-                        requiring strong English proficiency.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty8-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty8-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
+              </div>
+
+              <!-- Faculty Card 8 -->
+              <div class="vivo-gallery-card">
+                <div class="vivo-card-image">
+                  <picture>
+                    <source
+                      srcset="8.jpg"
+                      media="(min-width: 768px)"
+                      type="image/jpeg"
+                    />
+                    <img
+                      src="8.jpg"
+                      alt="English Language Trainer"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div class="vivo-card-overlay">
+                    <h3>Ms. Sana Khatun</h3>
+                    <p>English Language Trainer</p>
                   </div>
                 </div>
-              </article>
-              <!-- Faculty Member 9 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img src="9.jpg" alt="M" />
-                </div>
-                <div class="news-card-content">
-                  <h3>M</h3>
-                  <p class="news-category">Computer Science Instructor</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty9-text">
-                      <p>
-                        Mr. Sheikh introduces students to the world of computer
-                        science, fostering analytical thinking and
-                        problem-solving skills for the digital age.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty9-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty9-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
-                  </div>
-                </div>
-              </article>
-              <!-- Faculty Member 10 -->
-              <article class="news-card faculty-card">
-                <div class="soft-rect-frame">
-                  <img src="10.jpg" alt="M" />
-                </div>
-                <div class="news-card-content">
-                  <h3>M</h3>
-                  <p class="news-category">Counselor & Mentor</p>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="faculty10-text">
-                      <p>
-                        Ms. Parveen provides invaluable guidance and support to
-                        students, helping them navigate academic and personal
-                        challenges successfully.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('faculty10-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('faculty10-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
-                  </div>
-                </div>
-              </article>
+              </div>
             </div>
-            <button
-              class="news-arrow right"
-              id="facultyNext"
-              aria-label="Next faculty"
-            >
-              ›
-            </button>
+
+            <!-- Scroll indicators -->
+            <div class="vivo-gallery-indicators">
+              <div class="vivo-scroll-hint">
+                <span>←</span>
+                <span>Swipe to explore</span>
+                <span>→</span>
+              </div>
+            </div>
           </div>
 
           <div class="center-cta">
@@ -3312,29 +3534,7 @@
                   >
                 </div>
               </div>
-
-              <!-- <div class="result-card">
-                <h3>📋 Board Results</h3>
-                <p>
-                  Check your Class XI and XII board examination results and
-                  certificates
-                </p>
-                <div class="center-cta">
-                  <a href="/board-result" class="btn-ripple">Check Result</a>
-                </div>
-              </div> 
-
-              <div class="result-card">
-                <h3>🏆 Merit List</h3>
-                <p>
-                  View merit lists and toppers from various examinations and
-                  competitions
-                </p>
-                <div class="center-cta">
-                  <a href="/merit-list" class="btn-ripple">View Merit List</a>
-                </div>
-              </div>
-            </div> -->
+            </div>
             <button
               class="results-arrow right"
               id="resultsNext"
@@ -3526,6 +3726,8 @@
       </div>
     </footer>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -3623,6 +3825,7 @@
         setupCarousels(); // This will now include the new horizontal scroll functions
         setupModals();
         setupStudentPortal();
+        setupFacultySwiper(); // Initialize the new Swiper for faculty
 
         // Initialize performance monitor
         const performanceMonitor = new AnimationPerformanceMonitor();
@@ -3823,7 +4026,8 @@
         start();
       }
 
-      /* === Ping-Pong Faculty Scroll === */
+      /* === Ping-Pong Faculty Scroll ===
+      // This function is now replaced by setupFacultySwiper()
       function setupFacultyScroll(autoScrollIntervalTime = 4000) {
         const facultyScroll = document.getElementById("facultyScroll");
         const facultyPrev = document.getElementById("facultyPrev");
@@ -3941,6 +4145,7 @@
 
         start();
       }
+      */
 
       /* === Generic Horizontal Scroll (Why Choose Us, Programs) with ping-pong ===
    Usage: setupHorizontalScroll("whyChooseUsScroll","prevId","nextId","dotsId",".horizontal-scroll-card", intervalMs)
@@ -3975,6 +4180,7 @@
           for (let i = 0; i < cards.length; i++) {
             const dot = document.createElement("div");
             dot.className = "dot";
+            dot.innerHTML = '<div class="progress-bar"></div>'; // Add progress bar
             dot.addEventListener("click", () => {
               scrollWrapper.scrollTo({
                 left: i * cardWidth,
@@ -4010,7 +4216,18 @@
           if (!dotsContainer) return;
           const dots = dotsContainer.querySelectorAll(".dot");
           const active = Math.round(scrollWrapper.scrollLeft / cardWidth);
-          dots.forEach((d, i) => d.classList.toggle("active", i === active));
+          dots.forEach((d, i) => {
+            d.classList.toggle("active", i === active);
+            const progressBar = d.querySelector(".progress-bar");
+            if (progressBar) {
+              progressBar.style.width = "0%"; // Reset progress bar
+              if (i === active) {
+                progressBar.style.animation = `fillProgressBar ${autoScrollIntervalTime}ms linear forwards`;
+              } else {
+                progressBar.style.animation = "none";
+              }
+            }
+          });
         }
 
         function goToPage(page) {
@@ -4040,6 +4257,10 @@
             clearInterval(intervalId);
             intervalId = null;
           }
+          dotsContainer.querySelectorAll(".progress-bar").forEach((pb) => {
+            pb.style.animation = "none";
+            pb.style.width = "0%";
+          });
         }
         function resetAuto() {
           stop();
@@ -4401,7 +4622,7 @@
       function setupCarousels() {
         setupPhotoGallery("hallOfFameScroll", "hallOfFameDots", 2500); // Hall of Fame: 2.5 seconds
         setupNewsScroll(3000); // Latest News: 3 seconds
-        setupFacultyScroll(3000); // Our Esteemed Faculty & Staff: 3 seconds
+        // setupFacultyScroll(3000); // This is now replaced by setupFacultySwiper()
         setupResultsScroll(3000); // Results: 3 seconds
 
         // New horizontal scrolls for "Why Choose Us" and "Academic Programs"
@@ -4537,6 +4758,59 @@
         });
       }
 
+      // Initialize Swiper for Faculty Section
+      function setupFacultySwiper() {
+        const facultySwiper = new Swiper(".faculty-swiper-container", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          autoplay: {
+            delay: 3000, // 3 seconds
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".faculty-swiper-pagination",
+            clickable: true,
+            renderBullet: function (index, className) {
+              const facultyNames = [
+                "KM Haque",
+                "RIAJ ANSARI",
+                "SAKIL SEIKH",
+                "AZIZ ALI",
+                "Sihab shahariyar",
+                "Tarik Hassan",
+                "Asma jahan mausm",
+                "M (English)",
+                "M (CS)",
+                "M (Counselor)",
+              ]; // Adjust names as per your slides
+              return (
+                '<span class="' +
+                className +
+                '">' +
+                facultyNames[index] +
+                "</span>"
+              );
+            },
+          },
+          navigation: {
+            nextEl: ".faculty-swiper-button-next",
+            prevEl: ".faculty-swiper-button-prev",
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          },
+        });
+      }
+
       // Enhanced Modal Setup
       function setupModals() {
         // Faculty Modal
@@ -4549,61 +4823,61 @@
           {
             name: "Prof. Ahmed Khan",
             title: "Head of Physics Dept.",
-            img: "11.jpg",
+            img: "http://aamsantragachi.org/wp-content/uploads/2025/08/1000035857-scaled.jpg",
             bio: "Prof. Khan is a veteran educator with over 20 years of experience in teaching advanced physics. His passion for science inspires students to achieve excellence, focusing on conceptual clarity and problem-solving techniques for competitive exams.",
           },
           {
             name: "Dr. Fatima Begum",
             title: "Biology Specialist",
-            img: "12.jpg",
+            img: "http://aamsantragachi.org/wp-content/uploads/2025/08/Screenshot_2025-08-24-10-56-52-376_com.miui_.gallery.jpg",
             bio: "Dr. Begum holds a Ph.D. in Biotechnology and is renowned for her engaging teaching methods in Biology, making complex topics easy to understand. Her interactive sessions help students grasp biological concepts thoroughly.",
           },
           {
             name: "Mr. Mohammed Ali",
             title: "Mathematics Expert",
-            img: "13.jpg",
+            img: "http://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg",
             bio: "Mr. Ali is known for his innovative approach to teaching Mathematics, helping students master challenging concepts for JEE and NEET. He simplifies complex mathematical problems with clarity.",
           },
           {
             name: "Ms. Aisha Rahman",
             title: "Chemistry Instructor",
-            img: "14.jpg",
+            img: "http://aamsantragachi.org/wp-content/uploads/2025/09/be4dba1c-eb2f-4700-864e-4e58cf340d3e.jpeg",
             bio: "Ms. Rahman brings dynamic energy to the Chemistry department, making learning fun and effective for all students. Her practical demonstrations ensure strong foundations.",
           },
           {
             name: "Prof. Omar Farooq",
             title: "Senior Physics Lecturer",
-            img: "15.jpg",
+            img: "http://aamsantragachi.org/wp-content/uploads/2025/08/IMG_20240720_204344_539-scaled.jpg",
             bio: "Prof. Farooq is celebrated for his clear explanations and deep understanding of complex physics principles, guiding students to top scores in competitive examinations.",
           },
           {
             name: "Dr. Zainab Bibi",
             title: "Biology Researcher",
-            img: "16.jpg",
+            img: "http://aamsantragachi.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-11-at-20.16.37.jpeg",
             bio: "Dr. Bibi's research background enriches her Biology classes, providing students with real-world insights and advanced knowledge in life sciences.",
           },
           {
             name: "Mr. Imran Hossain",
             title: "Chemistry Lab Incharge",
-            img: "17.jpg",
+            img: "http://aamsantragachi.org/wp-content/uploads/2025/08/23fe0cff-1448-4bba-a9af-c98c91fd3502-1_all_978-scaled.jpg",
             bio: "Mr. Hossain ensures a safe and effective learning environment in chemistry labs, guiding students through practical experiments with meticulous care.",
           },
           {
             name: "Ms. Sana Khatun",
             title: "English Language Trainer",
-            img: "18.jpg",
+            img: "8.jpg",
             bio: "Ms. Khatun focuses on enhancing students' communication skills and preparing them for competitive exams requiring strong English proficiency.",
           },
           {
             name: "Mr. Rahman Sheikh",
             title: "Computer Science Instructor",
-            img: "19.jpg",
+            img: "9.jpg",
             bio: "Mr. Sheikh introduces students to the world of computer science, fostering analytical thinking and problem-solving skills for the digital age.",
           },
           {
             name: "Ms. Nazia Parveen",
             title: "Counselor & Mentor",
-            img: "20.jpg",
+            img: "10.jpg",
             bio: "Ms. Parveen provides invaluable guidance and support to students, helping them navigate academic and personal challenges successfully.",
           },
         ];
