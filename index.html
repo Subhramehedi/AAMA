@@ -1152,6 +1152,7 @@
         transition: transform var(--transition-slow);
         position: relative;
         z-index: 3;
+        border-radius: 0.9375rem 0.9375rem 0 0; /* Rounded top corners */
         will-change: transform;
       }
 
@@ -1180,6 +1181,7 @@
         color: var(--primary-green);
         transition: color var(--transition-slow);
         font-weight: 600;
+        cursor: pointer; /* Make headline clickable */
       }
 
       .news-card:hover h3 {
@@ -2280,6 +2282,7 @@
         font-weight: 600;
         margin-bottom: var(--space-xs);
         color: var(--white);
+        cursor: pointer; /* Make name clickable */
       }
 
       .vivo-card-overlay p {
@@ -2428,6 +2431,15 @@
           transform: none !important;
         }
       }
+
+      .footer-content {
+        max-width: 75rem;
+        margin: 0 auto;
+        padding: 0 var(--space-md);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+        gap: var(--space-xl);
+      }
     </style>
   </head>
 
@@ -2472,7 +2484,9 @@
                 <a href="#" id="students-btn" class="btn-ripple">Students</a>
               </li>
               <li>
-                <a href="#hall-of-fame" class="btn-ripple">Hall of Fame</a>
+                <a href="index.html#hall-of-fame" class="btn-ripple"
+                  >Hall of Fame</a
+                >
               </li>
               <!-- NEW: Alumni button for desktop -->
               <li>
@@ -2501,7 +2515,7 @@
           <a href="index.html#faculty">Faculty & Staff</a>
           <a href="index.html#programs">Academic Programs</a>
           <a href="index.html#admission">Admission</a>
-          <a href="index.html#our-impact">our-impact</a>
+          <a href="index.html#our-impact">Our Impact</a>
           <a href="index.html#results">Results</a>
           <a href="index.html#contact">Contact</a>
         </nav>
@@ -2530,7 +2544,7 @@
         </a>
         <a href="index.html#our-impact" class="mobile-menu-item">
           <span class="menu-icon">🏆</span>
-          <span>our-impact
+          <span>Our Impact</span>
         </a>
         <a href="index.html#results" class="mobile-menu-item">
           <span class="menu-icon">📊</span>
@@ -2786,28 +2800,16 @@
                 </div>
                 <div class="news-card-content">
                   <p class="news-category">Academic Achievement</p>
-                  <h3>Outstanding NEET Results 2025</h3>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="news1-text">
-                      <p>
-                        Our students achieve remarkable success in medical
-                        entrance examinations with 85% qualifying rate. This
-                        year marks another milestone in our commitment to
-                        excellence in medical education preparation.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('news1-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('news1-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
-                  </div>
+                  <h3
+                    class="news-headline"
+                    data-news-id="news1"
+                    data-title="Outstanding NEET Results 2025"
+                    data-category="Academic Achievement"
+                    data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/FB_IMG_1754170589469.jpg"
+                    data-content="Our students achieve remarkable success in medical entrance examinations with 85% qualifying rate. This year marks another milestone in our commitment to excellence in medical education preparation. The rigorous curriculum, dedicated faculty, and state-of-the-art facilities contribute to our students' consistent high performance. We are proud of their hard work and the bright futures they are building."
+                  >
+                    Outstanding NEET Results 2025
+                  </h3>
                 </div>
               </article>
 
@@ -2820,28 +2822,16 @@
                 </div>
                 <div class="news-card-content">
                   <p class="news-category">Campus Event</p>
-                  <h3>Annual Science Fair Success</h3>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="news2-text">
-                      <p>
-                        Students showcase innovative projects at the annual
-                        science exhibition with over 50 projects. The event
-                        highlighted our students' creativity and scientific
-                        thinking abilities.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('news2-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('news2-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
-                  </div>
+                  <h3
+                    class="news-headline"
+                    data-news-id="news2"
+                    data-title="Annual Science Fair Success"
+                    data-category="Campus Event"
+                    data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/FB_IMG_1754170589469.jpg"
+                    data-content="Students showcase innovative projects at the annual science exhibition with over 50 projects. The event highlighted our students' creativity and scientific thinking abilities. Judges were impressed by the originality and depth of research presented, fostering a spirit of inquiry and innovation among participants. It was a grand success, inspiring many young scientists."
+                  >
+                    Annual Science Fair Success
+                  </h3>
                 </div>
               </article>
 
@@ -2854,28 +2844,16 @@
                 </div>
                 <div class="news-card-content">
                   <p class="news-category">Achievement</p>
-                  <h3>JEE Main Top Performers</h3>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="news3-text">
-                      <p>
-                        Multiple students secure top ranks in engineering
-                        entrance examinations. Our comprehensive preparation
-                        methods continue to yield excellent results for aspiring
-                        engineers.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('news3-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('news3-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
-                  </div>
+                  <h3
+                    class="news-headline"
+                    data-news-id="news3"
+                    data-title="JEE Main Top Performers"
+                    data-category="Achievement"
+                    data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/FB_IMG_1754170589469.jpg"
+                    data-content="Multiple students secure top ranks in engineering entrance examinations. Our comprehensive preparation methods continue to yield excellent results for aspiring engineers. The intensive coaching, regular assessments, and personalized mentorship provided by our expert faculty are key factors in their outstanding achievements. We celebrate their dedication and success."
+                  >
+                    JEE Main Top Performers
+                  </h3>
                 </div>
               </article>
 
@@ -2888,27 +2866,16 @@
                 </div>
                 <div class="news-card-content">
                   <p class="news-category">Sports</p>
-                  <h3>Inter-School Cricket Championship</h3>
-                  <div class="expandable-content">
-                    <div class="expandable-text" id="news4-text">
-                      <p>
-                        Our cricket team wins the district championship with
-                        outstanding performance and teamwork. Sports activities
-                        are an integral part of our holistic education approach.
-                      </p>
-                    </div>
-                    <span
-                      class="read-more-link"
-                      onclick="toggleExpand('news4-text', this)"
-                      >Read more</span
-                    >
-                    <button
-                      class="show-less-btn"
-                      onclick="toggleExpand('news4-text', this.previousElementSibling)"
-                    >
-                      Show less
-                    </button>
-                  </div>
+                  <h3
+                    class="news-headline"
+                    data-news-id="news4"
+                    data-title="Inter-School Cricket Championship"
+                    data-category="Sports"
+                    data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/FB_IMG_1754170589469.jpg"
+                    data-content="Our cricket team wins the district championship with outstanding performance and teamwork. Sports activities are an integral part of our holistic education approach. We believe in nurturing well-rounded individuals, and our sports programs help students develop leadership, teamwork, and discipline, alongside physical fitness. Congratulations to the team!"
+                  >
+                    Inter-School Cricket Championship
+                  </h3>
                 </div>
               </article>
             </div>
@@ -2944,7 +2911,7 @@
       </section>
 
       <!-- Statistics -->
-      <section class="panel theme--white" data-aos="fade-up">
+      <section id="our-impact" class="panel theme--white" data-aos="fade-up">
         <div class="container">
           <header>
             <h2>Our Impact</h2>
@@ -3003,7 +2970,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Abdul Rajeb Sk</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="abdul-rajeb-sk"
+                      data-name="Abdul Rajeb Sk"
+                      data-designation="NEET Qualifier"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/1000017786-1.jpg"
+                      data-bio="Abdul Rajeb Sk achieved an outstanding score in NEET, securing admission to a prestigious medical college. His dedication and hard work serve as an inspiration to all aspiring medical students at Al-Ameen Mission. He consistently performed well in mock tests and maintained a disciplined study routine."
+                    >
+                      Abdul Rajeb Sk
+                    </h3>
                     <p>NEET Qualifier</p>
                   </div>
                 </div>
@@ -3027,7 +3003,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Sekh Asif Ahamed</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="sekh-asif-ahamed"
+                      data-name="Sekh Asif Ahamed"
+                      data-designation="JEE Advanced Ranker"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/1000010923-scaled-e1757749134558.jpg"
+                      data-bio="Sekh Asif Ahamed secured an impressive rank in JEE Advanced, paving his way to a top engineering institute. His analytical skills and problem-solving approach were exemplary throughout his preparation. He was a regular participant in competitive programming contests."
+                    >
+                      Sekh Asif Ahamed
+                    </h3>
                     <p>JEE Advanced Ranker</p>
                   </div>
                 </div>
@@ -3051,7 +3036,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Md Aminul Islam</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="md-aminul-islam"
+                      data-name="Md Aminul Islam"
+                      data-designation="Top Board Scorer"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/IMG20250812122430-1-scaled-e1757749202962.jpg"
+                      data-bio="Md Aminul Islam achieved the highest marks in the board examinations, demonstrating exceptional academic prowess. His consistent efforts and clear understanding of subjects led to this remarkable achievement. He was also a mentor to his peers, helping them with their studies."
+                    >
+                      Md Aminul Islam
+                    </h3>
                     <p>Top Board Scorer</p>
                   </div>
                 </div>
@@ -3075,7 +3069,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Arij Arman Mandal</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="arij-arman-mandal"
+                      data-name="Arij Arman Mandal"
+                      data-designation="NEET Qualifier"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/1000038560.jpg"
+                      data-bio="Arij Arman Mandal successfully qualified NEET, fulfilling his dream of pursuing a career in medicine. His perseverance and strategic study plan were key to his success. He also actively participated in various medical awareness campaigns."
+                    >
+                      Arij Arman Mandal
+                    </h3>
                     <p>NEET Qualifier</p>
                   </div>
                 </div>
@@ -3099,7 +3102,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>JAVED AKHTAR</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="javed-akhtar"
+                      data-name="JAVED AKHTAR"
+                      data-designation="JEE Main Topper"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/2156-scaled.jpg"
+                      data-bio="Javed Akhtar excelled in JEE Main, showcasing his strong grasp of engineering fundamentals. His consistent practice and problem-solving skills were instrumental in his high score. He is now pursuing Computer Science Engineering at a top-tier university."
+                    >
+                      JAVED AKHTAR
+                    </h3>
                     <p>JEE Main Topper</p>
                   </div>
                 </div>
@@ -3123,7 +3135,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>SAYED IKBAL</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="sayed-ikbal"
+                      data-name="SAYED IKBAL"
+                      data-designation="Medical College Admission"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/20200122163939_IMG_5972-1-scaled.jpg"
+                      data-bio="Sayed Ikbal gained admission to a renowned medical college, a testament to his unwavering commitment to his studies. His passion for healthcare and rigorous preparation paid off. He is now a final year medical student, excelling in his clinical rotations."
+                    >
+                      SAYED IKBAL
+                    </h3>
                     <p>Medical College Admission</p>
                   </div>
                 </div>
@@ -3134,18 +3155,29 @@
                 <div class="vivo-card-image">
                   <picture>
                     <source
-                      srcset="13.jpg"
+                      srcset="
+                        https://aamsantragachi.org/wp-content/uploads/2025/08/1000494249-scaled.jpg
+                      "
                       media="(min-width: 768px)"
                       type="image/jpeg"
                     />
                     <img
-                      src="13.jpg"
-                      alt="Imran Hossain"
+                      src="https://aamsantragachi.org/wp-content/uploads/2025/08/1000494249-scaled.jpg"
+                      alt="null"
                       loading="lazy"
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Imran Hossain</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="rasidul-islam"
+                      data-name="RASIDUL ISLAM"
+                      data-designation="Engineering Entrance Success"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/1000494249-scaled.jpg"
+                      data-bio="Rasidul Islam achieved success in multiple engineering entrance exams, showcasing his versatility and strong academic foundation. He chose to pursue Electrical Engineering, driven by his interest in sustainable energy solutions. He is currently interning at a leading renewable energy company."
+                    >
+                      RASIDUL ISLAM
+                    </h3>
                     <p>Engineering Entrance Success</p>
                   </div>
                 </div>
@@ -3169,7 +3201,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Sk Nilay Islam</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="sk-nilay-islam"
+                      data-name="Sk Nilay Islam"
+                      data-designation="Board Exam Distinction"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/1000012238-1-scaled.jpg"
+                      data-bio="Sk Nilay Islam achieved distinction in his board examinations, demonstrating exceptional academic performance across all subjects. His meticulous study habits and dedication to understanding core concepts were key to his success. He is now pursuing higher education in a field of his choice."
+                    >
+                      Sk Nilay Islam
+                    </h3>
                     <p>Board Exam Distinction</p>
                   </div>
                 </div>
@@ -3203,7 +3244,7 @@
           </header>
 
           <div class="vivo-gallery-container">
-            <div class="vivo-gallery-scroll">
+            <div class="vivo-gallery-scroll" id="facultyVivoScroll">
               <!-- Faculty Card 1 -->
               <div class="vivo-gallery-card">
                 <div class="vivo-card-image">
@@ -3222,7 +3263,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>KM Haque</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="km-haque"
+                      data-name="KM Haque"
+                      data-designation="Head of Physics Dept."
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/1000035857-scaled.jpg"
+                      data-bio="KM Haque is a veteran educator with over 20 years of experience in teaching advanced physics. His passion for science inspires students to achieve excellence, focusing on conceptual clarity and problem-solving techniques for competitive exams."
+                    >
+                      KM Haque
+                    </h3>
                     <p>Head of Physics Dept.</p>
                   </div>
                 </div>
@@ -3246,7 +3296,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>RIAJ ANSARI</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="riaj-ansari"
+                      data-name="RIAJ ANSARI"
+                      data-designation="Biology Specialist"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/Screenshot_2025-08-24-10-56-52-376_com.miui_.gallery.jpg"
+                      data-bio="RIAJ ANSARI holds a Ph.D. in Biotechnology and is renowned for his engaging teaching methods in Biology, making complex topics easy to understand. His interactive sessions help students grasp biological concepts thoroughly."
+                    >
+                      RIAJ ANSARI
+                    </h3>
                     <p>Biology Specialist</p>
                   </div>
                 </div>
@@ -3270,7 +3329,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>SAKIL SEIKH</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="sakil-seikh"
+                      data-name="SAKIL SEIKH"
+                      data-designation="Mathematics Expert"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg"
+                      data-bio="SAKIL SEIKH is known for his innovative approach to teaching Mathematics, helping students master challenging concepts for JEE and NEET. He simplifies complex mathematical problems with clarity."
+                    >
+                      SAKIL SEIKH
+                    </h3>
                     <p>Mathematics Expert</p>
                   </div>
                 </div>
@@ -3294,7 +3362,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>AZIZ ALI</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="aziz-ali"
+                      data-name="AZIZ ALI"
+                      data-designation="Chemistry Instructor"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/09/be4dba1c-eb2f-4700-864e-4e58cf340d3e.jpeg"
+                      data-bio="AZIZ ALI brings dynamic energy to the Chemistry department, making learning fun and effective for all students. His practical demonstrations ensure strong foundations."
+                    >
+                      AZIZ ALI
+                    </h3>
                     <p>Chemistry Instructor</p>
                   </div>
                 </div>
@@ -3318,7 +3395,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Sihab shahariyar</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="sihab-shahariyar"
+                      data-name="Sihab shahariyar"
+                      data-designation="Senior Physics Lecturer"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/IMG_20240720_204344_539-scaled.jpg"
+                      data-bio="Sihab shahariyar is celebrated for his clear explanations and deep understanding of complex physics principles, guiding students to top scores in competitive examinations."
+                    >
+                      Sihab shahariyar
+                    </h3>
                     <p>Senior Physics Lecturer</p>
                   </div>
                 </div>
@@ -3342,7 +3428,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Tarik Hassan</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="tarik-hassan"
+                      data-name="Tarik Hassan"
+                      data-designation="Biology Researcher"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-11-at-20.16.37.jpeg"
+                      data-bio="Tarik Hassan's research background enriches his Biology classes, providing students with real-world insights and advanced knowledge in life sciences."
+                    >
+                      Tarik Hassan
+                    </h3>
                     <p>Biology Researcher</p>
                   </div>
                 </div>
@@ -3366,7 +3461,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Asma jahan mausm</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="asma-jahan-mausm"
+                      data-name="Asma jahan mausm"
+                      data-designation="Chemistry Lab Incharge"
+                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/23fe0cff-1448-4bba-a9af-c98c91fd3502-1_all_978-scaled.jpg"
+                      data-bio="Asma jahan mausm ensures a safe and effective learning environment in chemistry labs, guiding students through practical experiments with meticulous care."
+                    >
+                      Asma jahan mausm
+                    </h3>
                     <p>Chemistry Lab Incharge</p>
                   </div>
                 </div>
@@ -3388,7 +3492,16 @@
                     />
                   </picture>
                   <div class="vivo-card-overlay">
-                    <h3>Ms. Sana Khatun</h3>
+                    <h3
+                      class="person-name"
+                      data-person-id="ms-sana-khatun"
+                      data-name="Ms. Sana Khatun"
+                      data-designation="English Language Trainer"
+                      data-image="8.jpg"
+                      data-bio="Ms. Khatun focuses on enhancing students' communication skills and preparing them for competitive exams requiring strong English proficiency."
+                    >
+                      Ms. Sana Khatun
+                    </h3>
                     <p>English Language Trainer</p>
                   </div>
                 </div>
@@ -3707,13 +3820,111 @@
       </section>
     </div>
 
-    <!-- Faculty Modal -->
+    <!-- Faculty Modal (for "View All Faculty & Staff" button) -->
     <div id="facultyModal" class="modal">
       <div class="modal-content">
         <span class="close-button">&times;</span>
         <h2>All Faculty & Staff</h2>
         <div class="modal-grid">
           <!-- Faculty members will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Person Detail Modal (for Hall of Fame and Faculty individual cards) -->
+    <div id="personDetailModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <img
+          id="personDetailImage"
+          src=""
+          alt="Person"
+          class="modal-card-img"
+          style="
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 1rem auto;
+            display: block;
+            border: 3px solid var(--primary-green);
+          "
+        />
+        <h3
+          id="personDetailName"
+          style="
+            text-align: center;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+          "
+        ></h3>
+        <p
+          id="personDetailDesignation"
+          style="
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+          "
+        ></p>
+        <div class="expandable-content">
+          <div class="expandable-text" id="personDetailBio">
+            <!-- Bio will be loaded here -->
+          </div>
+          <span
+            class="read-more-link"
+            onclick="toggleExpand('personDetailBio', this)"
+            >Read more</span
+          >
+          <button
+            class="show-less-btn"
+            onclick="toggleExpand('personDetailBio', this.previousElementSibling)"
+          >
+            Show less
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- News Detail Modal -->
+    <div id="newsDetailModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <img
+          id="newsDetailImage"
+          src=""
+          alt="News Image"
+          style="
+            width: 100%;
+            height: 15rem;
+            object-fit: cover;
+            border-radius: 0.9375rem;
+            margin-bottom: 1rem;
+          "
+        />
+        <p
+          id="newsDetailCategory"
+          style="color: #888; font-size: var(--text-sm); margin-bottom: 0.5rem"
+        ></p>
+        <h3
+          id="newsDetailTitle"
+          style="color: var(--primary-green); margin-bottom: 1rem"
+        ></h3>
+        <div class="expandable-content">
+          <div class="expandable-text" id="newsDetailContent">
+            <!-- News content will be loaded here -->
+          </div>
+          <span
+            class="read-more-link"
+            onclick="toggleExpand('newsDetailContent', this)"
+            >Read more</span
+          >
+          <button
+            class="show-less-btn"
+            onclick="toggleExpand('newsDetailContent', this.previousElementSibling)"
+          >
+            Show less
+          </button>
         </div>
       </div>
     </div>
@@ -3795,9 +4006,9 @@
             <li>
               <a href="#" id="footer-student-portal-btn">Student Portal</a>
             </li>
-            <li><a href="/downloads">Downloads</a></li>
+            <!--<li><a href="/downloads">Downloads</a></li> -->
             <li><a href="academic-calendar.html">Academic Calendar</a></li>
-            <li><a href="/library">Library</a></li>
+            <!-- <li><a href="/library">Library</a></li> -->
             <li>
               <a href="https://aamsantragachi.org/our-alumni/" target="_blank"
                 >Alumni</a
@@ -3809,19 +4020,35 @@
         <div class="footer-section">
           <h3>Results</h3>
           <ul>
-            <li><a href="/bioct-result">BIOCT Result</a></li>
-            <li><a href="/nanotest-result">Nanotest Result</a></li>
-            <li><a href="/pre-pt-result">Pre-PT Result</a></li>
-            <li><a href="/pt-result">PT Result</a></li>
+            <li>
+              <a href="https://aamsantragachi.org/bioct_result/"
+                >BIOCT Result</a
+              >
+            </li>
+            <li>
+              <a href="https://aamsantragachi.org/nanotest_result/"
+                >Nanotest Result</a
+              >
+            </li>
+            <li>
+              <a href="https://aamsantragachi.org/pre-pt_result/"
+                >Pre-PT Result</a
+              >
+            </li>
+            <li>
+              <a href="https://aamsantragachi.org/pt_result/">PT Result</a>
+            </li>
           </ul>
         </div>
 
         <div class="footer-section">
           <h3>Connect</h3>
           <ul>
-            <li><a href="tel:+91-XXXXXXXXXX">Call Us</a></li>
+            <li><a href="tel:+919876543210">Call Us</a></li>
             <li><a href="mailto:info@aamsantragachi.org">Email</a></li>
-            <li><a href="/location">Location</a></li>
+            <li>
+              <a href="https://maps.app.goo.gl/mbF1WcsknXSc7QW58">Location</a>
+            </li>
             <li><a href="https://alameenmission.org">Main Website</a></li>
           </ul>
         </div>
@@ -3933,7 +4160,7 @@
         setupCarousels(); // This will now include the new horizontal scroll functions
         setupModals();
         setupStudentPortal();
-        setupFacultySwiper(); // Initialize the new Swiper for faculty
+        // setupFacultySwiper(); // Initialize the new Swiper for faculty - Removed as per request to use Vivo style for faculty
 
         // Initialize performance monitor
         const performanceMonitor = new AnimationPerformanceMonitor();
@@ -4001,8 +4228,9 @@
           { passive: true }
         );
       }
-      /* News Scroll === */
-      function setupNewsScroll(autoScrollIntervalTime = 10000) {
+
+      /* === Ping-Pong News Scroll === */
+      function setupNewsScroll(autoScrollIntervalTime = 2500) {
         const newsScroll = document.getElementById("newsScroll");
         const newsPrev = document.getElementById("newsPrev");
         const newsNext = document.getElementById("newsNext");
@@ -4133,127 +4361,6 @@
 
         start();
       }
-
-      /* === Ping-Pong Faculty Scroll ===
-      // This function is now replaced by setupFacultySwiper()
-      function setupFacultyScroll(autoScrollIntervalTime = 4000) {
-        const facultyScroll = document.getElementById("facultyScroll");
-        const facultyPrev = document.getElementById("facultyPrev");
-        const facultyNext = document.getElementById("facultyNext");
-        if (!facultyScroll) return;
-
-        const cards = facultyScroll.querySelectorAll(".news-card");
-        if (!cards.length) return;
-
-        const firstCard = cards[0];
-        const cs = getComputedStyle(firstCard);
-        let cardWidth =
-          firstCard.offsetWidth +
-          parseFloat(cs.marginLeft) +
-          parseFloat(cs.marginRight);
-
-        const itemsPerPage = Math.max(
-          1,
-          Math.floor(facultyScroll.clientWidth / cardWidth)
-        );
-        const totalPages = Math.max(1, Math.ceil(cards.length / itemsPerPage));
-
-        if (totalPages <= 1) {
-          facultyPrev?.addEventListener("click", () =>
-            facultyScroll.scrollBy({ left: -cardWidth, behavior: "smooth" })
-          );
-          facultyNext?.addEventListener("click", () =>
-            facultyScroll.scrollBy({ left: cardWidth, behavior: "smooth" })
-          );
-          return;
-        }
-
-        let currentPage = 0;
-        let direction = 1;
-        let intervalId = null;
-
-        function goToPage(page) {
-          const left = page * itemsPerPage * cardWidth;
-          facultyScroll.scrollTo({ left, behavior: "smooth" });
-        }
-
-        function step() {
-          currentPage += direction;
-          if (currentPage >= totalPages) {
-            direction = -1;
-            currentPage = Math.max(0, totalPages - 2);
-          } else if (currentPage < 0) {
-            direction = 1;
-            currentPage = 1;
-          }
-          goToPage(currentPage);
-        }
-
-        function start() {
-          stop();
-          intervalId = setInterval(step, autoScrollIntervalTime);
-        }
-        function stop() {
-          if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null;
-          }
-        }
-        function reset() {
-          stop();
-          setTimeout(start, Math.max(300, autoScrollIntervalTime));
-        }
-
-        facultyPrev?.addEventListener("click", () => {
-          currentPage = Math.max(
-            0,
-            Math.round(facultyScroll.scrollLeft / (itemsPerPage * cardWidth)) -
-              1
-          );
-          direction = -1;
-          goToPage(currentPage);
-          reset();
-        });
-
-        facultyNext?.addEventListener("click", () => {
-          currentPage = Math.min(
-            totalPages - 1,
-            Math.round(facultyScroll.scrollLeft / (itemsPerPage * cardWidth)) +
-              1
-          );
-          direction = 1;
-          goToPage(currentPage);
-          reset();
-        });
-
-        facultyScroll.addEventListener("mouseenter", stop);
-        facultyScroll.addEventListener("mouseleave", () =>
-          setTimeout(start, 200)
-        );
-        facultyScroll.addEventListener("touchstart", stop, { passive: true });
-        facultyScroll.addEventListener("touchend", () =>
-          setTimeout(start, autoScrollIntervalTime)
-        );
-
-        let resizeTimer;
-        window.addEventListener("resize", () => {
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(() => {
-            const fc = facultyScroll.querySelector(".news-card");
-            if (fc) {
-              const cs2 = getComputedStyle(fc);
-              cardWidth =
-                fc.offsetWidth +
-                parseFloat(cs2.marginLeft) +
-                parseFloat(cs2.marginRight);
-            }
-            start();
-          }, 200);
-        });
-
-        start();
-      }
-      */
 
       /* === Generic Horizontal Scroll (Why Choose Us, Programs) with ping-pong ===
    Usage: setupHorizontalScroll("whyChooseUsScroll","prevId","nextId","dotsId",".horizontal-scroll-card", intervalMs)
@@ -4559,7 +4666,7 @@
           "#results": "results",
           "#contact": "contact",
           "#why-choose-us": "why-choose-us",
-          "#our-impact": "our-impact",
+          "#our-impact": "our-impact", // Corrected ID
         };
 
         function scrollToSection(target) {
@@ -4728,10 +4835,7 @@
 
       // Enhanced Carousel Setup
       function setupCarousels() {
-        // setupPhotoGallery("hallOfFameScroll", "hallOfFameDots", 2500); // Hall of Fame: 2.5 seconds - This is now replaced by setupVivoGalleryScroll
-        setupNewsScroll(3000); // Latest News: 3 seconds
-        // setupFacultyScroll(3000); // This is now replaced by setupFacultySwiper()
-        setupResultsScroll(3000); // Results: 3 seconds
+        setupNewsScroll(2500); // Latest News: 2.5 seconds (ping-pong)
 
         // New horizontal scrolls for "Why Choose Us" and "Academic Programs"
         setupHorizontalScroll(
@@ -4740,7 +4844,7 @@
           "whyChooseUsNext",
           "whyChooseUsDots",
           ".horizontal-scroll-card",
-          1000 // Why Choose Us: 2 seconds
+          2000 // Why Choose Us: 2 seconds (ping-pong)
         );
         setupHorizontalScroll(
           "programsScroll",
@@ -4748,44 +4852,74 @@
           "programsNext",
           "programsDots",
           ".horizontal-scroll-card",
-          2000 // Academic Programs: 2 seconds
+          2000 // Academic Programs: 2 seconds (ping-pong)
         );
 
-        // Initialize Vivo-style gallery for Hall of Fame
-        setupVivoGalleryScroll("hallOfFameScroll");
+        // Initialize Vivo-style gallery for Hall of Fame and Faculty
+        setupVivoGalleryScroll("hallOfFameScroll", 2500); // Hall of Fame: 2.5 seconds (ping-pong)
+        setupVivoGalleryScroll("facultyVivoScroll", 2500); // Faculty: 2.5 seconds (ping-pong)
+        setupResultsScroll(3000); // Results: 3 seconds (forward-only)
       }
 
-      // New function for Vivo-style gallery scroll (Hall of Fame)
-      function setupVivoGalleryScroll(scrollWrapperId) {
+      // New function for Vivo-style gallery scroll (Hall of Fame & Faculty) with ping-pong
+      function setupVivoGalleryScroll(
+        scrollWrapperId,
+        autoScrollIntervalTime = 2500
+      ) {
         const scrollWrapper = document.getElementById(scrollWrapperId);
         if (!scrollWrapper) return;
 
+        const cards = scrollWrapper.querySelectorAll(".vivo-gallery-card");
+        if (!cards.length) return;
+
+        const firstCard = cards[0];
+        const cs = getComputedStyle(firstCard);
+        let cardWidth =
+          firstCard.offsetWidth +
+          parseFloat(cs.marginLeft) +
+          parseFloat(cs.marginRight);
+
+        const totalCards = cards.length;
+        let currentScrollIndex = 0;
+        let direction = 1; // 1 for forward, -1 for backward
         let autoScrollInterval;
-        const autoScrollTime = 4000; // 4 seconds for auto-scroll
+
+        function scrollToCard(index) {
+          const scrollLeft = index * cardWidth;
+          scrollWrapper.scrollTo({ left: scrollLeft, behavior: "smooth" });
+        }
+
+        function stepAutoScroll() {
+          currentScrollIndex += direction;
+
+          if (currentScrollIndex >= totalCards) {
+            direction = -1; // Change direction to backward
+            currentScrollIndex = totalCards - 2; // Start from second to last card
+            if (currentScrollIndex < 0) currentScrollIndex = 0; // Handle case with very few cards
+          } else if (currentScrollIndex < 0) {
+            direction = 1; // Change direction to forward
+            currentScrollIndex = 1; // Start from second card
+            if (currentScrollIndex >= totalCards)
+              currentScrollIndex = totalCards - 1; // Handle case with very few cards
+          }
+          scrollToCard(currentScrollIndex);
+        }
 
         function startAutoScroll() {
           stopAutoScroll();
-          autoScrollInterval = setInterval(() => {
-            // Check if we are at the end of the scroll
-            if (
-              scrollWrapper.scrollLeft + scrollWrapper.clientWidth >=
-              scrollWrapper.scrollWidth
-            ) {
-              // If at the end, scroll back to the beginning
-              scrollWrapper.scrollTo({ left: 0, behavior: "smooth" });
-            } else {
-              // Otherwise, scroll by one card width
-              const firstCard = scrollWrapper.querySelector(".vivo-gallery-card");
-              if (firstCard) {
-                const cardWidth = firstCard.offsetWidth + parseFloat(getComputedStyle(firstCard).marginRight);
-                scrollWrapper.scrollBy({ left: cardWidth, behavior: "smooth" });
-              }
-            }
-          }, autoScrollTime);
+          autoScrollInterval = setInterval(
+            stepAutoScroll,
+            autoScrollIntervalTime
+          );
         }
 
         function stopAutoScroll() {
           clearInterval(autoScrollInterval);
+        }
+
+        function resetAutoScroll() {
+          stopAutoScroll();
+          setTimeout(startAutoScroll, Math.max(300, autoScrollIntervalTime)); // Give time for manual scroll to finish
         }
 
         // Start auto-scroll initially
@@ -4794,133 +4928,21 @@
         // Pause on hover/touch, resume on leave
         scrollWrapper.addEventListener("mouseenter", stopAutoScroll);
         scrollWrapper.addEventListener("mouseleave", startAutoScroll);
-        scrollWrapper.addEventListener("touchstart", stopAutoScroll, { passive: true });
-        scrollWrapper.addEventListener("touchend", startAutoScroll);
-      }
-
-
-      function setupPhotoGallery(
-        containerId,
-        dotsId,
-        autoScrollIntervalTime = 3000
-      ) {
-        const scrollContainer = document.getElementById(containerId);
-        if (!scrollContainer) return;
-
-        const scrollWrapper = scrollContainer.querySelector(".scroll-wrapper");
-        const scrollItems = scrollWrapper?.querySelectorAll(".scroll-item");
-        const scrollDotsContainer = document.getElementById(dotsId);
-
-        if (!scrollWrapper || !scrollItems?.length || !scrollDotsContainer)
-          return;
-
-        // Calculate item width dynamically, including gap
-        const firstItem = scrollItems[0];
-        let itemWidth = 0;
-        if (firstItem) {
-          const itemStyle = getComputedStyle(firstItem);
-          itemWidth =
-            firstItem.offsetWidth +
-            parseFloat(itemStyle.marginRight) +
-            parseFloat(itemStyle.marginLeft);
-        } else {
-          itemWidth = 160; // Fallback if no items
-        }
-
-        // For grid layout, we need to calculate how many items fit in a column before scrolling
-        // Assuming 3 rows, and each item is 10rem wide + gap
-        const itemsPerColumn = 3; // Since we want 3 rows
-        const totalColumns = Math.ceil(scrollItems.length / itemsPerColumn);
-
-        scrollDotsContainer.innerHTML = "";
-
-        for (let i = 0; i < totalColumns; i++) {
-          const dot = document.createElement("div");
-          dot.classList.add("dot");
-          dot.innerHTML = '<div class="progress-bar"></div>'; // Add progress bar
-          if (i === 0) dot.classList.add("active");
-
-          dot.addEventListener("click", () => {
-            // Scroll by one "column" width
-            const scrollPosition = i * itemWidth; // Assuming itemWidth is the column width
-            scrollWrapper.scrollTo({
-              left: scrollPosition,
-              behavior: "smooth",
-            });
-            resetAutoScroll(); // Reset auto-scroll on manual interaction
-          });
-
-          scrollDotsContainer.appendChild(dot);
-        }
-
-        const dots = scrollDotsContainer.querySelectorAll(".dot");
-
-        function updateDots(activeIndex) {
-          dots.forEach((dot, index) => {
-            dot.classList.toggle("active", index === activeIndex);
-            const progressBar = dot.querySelector(".progress-bar");
-            if (progressBar) {
-              progressBar.style.width = "0%"; // Reset progress bar
-              if (index === activeIndex) {
-                progressBar.style.animation = `fillProgressBar ${autoScrollIntervalTime}ms linear forwards`;
-              } else {
-                progressBar.style.animation = "none";
-              }
-            }
-          });
-        }
-
-        let autoScrollInterval;
-        let currentColumn = 0;
-
-        function startAutoScroll() {
-          stopAutoScroll();
-          autoScrollInterval = setInterval(() => {
-            currentColumn = (currentColumn + 1) % totalColumns;
-            const scrollPosition = currentColumn * itemWidth; // Scroll by one column
-            scrollWrapper.scrollTo({
-              left: scrollPosition,
-              behavior: "smooth",
-            });
-            updateDots(currentColumn);
-          }, autoScrollIntervalTime);
-        }
-
-        function stopAutoScroll() {
-          clearInterval(autoScrollInterval);
-          dots.forEach((dot) => {
-            const progressBar = dot.querySelector(".progress-bar");
-            if (progressBar) {
-              progressBar.style.animation = "none";
-              progressBar.style.width = "0%";
-            }
-          });
-        }
-
-        function resetAutoScroll() {
-          stopAutoScroll();
-          startAutoScroll();
-        }
-
-        startAutoScroll();
-        updateDots(currentColumn); // Initial update for dots and progress bar
-
-        scrollContainer.addEventListener("mouseenter", stopAutoScroll);
-        scrollContainer.addEventListener("mouseleave", startAutoScroll);
-        scrollContainer.addEventListener("touchstart", stopAutoScroll);
-        scrollContainer.addEventListener("touchend", () => {
-          setTimeout(startAutoScroll, autoScrollIntervalTime);
+        scrollWrapper.addEventListener("touchstart", stopAutoScroll, {
+          passive: true,
         });
+        scrollWrapper.addEventListener("touchend", resetAutoScroll); // Reset on touchend to restart timer
       }
 
-      // Initialize Swiper for Faculty Section
+      // Initialize Swiper for Faculty Section (Removed as per request to use Vivo style for faculty)
+      /*
       function setupFacultySwiper() {
         const facultySwiper = new Swiper(".faculty-swiper-container", {
           slidesPerView: 1,
           spaceBetween: 30,
           loop: true,
           autoplay: {
-            delay: 3000, // 3 seconds
+            delay: 2500, // 2.5 seconds
             disableOnInteraction: false,
           },
           pagination: {
@@ -4935,9 +4957,9 @@
                 "Sihab shahariyar",
                 "Tarik Hassan",
                 "Asma jahan mausm",
-                "M (English)",
-                "M (CS)",
-                "M (Counselor)",
+                "Ms. Sana Khatun",
+                "Mr. Rahman Sheikh",
+                "Ms. Nazia Parveen",
               ]; // Adjust names as per your slides
               return (
                 '<span class="' +
@@ -4965,10 +4987,11 @@
           },
         });
       }
+      */
 
       // Enhanced Modal Setup
       function setupModals() {
-        // Faculty Modal
+        // Faculty Modal (for "View All Faculty & Staff" button)
         const facultyModal = document.getElementById("facultyModal");
         const moreFacultyBtn = document.getElementById("more-faculty-btn");
         const facultyModalClose = facultyModal?.querySelector(".close-button");
@@ -4976,46 +4999,46 @@
 
         const facultyData = [
           {
-            name: "Prof. Ahmed Khan",
+            name: "KM Haque",
             title: "Head of Physics Dept.",
             img: "https://aamsantragachi.org/wp-content/uploads/2025/08/1000035857-scaled.jpg",
-            bio: "Prof. Khan is a veteran educator with over 20 years of experience in teaching advanced physics. His passion for science inspires students to achieve excellence, focusing on conceptual clarity and problem-solving techniques for competitive exams.",
+            bio: "KM Haque is a veteran educator with over 20 years of experience in teaching advanced physics. His passion for science inspires students to achieve excellence, focusing on conceptual clarity and problem-solving techniques for competitive exams.",
           },
           {
-            name: "Dr. Fatima Begum",
+            name: "RIAJ ANSARI",
             title: "Biology Specialist",
             img: "https://aamsantragachi.org/wp-content/uploads/2025/08/Screenshot_2025-08-24-10-56-52-376_com.miui_.gallery.jpg",
-            bio: "Dr. Begum holds a Ph.D. in Biotechnology and is renowned for her engaging teaching methods in Biology, making complex topics easy to understand. Her interactive sessions help students grasp biological concepts thoroughly.",
+            bio: "RIAJ ANSARI holds a Ph.D. in Biotechnology and is renowned for his engaging teaching methods in Biology, making complex topics easy to understand. His interactive sessions help students grasp biological concepts thoroughly.",
           },
           {
-            name: "Mr. Mohammed Ali",
+            name: "SAKIL SEIKH",
             title: "Mathematics Expert",
-            img: "http://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg",
-            bio: "Mr. Ali is known for his innovative approach to teaching Mathematics, helping students master challenging concepts for JEE and NEET. He simplifies complex mathematical problems with clarity.",
+            img: "https://aamsantragachi.org/wp-content/uploads/2025/08/1000048018-scaled.jpg",
+            bio: "SAKIL SEIKH is known for his innovative approach to teaching Mathematics, helping students master challenging concepts for JEE and NEET. He simplifies complex mathematical problems with clarity.",
           },
           {
-            name: "Ms. Aisha Rahman",
+            name: "AZIZ ALI",
             title: "Chemistry Instructor",
             img: "https://aamsantragachi.org/wp-content/uploads/2025/09/be4dba1c-eb2f-4700-864e-4e58cf340d3e.jpeg",
-            bio: "Ms. Rahman brings dynamic energy to the Chemistry department, making learning fun and effective for all students. Her practical demonstrations ensure strong foundations.",
+            bio: "AZIZ ALI brings dynamic energy to the Chemistry department, making learning fun and effective for all students. His practical demonstrations ensure strong foundations.",
           },
           {
-            name: "Prof. Omar Farooq",
+            name: "Sihab shahariyar",
             title: "Senior Physics Lecturer",
             img: "https://aamsantragachi.org/wp-content/uploads/2025/08/IMG_20240720_204344_539-scaled.jpg",
-            bio: "Prof. Farooq is celebrated for his clear explanations and deep understanding of complex physics principles, guiding students to top scores in competitive examinations.",
+            bio: "Sihab shahariyar is celebrated for his clear explanations and deep understanding of complex physics principles, guiding students to top scores in competitive examinations.",
           },
           {
-            name: "Dr. Zainab Bibi",
+            name: "Tarik Hassan",
             title: "Biology Researcher",
             img: "https://aamsantragachi.org/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-11-at-20.16.37.jpeg",
-            bio: "Dr. Bibi's research background enriches her Biology classes, providing students with real-world insights and advanced knowledge in life sciences.",
+            bio: "Tarik Hassan's research background enriches his Biology classes, providing students with real-world insights and advanced knowledge in life sciences.",
           },
           {
-            name: "Mr. Imran Hossain",
+            name: "Asma jahan mausm",
             title: "Chemistry Lab Incharge",
             img: "https://aamsantragachi.org/wp-content/uploads/2025/08/23fe0cff-1448-4bba-a9af-c98c91fd3502-1_all_978-scaled.jpg",
-            bio: "Mr. Hossain ensures a safe and effective learning environment in chemistry labs, guiding students through practical experiments with meticulous care.",
+            bio: "Asma jahan mausm ensures a safe and effective learning environment in chemistry labs, guiding students through practical experiments with meticulous care.",
           },
           {
             name: "Ms. Sana Khatun",
@@ -5073,6 +5096,144 @@
         window.addEventListener("click", (event) => {
           if (event.target === facultyModal) {
             facultyModal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+
+        // Person Detail Modal (for Hall of Fame and Faculty individual cards)
+        const personDetailModal = document.getElementById("personDetailModal");
+        const personDetailClose =
+          personDetailModal?.querySelector(".close-button");
+        const personDetailImage = document.getElementById("personDetailImage");
+        const personDetailName = document.getElementById("personDetailName");
+        const personDetailDesignation = document.getElementById(
+          "personDetailDesignation"
+        );
+        const personDetailBio = document.getElementById("personDetailBio");
+        const personDetailReadMore = personDetailModal?.querySelector(
+          "#personDetailModal .read-more-link"
+        );
+        const personDetailShowLess = personDetailModal?.querySelector(
+          "#personDetailModal .show-less-btn"
+        );
+
+        document
+          .querySelectorAll(".vivo-gallery-card .person-name")
+          .forEach((nameElement) => {
+            nameElement.addEventListener("click", function () {
+              const name = this.dataset.name;
+              const designation = this.dataset.designation;
+              const image = this.dataset.image;
+              const bio = this.dataset.bio;
+              const personId = this.dataset.personId;
+
+              personDetailImage.src = image;
+              personDetailImage.alt = name;
+              personDetailName.textContent = name;
+              personDetailDesignation.textContent = designation;
+              personDetailBio.innerHTML = `<p>${bio}</p>`; // Wrap bio in p tag
+
+              // Reset expandable content state
+              personDetailBio.classList.remove("expanded");
+              if (personDetailReadMore)
+                personDetailReadMore.textContent = "Read more";
+              if (personDetailShowLess)
+                personDetailShowLess.classList.remove("active");
+
+              // Set unique ID for expandable content
+              personDetailBio.id = `person-bio-${personId}`;
+              if (personDetailReadMore)
+                personDetailReadMore.setAttribute(
+                  "onclick",
+                  `toggleExpand('person-bio-${personId}', this)`
+                );
+              if (personDetailShowLess)
+                personDetailShowLess.setAttribute(
+                  "onclick",
+                  `toggleExpand('person-bio-${personId}', this.previousElementSibling)`
+                );
+
+              personDetailModal.style.display = "flex";
+              document.body.style.overflow = "hidden";
+            });
+          });
+
+        personDetailClose?.addEventListener("click", () => {
+          personDetailModal.style.display = "none";
+          document.body.style.overflow = "";
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target === personDetailModal) {
+            personDetailModal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+
+        // News Detail Modal
+        const newsDetailModal = document.getElementById("newsDetailModal");
+        const newsDetailClose = newsDetailModal?.querySelector(".close-button");
+        const newsDetailImage = document.getElementById("newsDetailImage");
+        const newsDetailCategory =
+          document.getElementById("newsDetailCategory");
+        const newsDetailTitle = document.getElementById("newsDetailTitle");
+        const newsDetailContent = document.getElementById("newsDetailContent");
+        const newsDetailReadMore = newsDetailModal?.querySelector(
+          "#newsDetailModal .read-more-link"
+        );
+        const newsDetailShowLess = newsDetailModal?.querySelector(
+          "#newsDetailModal .show-less-btn"
+        );
+
+        document
+          .querySelectorAll(".news-card .news-headline")
+          .forEach((headlineElement) => {
+            headlineElement.addEventListener("click", function () {
+              const title = this.dataset.title;
+              const category = this.dataset.category;
+              const image = this.dataset.image;
+              const content = this.dataset.content;
+              const newsId = this.dataset.newsId;
+
+              newsDetailImage.src = image;
+              newsDetailImage.alt = title;
+              newsDetailCategory.textContent = category;
+              newsDetailTitle.textContent = title;
+              newsDetailContent.innerHTML = `<p>${content}</p>`; // Wrap content in p tag
+
+              // Reset expandable content state
+              newsDetailContent.classList.remove("expanded");
+              if (newsDetailReadMore)
+                newsDetailReadMore.textContent = "Read more";
+              if (newsDetailShowLess)
+                newsDetailShowLess.classList.remove("active");
+
+              // Set unique ID for expandable content
+              newsDetailContent.id = `news-content-${newsId}`;
+              if (newsDetailReadMore)
+                newsDetailReadMore.setAttribute(
+                  "onclick",
+                  `toggleExpand('news-content-${newsId}', this)`
+                );
+              if (newsDetailShowLess)
+                newsDetailShowLess.setAttribute(
+                  "onclick",
+                  `toggleExpand('news-content-${newsId}', this.previousElementSibling)`
+                );
+
+              newsDetailModal.style.display = "flex";
+              document.body.style.overflow = "hidden";
+            });
+          });
+
+        newsDetailClose?.addEventListener("click", () => {
+          newsDetailModal.style.display = "none";
+          document.body.style.overflow = "";
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target === newsDetailModal) {
+            newsDetailModal.style.display = "none";
             document.body.style.overflow = "";
           }
         });
