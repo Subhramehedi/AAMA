@@ -952,7 +952,8 @@
             rgba(0, 0, 0, 0.7),
             rgba(46, 168, 93, 0.6)
           ),
-          url("1.jpg") center/cover no-repeat;
+          url("http://aamsantragachi.org/wp-content/uploads/2025/09/IMG_20230814_182612-scaled.jpg")
+            center/cover no-repeat;
         color: var(--white);
         backdrop-filter: blur(0.3125rem);
       }
@@ -1170,11 +1171,21 @@
         height: auto;
       }
 
-      .news-card:hover .news-card-content {
-        background: linear-gradient(135deg, var(--primary-green-dark));
-        color: var(--white);
-        border-radius: 0 0 1.25rem 1.25rem;
+      /* Only apply hover background/color change on non-touch devices */
+      @media (hover: hover) and (pointer: fine) {
+        .news-card:hover .news-card-content {
+          background: linear-gradient(135deg, var(--primary-green-dark));
+          color: var(--white);
+          border-radius: 0 0 1.25rem 1.25rem;
+        }
+        .news-card:hover h3 {
+          color: var(--white);
+        }
+        .news-card:hover .news-category {
+          color: var(--white);
+        }
       }
+
       .news-card h3 {
         font-size: var(--text-lg);
         margin-bottom: var(--space-sm);
@@ -1184,19 +1195,11 @@
         cursor: pointer; /* Make headline clickable */
       }
 
-      .news-card:hover h3 {
-        color: var(--white);
-      }
-
       .news-card .news-category {
         font-size: var(--text-sm);
         color: #888;
         margin-bottom: var(--space-sm);
         transition: color var(--transition-slow);
-      }
-
-      .news-card:hover .news-category {
-        color: var(--white);
       }
 
       .results-section {
@@ -1308,7 +1311,8 @@
         margin: 0 auto;
         padding: 0 var(--space-md);
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+        /* Updated grid template for 4 columns on large screens */
+        grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
         gap: var(--space-xl);
       }
 
@@ -1692,25 +1696,39 @@
       }
 
       .close-button {
-        color: #aaa;
         position: absolute;
         top: var(--space-sm);
         right: var(--space-lg);
         font-size: 2.1875rem;
         font-weight: bold;
         cursor: pointer;
-        transition: color var(--transition-normal);
+        transition: all var(--transition-normal);
+        z-index: 10; /* Ensure it's above other content */
+
+        /* Stylish close button */
+        background: var(--primary-green);
+        color: var(--white);
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-medium);
+        line-height: 1; /* Adjust line height for perfect centering */
       }
 
       .close-button:hover,
       .close-button:focus {
-        color: var(--primary-green);
-        text-decoration: none;
+        color: var(--white);
+        background: var(--primary-green-dark);
+        transform: rotate(90deg) scale(1.1);
+        box-shadow: var(--shadow-heavy);
       }
 
       .modal-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
         gap: var(--space-md);
         margin-top: var(--space-md);
       }
@@ -1832,6 +1850,58 @@
       .student-portal-results .download-btn:hover {
         background: #0056b3;
       }
+
+      /* Academic Calendar Modal Specific Styles */
+      .academic-calendar-modal-content {
+        max-width: 90%; /* Wider for content */
+        width: 90%;
+        height: 95vh; /* Taller for content */
+        padding: var(--space-md);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .academic-calendar-content-wrapper {
+        flex-grow: 1;
+        position: relative;
+        overflow: auto; /* Allow scrolling for zoomed content */
+        border-radius: 0.625rem;
+        box-shadow: var(--shadow-light);
+        background-color: var(--light-gray); /* Placeholder background */
+        display: flex;
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center images horizontally */
+        gap: var(--space-md); /* Space between images */
+        padding: var(--space-md);
+        cursor: grab; /* Indicate draggable content */
+      }
+
+      .academic-calendar-content-wrapper.grabbing {
+        cursor: grabbing;
+      }
+
+      .academic-calendar-content-wrapper img {
+        max-width: 100%; /* Images fit container width initially */
+        height: auto;
+        display: block;
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow-medium);
+        transform-origin: 0 0; /* For zoom transformation */
+        transition: transform 0.1s ease-out; /* Smooth zoom transition */
+        will-change: transform;
+      }
+
+      .academic-calendar-content-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0.5rem;
+      }
+
+      .pdf-controls {
+        display: none;
+      }
+
       @media (max-width: 768px) {
         .scroll-wrapper {
           grid-template-columns: repeat(
@@ -1849,6 +1919,12 @@
         .scroll-item img {
           width: 6rem;
           height: 6rem;
+        }
+
+        .academic-calendar-modal-content {
+          max-width: 95%;
+          width: 95%;
+          height: 95vh;
         }
       }
 
@@ -1920,6 +1996,10 @@
           max-width: 95%;
         }
 
+        .modal-grid {
+          grid-template-columns: 1fr; /* Single column on small screens */
+        }
+
         .horizontal-scroll-card {
           flex-direction: column;
           width: 95%;
@@ -1954,6 +2034,15 @@
         .result-card {
           width: clamp(16rem, 80vw, 18rem);
         }
+
+        /* Updated footer grid for smaller screens */
+        .footer-content {
+          grid-template-columns: repeat(
+            2,
+            minmax(10rem, 1fr)
+          ); /* 2 columns on small screens */
+          gap: var(--space-lg); /* Adjust gap for smaller screens */
+        }
       }
 
       @media (max-width: 30rem) {
@@ -1975,6 +2064,11 @@
 
         .mobile-menu-grid {
           grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* Further adjust footer for very small screens if needed, e.g., 1 column */
+        .footer-content {
+          grid-template-columns: 1fr; /* 1 column on very small screens */
         }
       }
 
@@ -2431,15 +2525,6 @@
           transform: none !important;
         }
       }
-
-      .footer-content {
-        max-width: 75rem;
-        margin: 0 auto;
-        padding: 0 var(--space-md);
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-        gap: var(--space-xl);
-      }
     </style>
   </head>
 
@@ -2488,7 +2573,6 @@
                   >Hall of Fame</a
                 >
               </li>
-              <!-- NEW: Alumni button for desktop -->
               <li>
                 <a
                   href="https://aamsantragachi.org/our-alumni/"
@@ -2517,6 +2601,7 @@
           <a href="index.html#admission">Admission</a>
           <a href="index.html#our-impact">Our Impact</a>
           <a href="index.html#results">Results</a>
+          <a href="index.html#academic-calendar">Academic Calendar</a>
           <a href="index.html#contact">Contact</a>
         </nav>
       </div>
@@ -2550,17 +2635,13 @@
           <span class="menu-icon">📊</span>
           <span>Results</span>
         </a>
+        <a href="index.html#academic-calendar" class="mobile-menu-item">
+          <span class="menu-icon">🗓️</span>
+          <span>Academic Calendar</span>
+        </a>
         <a href="index.html#contact" class="mobile-menu-item">
           <span class="menu-icon">📞</span>
           <span>Contact</span>
-        </a>
-        <a
-          href="https://aamsystem.in/applications/"
-          target="_blank"
-          class="mobile-menu-item"
-        >
-          <span class="menu-icon">✏️</span>
-          <span>Apply</span>
         </a>
       </div>
 
@@ -2573,7 +2654,6 @@
           <span class="menu-icon">🌟</span>
           <span>Hall Of Fame</span>
         </a>
-        <!-- NEW: Alumni button for mobile -->
         <a
           href="https://aamsantragachi.org/our-alumni/"
           target="_blank"
@@ -2581,6 +2661,15 @@
         >
           <span class="menu-icon">🎓</span>
           <span>Alumni</span>
+        </a>
+
+        <a
+          href="https://aamsystem.in/applications/"
+          target="_blank"
+          class="mobile-menu-item"
+        >
+          <span class="menu-icon">✏️</span>
+          <span>Apply</span>
         </a>
       </div>
     </div>
@@ -2716,11 +2805,11 @@
               </div>
             </div>
             <button
-              class="horizontal-scroll-nav-button right"
-              id="whyChooseUsNext"
-              aria-label="Next slide"
+              class="horizontal-scroll-nav-button left"
+              id="whyChooseUsPrev"
+              aria-label="Previous slide"
             >
-              ›
+              ‹
             </button>
             <div
               class="horizontal-scroll-indicators"
@@ -2895,7 +2984,11 @@
       </section>
 
       <!-- Academic Calendar Section -->
-      <section class="panel theme--fog" data-aos="fade-up">
+      <section
+        id="academic-calendar"
+        class="panel theme--fog"
+        data-aos="fade-up"
+      >
         <div class="container">
           <header>
             <h2>Academic Calendar</h2>
@@ -2903,7 +2996,11 @@
           </header>
 
           <div class="center-cta">
-            <a href="academic-calendar.html" class="btn-ripple"
+            <a
+              href="https://aamsantragachi.org/wp-content/uploads/2025/09/academic-calender.pdf"
+              target="_blank"
+              class="btn-ripple"
+              id="viewAcademicCalendarBtn"
               >View Full Calendar</a
             >
           </div>
@@ -3162,8 +3259,8 @@
                       type="image/jpeg"
                     />
                     <img
-                      src="https://aamsantragachi.org/wp-content/uploads/2025/08/1000494249-scaled.jpg"
-                      alt="null"
+                      src="http://aamsantragachi.org/wp-content/uploads/2025/08/1000494249-scaled.jpg"
+                      alt="RASIDUL ISLAM"
                       loading="lazy"
                     />
                   </picture>
@@ -3173,7 +3270,7 @@
                       data-person-id="rasidul-islam"
                       data-name="RASIDUL ISLAM"
                       data-designation="Engineering Entrance Success"
-                      data-image="https://aamsantragachi.org/wp-content/uploads/2025/08/1000494249-scaled.jpg"
+                      data-image="http://aamsantragachi.org/wp-content/uploads/2025/08/1000494249-scaled.jpg"
                       data-bio="Rasidul Islam achieved success in multiple engineering entrance exams, showcasing his versatility and strong academic foundation. He chose to pursue Electrical Engineering, driven by his interest in sustainable energy solutions. He is currently interning at a leading renewable energy company."
                     >
                       RASIDUL ISLAM
@@ -3227,7 +3324,7 @@
             </div>
           </div>
           <div class="center-cta">
-            <a href="hall-of-fame-more.html" class="btn-ripple"
+            <a href="#" id="more-hall-of-fame-btn" class="btn-ripple"
               >More Hall of Fame</a
             >
           </div>
@@ -3791,7 +3888,14 @@
                 >info@alaameenmission.org</a
               >
             </p>
-            <p>📍 Santragachi Circle, Howrah, West Bengal, India</p>
+            <p>
+              <a
+                href="https://maps.app.goo.gl/mbF1WcsknXSc7QW58"
+                target="_blank"
+                style="color: var(--primary-green); text-decoration: none"
+                >📍 Santragachi Circle, Howrah, West Bengal, India</a
+              >
+            </p>
           </div>
           <div class="social-logos">
             <a href="https://www.facebook.com/" target="_blank">
@@ -3815,6 +3919,14 @@
                 class="social-icon"
               />
             </a>
+
+            <a href="https://alameenmission.org/" target="_blank">
+              <img
+                src="http://aamsantragachi.org/wp-content/uploads/2025/08/IMG-20250630-WA0014.jpg"
+                alt="Main Website"
+                class="social-icon"
+              />
+            </a>
           </div>
         </div>
       </section>
@@ -3827,6 +3939,17 @@
         <h2>All Faculty & Staff</h2>
         <div class="modal-grid">
           <!-- Faculty members will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Hall of Fame Modal (for "More Hall of Fame" button) -->
+    <div id="hallOfFameModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Our Hall of Fame</h2>
+        <div class="modal-grid" id="hallOfFameModalGrid">
+          <!-- Hall of Fame members will be dynamically loaded here -->
         </div>
       </div>
     </div>
@@ -3987,6 +4110,19 @@
       </div>
     </div>
 
+    <!-- Academic Calendar Image/PDF Modal -->
+    <div id="academicCalendarModal" class="modal">
+      <div class="modal-content academic-calendar-modal-content">
+        <span class="close-button">&times;</span>
+        <div
+          class="academic-calendar-content-wrapper"
+          id="academicCalendarContentWrapper"
+        >
+          <!-- Images or PDF iframe will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer>
       <div class="footer-content">
@@ -4006,9 +4142,13 @@
             <li>
               <a href="#" id="footer-student-portal-btn">Student Portal</a>
             </li>
-            <!--<li><a href="/downloads">Downloads</a></li> -->
-            <li><a href="academic-calendar.html">Academic Calendar</a></li>
-            <!-- <li><a href="/library">Library</a></li> -->
+            <li><a href="/downloads">Downloads</a></li>
+            <li>
+              <a href="#" id="footer-academic-calendar-btn"
+                >Academic Calendar</a
+              >
+            </li>
+            <li><a href="/library">Library</a></li>
             <li>
               <a href="https://aamsantragachi.org/our-alumni/" target="_blank"
                 >Alumni</a
@@ -4044,11 +4184,9 @@
         <div class="footer-section">
           <h3>Connect</h3>
           <ul>
-            <li><a href="tel:+919876543210">Call Us</a></li>
+            <li><a href="tel:+91-XXXXXXXXXX">Call Us</a></li>
             <li><a href="mailto:info@aamsantragachi.org">Email</a></li>
-            <li>
-              <a href="https://maps.app.goo.gl/mbF1WcsknXSc7QW58">Location</a>
-            </li>
+            <li><a href="/location">Location</a></li>
             <li><a href="https://alameenmission.org">Main Website</a></li>
           </ul>
         </div>
@@ -4160,6 +4298,7 @@
         setupCarousels(); // This will now include the new horizontal scroll functions
         setupModals();
         setupStudentPortal();
+        setupAcademicCalendarModal(); // NEW: Initialize academic calendar modal
         // setupFacultySwiper(); // Initialize the new Swiper for faculty - Removed as per request to use Vivo style for faculty
 
         // Initialize performance monitor
@@ -4363,8 +4502,8 @@
       }
 
       /* === Generic Horizontal Scroll (Why Choose Us, Programs) with ping-pong ===
-   Usage: setupHorizontalScroll("whyChooseUsScroll","prevId","nextId","dotsId",".horizontal-scroll-card", intervalMs)
-*/
+         Usage: setupHorizontalScroll("whyChooseUsScroll","prevId","nextId","dotsId",".horizontal-scroll-card", intervalMs)
+      */
       function setupHorizontalScroll(
         scrollWrapperId,
         prevButtonId,
@@ -4666,7 +4805,8 @@
           "#results": "results",
           "#contact": "contact",
           "#why-choose-us": "why-choose-us",
-          "#our-impact": "our-impact", // Corrected ID
+          "#our-impact": "our-impact",
+          "#academic-calendar": "academic-calendar", // NEW: Added academic calendar
         };
 
         function scrollToSection(target) {
@@ -4700,7 +4840,9 @@
               this.id === "students-btn" ||
               this.id === "mobile-students-btn" ||
               this.id === "more-faculty-btn" ||
-              this.id === "footer-student-portal-btn"
+              this.id === "more-hall-of-fame-btn" ||
+              this.id === "footer-student-portal-btn" ||
+              this.id === "footer-academic-calendar-btn" // This button will open the modal, not scroll
             ) {
               return;
             }
@@ -4936,58 +5078,58 @@
 
       // Initialize Swiper for Faculty Section (Removed as per request to use Vivo style for faculty)
       /*
-      function setupFacultySwiper() {
-        const facultySwiper = new Swiper(".faculty-swiper-container", {
-          slidesPerView: 1,
-          spaceBetween: 30,
-          loop: true,
-          autoplay: {
-            delay: 2500, // 2.5 seconds
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".faculty-swiper-pagination",
-            clickable: true,
-            renderBullet: function (index, className) {
-              const facultyNames = [
-                "KM Haque",
-                "RIAJ ANSARI",
-                "SAKIL SEIKH",
-                "AZIZ ALI",
-                "Sihab shahariyar",
-                "Tarik Hassan",
-                "Asma jahan mausm",
-                "Ms. Sana Khatun",
-                "Mr. Rahman Sheikh",
-                "Ms. Nazia Parveen",
-              ]; // Adjust names as per your slides
-              return (
-                '<span class="' +
-                className +
-                '">' +
-                facultyNames[index] +
-                "</span>"
-              );
-            },
-          },
-          navigation: {
-            nextEl: ".faculty-swiper-button-next",
-            prevEl: ".faculty-swiper-button-prev",
-          },
-          breakpoints: {
-            640: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-          },
-        });
-      }
-      */
+            function setupFacultySwiper() {
+              const facultySwiper = new Swiper(".faculty-swiper-container", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                  delay: 2500, // 2.5 seconds
+                  disableOnInteraction: false,
+                },
+                pagination: {
+                  el: ".faculty-swiper-pagination",
+                  clickable: true,
+                  renderBullet: function (index, className) {
+                    const facultyNames = [
+                      "KM Haque",
+                      "RIAJ ANSARI",
+                      "SAKIL SEIKH",
+                      "AZIZ ALI",
+                      "Sihab shahariyar",
+                      "Tarik Hassan",
+                      "Asma jahan mausm",
+                      "Ms. Sana Khatun",
+                      "Mr. Rahman Sheikh",
+                      "Ms. Nazia Parveen",
+                    ]; // Adjust names as per your slides
+                    return (
+                      '<span class="' +
+                      className +
+                      '">' +
+                      facultyNames[index] +
+                      "</span>"
+                    );
+                  },
+                },
+                navigation: {
+                  nextEl: ".faculty-swiper-button-next",
+                  prevEl: ".faculty-swiper-button-prev",
+                },
+                breakpoints: {
+                  640: {
+                    slidesPerView: 1,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                  },
+                },
+              });
+            }
+            */
 
       // Enhanced Modal Setup
       function setupModals() {
@@ -5069,17 +5211,17 @@
               const modalCard = document.createElement("div");
               modalCard.classList.add("modal-card");
               modalCard.innerHTML = `
-                <img src="${faculty.img}" alt="${faculty.name}" />
-                <h4>${faculty.name}</h4>
-                <p>${faculty.title}</p>
-                <div class="expandable-content">
-                  <div class="expandable-text" id="modal-faculty-${index}-text">
-                    <p>${faculty.bio}</p>
-                  </div>
-                  <span class="read-more-link" onclick="toggleExpand('modal-faculty-${index}-text', this)">Read more</span>
-                  <button class="show-less-btn" onclick="toggleExpand('modal-faculty-${index}-text', this.previousElementSibling)">Show less</button>
-                </div>
-              `;
+                      <img src="${faculty.img}" alt="${faculty.name}" />
+                      <h4>${faculty.name}</h4>
+                      <p>${faculty.title}</p>
+                      <div class="expandable-content">
+                        <div class="expandable-text" id="modal-faculty-${index}-text">
+                          <p>${faculty.bio}</p>
+                        </div>
+                        <span class="read-more-link" onclick="toggleExpand('modal-faculty-${index}-text', this)">Read more</span>
+                        <button class="show-less-btn" onclick="toggleExpand('modal-faculty-${index}-text', this.previousElementSibling)">Show less</button>
+                      </div>
+                    `;
               modalGrid.appendChild(modalCard);
             });
           }
@@ -5096,6 +5238,116 @@
         window.addEventListener("click", (event) => {
           if (event.target === facultyModal) {
             facultyModal.style.display = "none";
+            document.body.style.overflow = "";
+          }
+        });
+
+        // Hall of Fame Modal (NEW)
+        const hallOfFameModal = document.getElementById("hallOfFameModal");
+        const moreHallOfFameBtn = document.getElementById(
+          "more-hall-of-fame-btn"
+        );
+        const hallOfFameModalClose =
+          hallOfFameModal?.querySelector(".close-button");
+        const hallOfFameModalGrid = document.getElementById(
+          "hallOfFameModalGrid"
+        );
+
+        const hallOfFameData = [
+          {
+            name: "Abdul Rajeb Sk",
+            designation: "NEET Qualifier",
+            image:
+              "https://aamsantragachi.org/wp-content/uploads/2025/08/1000017786-1.jpg",
+            bio: "Abdul Rajeb Sk achieved an outstanding score in NEET, securing admission to a prestigious medical college. His dedication and hard work serve as an inspiration to all aspiring medical students at Al-Ameen Mission. He consistently performed well in mock tests and maintained a disciplined study routine.",
+          },
+          {
+            name: "Sekh Asif Ahamed",
+            designation: "JEE Advanced Ranker",
+            image:
+              "https://aamsantragachi.org/wp-content/uploads/2025/08/1000010923-scaled-e1757749134558.jpg",
+            bio: "Sekh Asif Ahamed secured an impressive rank in JEE Advanced, paving his way to a top engineering institute. His analytical skills and problem-solving approach were exemplary throughout his preparation. He was a regular participant in competitive programming contests.",
+          },
+          {
+            name: "Md Aminul Islam",
+            designation: "Top Board Scorer",
+            image:
+              "https://aamsantragachi.org/wp-content/uploads/2025/08/IMG20250812122430-1-scaled-e1757749202962.jpg",
+            bio: "Md Aminul Islam achieved the highest marks in the board examinations, demonstrating exceptional academic prowess. His consistent efforts and clear understanding of subjects led to this remarkable achievement. He was also a mentor to his peers, helping them with their studies.",
+          },
+          {
+            name: "Arij Arman Mandal",
+            designation: "NEET Qualifier",
+            image:
+              "https://aamsantragachi.org/wp-content/uploads/2025/08/1000038560.jpg",
+            bio: "Arij Arman Mandal successfully qualified NEET, fulfilling his dream of pursuing a career in medicine. His perseverance and strategic study plan were key to his success. He also actively participated in various medical awareness campaigns.",
+          },
+          {
+            name: "JAVED AKHTAR",
+            designation: "JEE Main Topper",
+            image:
+              "https://aamsantragachi.org/wp-content/uploads/2025/08/2156-scaled.jpg",
+            bio: "Javed Akhtar excelled in JEE Main, showcasing his strong grasp of engineering fundamentals. His consistent practice and problem-solving skills were instrumental in his high score. He is now pursuing Computer Science Engineering at a top-tier university.",
+          },
+          {
+            name: "SAYED IKBAL",
+            designation: "Medical College Admission",
+            image:
+              "https://aamsantragachi.org/wp-content/uploads/2025/08/20200122163939_IMG_5972-1-scaled.jpg",
+            bio: "Sayed Ikbal gained admission to a renowned medical college, a testament to his unwavering commitment to his studies. His passion for healthcare and rigorous preparation paid off. He is now a final year medical student, excelling in his clinical rotations.",
+          },
+          {
+            name: "RASIDUL ISLAM",
+            designation: "Engineering Entrance Success",
+            image:
+              "http://aamsantragachi.org/wp-content/uploads/2025/08/1000494249-scaled.jpg",
+            bio: "Rasidul Islam achieved success in multiple engineering entrance exams, showcasing his versatility and strong academic foundation. He chose to pursue Electrical Engineering, driven by his interest in sustainable energy solutions. He is currently interning at a leading renewable energy company.",
+          },
+          {
+            name: "Sk Nilay Islam",
+            designation: "Board Exam Distinction",
+            image:
+              "https://aamsantragachi.org/wp-content/uploads/2025/08/1000012238-1-scaled.jpg",
+            bio: "Sk Nilay Islam achieved distinction in his board examinations, demonstrating exceptional academic performance across all subjects. His meticulous study habits and dedication to understanding core concepts were key to his success. He is now pursuing higher education in a field of his choice.",
+          },
+        ];
+
+        moreHallOfFameBtn?.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (hallOfFameModalGrid) {
+            hallOfFameModalGrid.innerHTML = "";
+
+            hallOfFameData.forEach((person, index) => {
+              const modalCard = document.createElement("div");
+              modalCard.classList.add("modal-card");
+              modalCard.innerHTML = `
+                      <img src="${person.image}" alt="${person.name}" />
+                      <h4>${person.name}</h4>
+                      <p>${person.designation}</p>
+                      <div class="expandable-content">
+                        <div class="expandable-text" id="modal-hof-${index}-text">
+                          <p>${person.bio}</p>
+                        </div>
+                        <span class="read-more-link" onclick="toggleExpand('modal-hof-${index}-text', this)">Read more</span>
+                        <button class="show-less-btn" onclick="toggleExpand('modal-hof-${index}-text', this.previousElementSibling)">Show less</button>
+                      </div>
+                    `;
+              hallOfFameModalGrid.appendChild(modalCard);
+            });
+          }
+
+          hallOfFameModal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        });
+
+        hallOfFameModalClose?.addEventListener("click", () => {
+          hallOfFameModal.style.display = "none";
+          document.body.style.overflow = "";
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target === hallOfFameModal) {
+            hallOfFameModal.style.display = "none";
             document.body.style.overflow = "";
           }
         });
@@ -5235,6 +5487,255 @@
           if (event.target === newsDetailModal) {
             newsDetailModal.style.display = "none";
             document.body.style.overflow = "";
+          }
+        });
+      }
+
+      // NEW: Academic Calendar Modal Functionality
+      function setupAcademicCalendarModal() {
+        // The "View Full Calendar" button now scrolls to the section, it doesn't open a modal.
+        // The footer link will still open the modal.
+        const footerAcademicCalendarBtn = document.getElementById(
+          "footer-academic-calendar-btn"
+        );
+        const academicCalendarModal = document.getElementById(
+          "academicCalendarModal"
+        );
+        const academicCalendarClose =
+          academicCalendarModal?.querySelector(".close-button");
+        const academicCalendarContentWrapper = document.getElementById(
+          "academicCalendarContentWrapper"
+        ); // Renamed from academicCalendarImageContainer
+
+        // Array of URLs for the academic calendar (can be images or PDFs)
+        const academicCalendarSources = [
+          "https://aamsantragachi.org/wp-content/uploads/2025/09/academic-calender.pdf",
+
+          // Example PDF: "https://www.africau.edu/images/default/sample.pdf"
+        ];
+
+        let currentScale = 1;
+        let currentX = 0;
+        let currentY = 0;
+        let isDragging = false;
+        let startX, startY;
+        let initialPinchDistance = 0;
+        let isPdfDisplayed = false; // Flag to track if PDF is displayed
+
+        function applyTransform() {
+          if (isPdfDisplayed) return; // Do not apply transform to iframe
+          academicCalendarContentWrapper
+            .querySelectorAll("img")
+            .forEach((img) => {
+              img.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentScale})`;
+            });
+        }
+
+        function resetZoomAndPan() {
+          currentScale = 1;
+          currentX = 0;
+          currentY = 0;
+          applyTransform();
+          academicCalendarContentWrapper.scrollTop = 0;
+          academicCalendarContentWrapper.scrollLeft = 0;
+        }
+
+        function openAcademicCalendarModal() {
+          academicCalendarContentWrapper.innerHTML = ""; // Clear previous content
+          isPdfDisplayed = false; // Reset flag
+
+          const firstSource = academicCalendarSources[0];
+          if (firstSource && firstSource.endsWith(".pdf")) {
+            // Display PDF
+            const iframe = document.createElement("iframe");
+            iframe.src = firstSource;
+            iframe.title = "Academic Calendar PDF";
+            academicCalendarContentWrapper.appendChild(iframe);
+            isPdfDisplayed = true;
+            // Disable zoom/pan for PDF
+            academicCalendarContentWrapper.style.cursor = "auto";
+          } else {
+            // Display images
+            academicCalendarSources.forEach((src) => {
+              const img = document.createElement("img");
+              img.src = src;
+              img.alt = "Academic Calendar";
+              img.loading = "lazy";
+              academicCalendarContentWrapper.appendChild(img);
+            });
+            // Enable zoom/pan for images
+            academicCalendarContentWrapper.style.cursor = "grab";
+          }
+
+          academicCalendarModal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+          resetZoomAndPan(); // Reset zoom and position when opening
+        }
+
+        function closeAcademicCalendarModal() {
+          academicCalendarModal.style.display = "none";
+          document.body.style.overflow = "";
+          academicCalendarContentWrapper.innerHTML = ""; // Clear content when closing
+        }
+
+        // Mouse wheel zoom (desktop)
+        academicCalendarContentWrapper?.addEventListener("wheel", (e) => {
+          if (isPdfDisplayed) return; // Do not zoom PDF
+          e.preventDefault();
+          const scaleAmount = 1.1;
+          const rect = academicCalendarContentWrapper.getBoundingClientRect();
+          const mouseX = e.clientX - rect.left;
+          const mouseY = e.clientY - rect.top;
+
+          if (e.deltaY < 0) {
+            // Zoom in
+            currentScale *= scaleAmount;
+          } else {
+            // Zoom out
+            currentScale /= scaleAmount;
+          }
+
+          // Clamp scale to reasonable limits
+          currentScale = Math.max(0.5, Math.min(5, currentScale));
+
+          // Adjust position to zoom towards the mouse cursor
+          currentX =
+            mouseX -
+            (mouseX - currentX) *
+              (currentScale /
+                (currentScale /
+                  (e.deltaY < 0 ? scaleAmount : 1 / scaleAmount)));
+          currentY =
+            mouseY -
+            (mouseY - currentY) *
+              (currentScale /
+                (currentScale /
+                  (e.deltaY < 0 ? scaleAmount : 1 / scaleAmount)));
+
+          applyTransform();
+        });
+
+        // Drag to pan (desktop & touch)
+        academicCalendarContentWrapper?.addEventListener("mousedown", (e) => {
+          if (isPdfDisplayed) return; // Do not pan PDF
+          e.preventDefault();
+          isDragging = true;
+          academicCalendarContentWrapper.classList.add("grabbing");
+          startX = e.clientX - currentX;
+          startY = e.clientY - currentY;
+        });
+
+        academicCalendarContentWrapper?.addEventListener("mousemove", (e) => {
+          if (!isDragging || isPdfDisplayed) return; // Do not pan PDF
+          e.preventDefault();
+          currentX = e.clientX - startX;
+          currentY = e.clientY - startY;
+          applyTransform();
+        });
+
+        academicCalendarContentWrapper?.addEventListener("mouseup", () => {
+          isDragging = false;
+          academicCalendarContentWrapper.classList.remove("grabbing");
+        });
+
+        academicCalendarContentWrapper?.addEventListener("mouseleave", () => {
+          isDragging = false;
+          academicCalendarContentWrapper.classList.remove("grabbing");
+        });
+
+        // Touch events for pinch-to-zoom and pan
+        academicCalendarContentWrapper?.addEventListener(
+          "touchstart",
+          (e) => {
+            if (isPdfDisplayed) return; // Do not zoom/pan PDF
+            if (e.touches.length === 2) {
+              initialPinchDistance = Math.hypot(
+                e.touches[1].pageX - e.touches[0].pageX,
+                e.touches[1].pageY - e.touches[0].pageY
+              );
+              isDragging = false; // Disable single-finger drag during pinch
+            } else if (e.touches.length === 1) {
+              isDragging = true;
+              startX = e.touches[0].clientX - currentX;
+              startY = e.touches[0].clientY - currentY;
+            }
+            academicCalendarContentWrapper.classList.add("grabbing");
+          },
+          { passive: false }
+        );
+
+        academicCalendarContentWrapper?.addEventListener(
+          "touchmove",
+          (e) => {
+            if (isPdfDisplayed) return; // Do not zoom/pan PDF
+            if (e.touches.length === 2 && initialPinchDistance > 0) {
+              e.preventDefault(); // Prevent scrolling
+              const currentPinchDistance = Math.hypot(
+                e.touches[1].pageX - e.touches[0].pageX,
+                e.touches[1].pageY - e.touches[0].pageY
+              );
+              const scaleFactor = currentPinchDistance / initialPinchDistance;
+
+              // Calculate center of pinch
+              const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+              const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+              const oldScale = currentScale;
+              currentScale = Math.max(
+                0.5,
+                Math.min(5, currentScale * scaleFactor)
+              );
+
+              // Adjust position to zoom towards the pinch center
+              const rect =
+                academicCalendarContentWrapper.getBoundingClientRect();
+              const containerX = centerX - rect.left;
+              const containerY = centerY - rect.top;
+
+              currentX =
+                containerX -
+                (containerX - currentX) * (currentScale / oldScale);
+              currentY =
+                containerY -
+                (containerY - currentY) * (currentScale / oldScale);
+
+              initialPinchDistance = currentPinchDistance; // Update for next move
+              applyTransform();
+            } else if (isDragging && e.touches.length === 1) {
+              e.preventDefault(); // Prevent scrolling
+              currentX = e.touches[0].clientX - startX;
+              currentY = e.touches[0].clientY - startY;
+              applyTransform();
+            }
+          },
+          { passive: false }
+        );
+
+        academicCalendarContentWrapper?.addEventListener("touchend", () => {
+          isDragging = false;
+          initialPinchDistance = 0;
+          academicCalendarContentWrapper.classList.remove("grabbing");
+        });
+
+        // The "View Full Calendar" button now scrolls to the section, it doesn't open a modal.
+        // viewAcademicCalendarBtn?.addEventListener("click", (e) => {
+        //   e.preventDefault();
+        //   openAcademicCalendarModal();
+        // });
+
+        footerAcademicCalendarBtn?.addEventListener("click", (e) => {
+          e.preventDefault();
+          openAcademicCalendarModal();
+        });
+
+        academicCalendarClose?.addEventListener(
+          "click",
+          closeAcademicCalendarModal
+        );
+
+        window.addEventListener("click", (event) => {
+          if (event.target === academicCalendarModal) {
+            closeAcademicCalendarModal();
           }
         });
       }
